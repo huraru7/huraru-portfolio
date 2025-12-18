@@ -1,0 +1,106 @@
+/* 自己紹介セクション */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.about-subtitle {
+    font-size: 1.5rem;
+    color: #4a90e2;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+}
+
+.about-description {
+    color: #5a6c7d;
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border: 2px solid #e1e8ed;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4a90e2;
+    letter-spacing: 2px;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #7b8fa3;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+}
+
+.about-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.highlight-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-left: 4px solid #4a90e2;
+    padding: 1.5rem;
+    transition: all 0.3s;
+}
+
+.highlight-card:hover {
+    background: rgba(74, 144, 226, 0.05);
+    transform: translateX(10px);
+    border-left-color: #a29bfe;
+}
+
+.highlight-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.highlight-title {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    letter-spacing: 2px;
+    margin-bottom: 0.8rem;
+}
+
+.highlight-text {
+    color: #5a6c7d;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 968px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .about-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}

@@ -4,30 +4,292 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fantasy Portfolio</title>
+  <title>huraru`s Portfolio</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="theme-medieval">
+<body>
+  <div class="decorative-lines">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+
+  <div class="dots-pattern"></div>
+  <div class="barcode"></div>
+
+  <div class="geometric-shape shape-1"></div>
+  <div class="geometric-shape shape-2"></div>
+  <div class="geometric-shape shape-3"></div>
+
   <header>
-    <h1>Portfolio</h1>
     <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="works.html">Works</a></li>
+      <div class="logo">PORTFOLIO</div>
+      <ul class="nav-links">
+        <li><a href="#top">TOP</a></li>
+        <li><a href="#projects">PROJECTS</a></li>
+        <li><a href="#skill">SKILL</a></li>
+        <li><a href="#contact">CONTACT</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <h2>ようこそ</h2>
-      <p>てすとtext</p>
-    </section>
-  </main>
+  <section class="hero" id="top">
+    <div class="hero-content">
+      <div class="hero-subtitle">Game Programmer</div>
+      <h1 class="hero-title">PORTFOLIO</h1>
+      <p style="font-size: 1rem; color: #7b8fa3; letter-spacing: 2px; margin-top: 1rem;">
+        CREATING <span class="accent-text">INTERACTIVE</span> EXPERIENCES
+      </p>
+    </div>
+  </section>
 
-  <p class="end">© 2025 huraru</p>
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section-title">PROJECTS</h2>
+      <div class="project-grid">
+        <div class="project-card" onclick="openModal('project1')">
+          <h3 class="project-title">PROJECT 01</h3>
+          <p style="color: #5a6c7d; line-height: 1.6;">
+            3Dアクションゲームの開発。Unity C#を使用してプレイヤーコントロール、敵AI、物理演算を実装。
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Unity</span>
+            <span class="tech-tag">C#</span>
+            <span class="tech-tag">3D</span>
+          </div>
+          <p style="color: #4a90e2; margin-top: 1rem; font-size: 0.9rem; text-align: right;">詳細を見る →</p>
+        </div>
+
+        <div class="project-card" onclick="openModal('project2')">
+          <h3 class="project-title">PROJECT 02</h3>
+          <p style="color: #5a6c7d; line-height: 1.6;">
+            モバイルパズルゲームの開発。最適化とパフォーマンス向上に注力し、60FPSを実現。
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Unity</span>
+            <span class="tech-tag">Mobile</span>
+            <span class="tech-tag">Optimization</span>
+          </div>
+          <p style="color: #4a90e2; margin-top: 1rem; font-size: 0.9rem; text-align: right;">詳細を見る →</p>
+        </div>
+
+        <div class="project-card" onclick="openModal('project3')">
+          <h3 class="project-title">PROJECT 03</h3>
+          <p style="color: #5a6c7d; line-height: 1.6;">
+            マルチプレイヤーシステムの実装。Photonを使用してリアルタイム通信とステート同期を実現。
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Photon</span>
+            <span class="tech-tag">Multiplayer</span>
+            <span class="tech-tag">Network</span>
+          </div>
+          <p style="color: #4a90e2; margin-top: 1rem; font-size: 0.9rem; text-align: right;">詳細を見る →</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skill">
+    <div class="container">
+      <h2 class="section-title">SKILLS</h2>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <div class="skill-name">スキル名</div>
+          <p style="color: #7b8fa3; font-size: 0.9rem;">スキルの簡易的説明文</p>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">スキル名</div>
+          <p style="color: #7b8fa3; font-size: 0.9rem;">スキルの簡易的説明文</p>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">スキル名</div>
+          <p style="color: #7b8fa3; font-size: 0.9rem;">スキルの簡易的説明文</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p style="color: #5a6c7d; letter-spacing: 2px; font-size: 0.9rem;">
+      CONTACT: <span style="color: #4a90e2;">me.@gmail.com</span>
+    </p>
+    <p style="color: #7b8fa3; margin-top: 1rem; font-size: 0.8rem;">
+      2025 this portfolio is designed by huraru.
+    </p>
+
+  </footer>
+
+  <!-- モーダル: Project 1 -->
+  <div class="modal" id="modal-project1" onclick="closeModal('project1')">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <button class="modal-close" onclick="closeModal('project1')">×</button>
+        <h2 class="modal-title">PROJECT 01</h2>
+        <p class="modal-subtitle">3D Action Game Development</p>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3 class="modal-section-title">概要</h3>
+          <p class="modal-text">
+            Unity C#を使用した3Dアクションゲームの開発プロジェクト。プレイヤーコントロール、敵AI、物理演算システムを一から実装しました。
+          </p>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">主な機能</h3>
+          <ul class="modal-list">
+            <li>スムーズなプレイヤーコントロールシステム</li>
+            <li>状態機械を使用した敵AIの実装</li>
+            <li>Rigidbodyベースの物理演算</li>
+            <li>カメラコントロールとターゲティングシステム</li>
+            <li>パーティクルエフェクトとアニメーション</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">使用技術</h3>
+          <div class="project-tech">
+            <span class="tech-tag">Unity 2022</span>
+            <span class="tech-tag">C#</span>
+            <span class="tech-tag">3D Graphics</span>
+            <span class="tech-tag">Physics</span>
+            <span class="tech-tag">Animation</span>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">成果</h3>
+          <p class="modal-text">
+            プロトタイプから完成まで6ヶ月で開発。最適化により60FPSを安定して維持し、プレイヤーからの高評価を獲得しました。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- モーダル: Project 2 -->
+  <div class="modal" id="modal-project2" onclick="closeModal('project2')">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <button class="modal-close" onclick="closeModal('project2')">×</button>
+        <h2 class="modal-title">PROJECT 02</h2>
+        <p class="modal-subtitle">Mobile Puzzle Game</p>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3 class="modal-section-title">概要</h3>
+          <p class="modal-text">
+            モバイルプラットフォーム向けのパズルゲーム開発。パフォーマンス最適化に重点を置き、幅広いデバイスで快適に動作するように設計しました。
+          </p>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">主な機能</h3>
+          <ul class="modal-list">
+            <li>直感的なタッチ操作システム</li>
+            <li>100以上のステージ設計</li>
+            <li>効率的なメモリ管理</li>
+            <li>バッテリー消費の最適化</li>
+            <li>セーブデータの管理システム</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">使用技術</h3>
+          <div class="project-tech">
+            <span class="tech-tag">Unity</span>
+            <span class="tech-tag">C#</span>
+            <span class="tech-tag">Mobile</span>
+            <span class="tech-tag">Optimization</span>
+            <span class="tech-tag">UI/UX</span>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">成果</h3>
+          <p class="modal-text">
+            iOS/Android両プラットフォームで60FPSを達成。低スペック端末でも快適に動作し、App Storeで4.5以上の評価を獲得しました。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- モーダル: Project 3 -->
+  <div class="modal" id="modal-project3" onclick="closeModal('project3')">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <button class="modal-close" onclick="closeModal('project3')">×</button>
+        <h2 class="modal-title">PROJECT 03</h2>
+        <p class="modal-subtitle">Multiplayer System Implementation</p>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3 class="modal-section-title">概要</h3>
+          <p class="modal-text">
+            Photon Engineを使用したリアルタイムマルチプレイヤーシステムの実装。最大4人での同時プレイを実現しました。
+          </p>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">主な機能</h3>
+          <ul class="modal-list">
+            <li>リアルタイムプレイヤー同期</li>
+            <li>ルームマッチングシステム</li>
+            <li>ラグ補償とネットワーク最適化</li>
+            <li>ボイスチャット統合</li>
+            <li>リコネクション機能</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">使用技術</h3>
+          <div class="project-tech">
+            <span class="tech-tag">Photon Engine</span>
+            <span class="tech-tag">Unity</span>
+            <span class="tech-tag">C#</span>
+            <span class="tech-tag">Networking</span>
+            <span class="tech-tag">Multiplayer</span>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">成果</h3>
+          <p class="modal-text">
+            平均レイテンシ50ms以下を実現。安定した同期システムにより、スムーズなマルチプレイヤー体験を提供しています。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(projectId) {
+      const modal = document.getElementById('modal-' + projectId);
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden'; // スクロール防止
+    }
+
+    function closeModal(projectId) {
+      const modal = document.getElementById('modal-' + projectId);
+      modal.classList.remove('active');
+      document.body.style.overflow = ''; // スクロール復元
+    }
+
+    // ESCキーでモーダルを閉じる
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        const activeModal = document.querySelector('.modal.active');
+        if (activeModal) {
+          activeModal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+    });
+  </script>
+
 </body>
 
 </html>

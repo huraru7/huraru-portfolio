@@ -255,34 +255,6 @@
     text-transform: uppercase;
   }
 
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-
-  .skill-item {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    border-left: 4px solid #4a90e2;
-    padding: 1.5rem;
-    transition: all 0.3s;
-  }
-
-  .skill-item:hover {
-    background: rgba(74, 144, 226, 0.1);
-    transform: translateX(5px);
-  }
-
-  .skill-name {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
-    letter-spacing: 1px;
-  }
-
   .geometric-shape {
     position: fixed;
     border: 2px solid #4a90e2;

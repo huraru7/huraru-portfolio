@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>huraru`s Portfolio</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/skill.css">
   <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/me.css">
+  <link rel="stylesheet" href="css/project.css">
+  <link rel="stylesheet" href="css/skill.css">
 </head>
 
 <body>
@@ -25,6 +27,7 @@
   <div class="geometric-shape shape-2"></div>
   <div class="geometric-shape shape-3"></div>
 
+  <!-- ヘッター -->
   <header>
     <nav>
       <div class="logo">PORTFOLIO</div>
@@ -36,24 +39,26 @@
     </nav>
   </header>
 
+  <!--top-->
   <section class="hero" id="top">
     <div class="hero-content">
       <!--文字部分-->
       <div class="hero-text">
-        <div class="hero-subtitle">Game Programmer</div>
+        <div class="hero-subtitle">文その１</div>
         <h1 class="hero-title">PORTFOLIO</h1>
         <p style="font-size: 1rem; color: #7b8fa3; letter-spacing: 2px; margin-top: 1rem;">
-          CREATING <span class="accent-text">INTERACTIVE</span> EXPERIENCES
+          Geometric <span class="accent-text">Never-Ending</span> CREATING
         </p>
       </div>
 
       <!--画像部分-->
       <div class="hero-image">
-        <img src="" alt="Hero Image" class="hero-img">
+        <img src="images/huraru.png" alt="Hero Image" class="hero-img">
       </div>
     </div>
   </section>
 
+  <!-- プロジェクト -->
   <section class="section" id="projects">
     <div class="container">
       <h2 class="section-title">PROJECTS</h2>
@@ -94,6 +99,7 @@
     </div>
   </section>
 
+  <!-- スキル -->
   <section class="section" id="skill">
     <div class="container">
       <h2 class="section-title">SKILLS</h2>
@@ -166,7 +172,7 @@
         <div class="modal-section">
           <h3 class="modal-section-title">概要</h3>
           <p class="modal-text">
-            説明文をここに
+            詳細をここにいれる
           </p>
         </div>
 
@@ -274,30 +280,8 @@
     </div>
   </div>
 
-  <script>
-    function openModal(projectId) {
-      const modal = document.getElementById('modal-' + projectId);
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden'; // スクロール防止
-    }
-
-    function closeModal(projectId) {
-      const modal = document.getElementById('modal-' + projectId);
-      modal.classList.remove('active');
-      document.body.style.overflow = ''; // スクロール復元
-    }
-
-    // ESCキーでモーダルを閉じる
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        const activeModal = document.querySelector('.modal.active');
-        if (activeModal) {
-          activeModal.classList.remove('active');
-          document.body.style.overflow = '';
-        }
-      }
-    });
-  </script>
+  <script src="js/Modal.js"></script>
+  <script src="js/dotMotion.js"></script>
 
 </body>
 

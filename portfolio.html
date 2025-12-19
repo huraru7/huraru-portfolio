@@ -7,7 +7,7 @@
   <title>huraru`s Portfolio</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/hero.css">
-  <link rel="stylesheet" href="css/me.css">
+  <link rel="stylesheet" href="css/about.css">
   <link rel="stylesheet" href="css/project.css">
   <link rel="stylesheet" href="css/skill.css">
 </head>
@@ -184,12 +184,14 @@
       <h2 class="section-title">PROJECTS</h2>
       <div class="project-grid">
         <div class="project-card" onclick="openModal('project1')">
-          <h3 class="project-title">PROJECT 01</h3>
+          <h3 class="project-title">ConsoleOthello</h3>
           <p style="color: #5a6c7d; line-height: 1.6;">
-            ゲームの簡易的な説明文をここに載せる
+            consoleで動かす簡易的オセロゲーム
           </p>
           <div class="project-tech">
-            <span class="tech-tag">tag</span>
+            <span class="tech-tag">C#</span>
+            <span class="tech-tag">Console</span>
+            <span class="tech-tag">オセロ</span>
           </div>
           <p style="color: #4a90e2; margin-top: 1rem; font-size: 0.9rem; text-align: right;">詳細はこちら →</p>
         </div>
@@ -288,28 +290,29 @@
     <div class="modal-content" onclick="event.stopPropagation()">
       <div class="modal-header">
         <button class="modal-close" onclick="closeModal('project1')">×</button>
-        <h2 class="modal-title">PROJECT 01</h2>
-        <p class="modal-subtitle">ゲームジャンルはここ</p>
+        <h2 class="modal-title">ConsoleOthello</h2>
+        <p class="modal-subtitle">consoleで動かす簡易的オセロゲーム</p>
       </div>
       <div class="modal-body">
         <div class="modal-section">
           <h3 class="modal-section-title">制作期間</h3>
           <p class="modal-text">
-            詳細をここにいれる
+            1か月
           </p>
         </div>
 
         <div class="modal-section">
           <h3 class="modal-section-title">使用技術</h3>
           <div class="project-tech">
-            <span class="tech-tag">使用技術をここに記載</span>
+            <span class="tech-tag">C#</span>
           </div>
         </div>
 
         <div class="modal-section">
           <h3 class="modal-section-title">主な機能</h3>
           <ul class="modal-list">
-            <li>ゲームの特徴・説明文などを記載</li>
+            <li>Console上で動かしていくオセロゲーム</li>
+            <li>1人でもプレイ可能なAI対戦機能</li>
           </ul>
         </div>
 

@@ -1,12 +1,5 @@
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-
-  .skill-item {
+/* ========== スキルアイコン ========== */
+.skill-item {
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     border-left: 4px solid #4a90e2;
@@ -15,63 +8,40 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-  }
+}
 
-  .skill-icon{
+.skill-icon {
     width: 50px;
     height: 50px;
     object-fit: contain;
     flex-shrink: 0;
-    }
-
-    .skill-content {
-    flex: 1;
-  }
-
-  .skill-item:hover {
-    background: rgba(74, 144, 226, 0.1);
-    transform: translateX(5px);
-  }
-
-  .skill-name {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
-    letter-spacing: 1px;
-  }
-
-  .other-skills {
-    margin-top: 3rem;
 }
 
-.other-skills-title {
-    font-size: 1.3rem;
-    color: #8da0b2;
-    letter-spacing: 2px;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-}
+.skill-content { flex: 1; }
 
-.skills-icons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    align-items: center;
-    padding: 2rem;
-}
+.skills-icons { gap: 1.5rem; }
 
 .skill-icon-only {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
     opacity: 0.7;
-    transition: all 0.2s;
-    filter: grayscale(40%);
+    transition: all 0.3s;
+    filter: grayscale(30%);
 }
 
 .skill-icon-only:hover {
     opacity: 1;
     transform: translateY(-5px);
-    filter: grayscale(0%) drop-shadow(0 5px 20px rgba(30, 84, 146, 0.3));
+    filter: grayscale(0%);
+}
+
+.other-skills { margin-top: 3rem; }
+
+.other-skills-title {
+    font-size: 1.3rem;
+    color: #7b8fa3;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
 }

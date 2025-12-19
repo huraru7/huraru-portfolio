@@ -441,6 +441,10 @@ footer {
       flex-direction: column;
       text-align: center;
   }
+  .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
   
   .hero-image {
       width: 300px;

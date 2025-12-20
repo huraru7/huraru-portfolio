@@ -430,6 +430,26 @@ footer {
   z-index: 10;
 }
 
+/* ========== モーダル追加部分 ========== */
+.modal-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.modal-list li {
+    color: #5a6c7d;
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.modal-list li::before {
+    content: '▸';
+    color: #4a90e2;
+    position: absolute;
+    left: 0;
+}
+
 /* ========== レスポンシブ ========== */
 @media (max-width: 968px) {
   .hero-title { font-size: 3rem; }

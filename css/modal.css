@@ -1,0 +1,89 @@
+/* モーダル内のMarkdownコンテンツ用スタイル */
+.modal-body h2 {
+    font-size: 1.2rem;
+    color: #4a90e2;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    text-transform: uppercase;
+    border-left: 4px solid #4a90e2;
+    padding-left: 1rem;
+}
+
+.modal-body h2:first-child {
+    margin-top: 0;
+}
+
+.modal-body h3 {
+    font-size: 1rem;
+    color: #2c3e50;
+    margin-bottom: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.modal-body p {
+    color: #5a6c7d;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.modal-body ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+}
+
+.modal-body li {
+    color: #5a6c7d;
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.modal-body li::before {
+    content: '▸';
+    color: #4a90e2;
+    position: absolute;
+    left: 0;
+}
+
+.modal-body ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-body ol li {
+    color: #5a6c7d;
+    padding: 0.5rem 0;
+}
+
+.modal-body ol li::before {
+    display: none;
+}
+
+.modal-body strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.modal-body code {
+    background: rgba(74, 144, 226, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    color: #4a90e2;
+}
+
+.modal-body pre {
+    background: rgba(74, 144, 226, 0.05);
+    padding: 1rem;
+    border-left: 4px solid #4a90e2;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+.modal-body pre code {
+    background: none;
+    padding: 0;
+}

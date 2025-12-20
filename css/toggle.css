@@ -1,0 +1,64 @@
+.theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid #a29bfe;
+  background: radial-gradient(circle, rgba(162,155,254,0.3), rgba(0,0,0,0.8));
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 0 10px rgba(162,155,254,0.6),
+    inset 0 0 8px rgba(255,255,255,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  z-index:99999;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) rotate(10deg);
+  box-shadow:
+    0 0 18px rgba(162,155,254,0.9),
+    inset 0 0 12px rgba(255,255,255,0.3);
+}
+
+.theme-toggle .icon {
+  position: absolute;
+  font-size: 1.3rem;
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.theme-toggle .sun {
+  opacity: 1;
+}
+
+.theme-toggle .moon {
+  opacity: 0;
+}
+.theme-toggle.night .sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.theme-toggle.night .moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+
+#theme-fade {
+  position: fixed;
+  inset: 0;
+  background: black;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 9999;
+}
+
+#theme-fade.active {
+  opacity: 1;
+}
+

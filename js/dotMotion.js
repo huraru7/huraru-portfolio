@@ -12,7 +12,7 @@ function createGlitchDots() {
     `;
 
 	// 複数の種類のドットを生成
-	for (let i = 0; i < 20; i++) {
+	for (let i = 0; i < 25; i++) {
 		const dot = document.createElement("div");
 		const size = Math.random() > 0.6 ? 6 : 3;
 		const colors = ["#407ec5ff", "#6d64f4ff", "#e495faff", "#009ed3ff"];

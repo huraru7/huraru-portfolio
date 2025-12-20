@@ -6,10 +6,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>huraru`s Portfolio</title>
 
-  <link rel="stylesheet" href="css/about.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/hero.css">
-  <link rel="stylesheet" href="css/skill.css">
+  <link id="theme-style" rel="stylesheet" href="">
+  <link id="theme-about" rel="stylesheet" href="">
+  <link id="theme-hero" rel="stylesheet" href="">
+  <link id="theme-skill" rel="stylesheet" href="">
+
+  <script src="js/Sunrise_Sunset.js"></script>
+
+  <script>
+    const nowHour = new Date().getHours();
+
+    const sun = getSunHours(
+      new Date(),
+      35.6895,   // 緯度（東京）
+      139.6917  // 経度（東京）
+    );
+
+    console.log("日の出:", sun.sunriseHour);
+    console.log("日の入り:", sun.sunsetHour);
+
+    const themeLink = document.getElementById("theme-style");
+    const themeSkill = document.getElementById("theme-skill");
+    const themeAbout = document.getElementById("theme-about");
+    const themeHero = document.getElementById("theme-hero");
+
+    if (nowHour >= sun.sunriseHour && nowHour < sun.sunsetHour) {
+      themeLink.href = "css/style.css"; // 昼
+      themeSkill.href = "css/skill.css";
+      themeAbout.href = "css/about.css";
+      themeHero.href = "css/hero.css";
+    } else {
+      themeLink.href = "css/style-night.css"; // 夜
+      themeSkill.href = "css/skill-night.css";
+      themeAbout.href = "css/about-night.css";
+      themeHero.href = "css/hero-night.css";
+    }
+  </script>
 </head>
 
 <body>
@@ -48,7 +80,7 @@
         <div class="hero-subtitle">huraru</div>
         <h1 class="hero-title">PORTFOLIO</h1>
         <p style="font-size: 1rem; color: #7b8fa3; letter-spacing: 2px; margin-top: 1rem;">
-          Geometric <span class="accent-text">Never-Ending</span> CREATING
+          Geometric <span class="accent-text">Never-Ending</span> Creating
         </p>
       </div>
 

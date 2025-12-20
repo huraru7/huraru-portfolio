@@ -1,8 +1,8 @@
-/* ========== スキルアイコン ========== */
+/* ========== スキルアイコン（ダークモード） ========== */
 .skill-item {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(30, 35, 50, 0.8);
     backdrop-filter: blur(10px);
-    border-left: 4px solid #4a90e2;
+    border-left: 4px solid #6badf5;
     padding: 1.5rem;
     transition: all 0.3s;
     display: flex;
@@ -27,21 +27,21 @@
     object-fit: contain;
     opacity: 0.7;
     transition: all 0.3s;
-    filter: grayscale(35%);
+    filter: grayscale(35%) brightness(1.1);
 }
 
 .skill-icon-only:hover {
     opacity: 1;
     transform: translateY(-5px);
-    box-shadow: 0 0 -10px rgba(100, 173, 255, 0.4),0 0 45px rgba(129, 120, 255, 0.4);
-    filter: grayscale(0%);
+    box-shadow: 0 0 20px rgba(107, 173, 245, 0.5), 0 0 45px rgba(184, 181, 255, 0.4);
+    filter: grayscale(0%) brightness(1.2);
 }
 
 .other-skills { margin-top: 3rem; }
 
 .other-skills-title {
     font-size: 1.3rem;
-    color: #7b8fa3;
+    color: #8ea4bd;
     letter-spacing: 2px;
     margin-bottom: 1.5rem;
     text-transform: uppercase;

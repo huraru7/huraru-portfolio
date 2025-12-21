@@ -24,6 +24,11 @@
   --line-gradient: linear-gradient(90deg, transparent, #4a90e2, transparent);
   --accent-gradient: linear-gradient(135deg, #4a90e2, #a29bfe);
 
+  /* フィルター */
+  --skill-icon-only-filter1: grayscale(30%);
+  --skill-icon-only-filter2: grayscale(0%);
+
+
   /* トランジション設定 */
   --transition-speed: 0.8s;
   --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
@@ -52,6 +57,10 @@
 
   --line-gradient: linear-gradient(90deg, transparent, #5ba3ff, transparent);
   --accent-gradient: linear-gradient(135deg, #5ba3ff, #b5adff);
+
+    /* フィルター */
+  --skill-icon-only-filter1: grayscale(30%) invert(1);
+  --skill-icon-only-filter2: grayscale(0%) invert(1);
 }
 
 /* ========== 基本設定 ========== */

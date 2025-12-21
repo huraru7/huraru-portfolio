@@ -30,14 +30,16 @@
     object-fit: contain;
     opacity: 0.7;
     transition: all 0.3s;
-    filter: grayscale(30%);
+    filter: var(--skill-icon-only-filter1);
+    transition: filter var(--transition-speed) var(--transition-easing);
 }
 
 .skill-icon-only:hover {
     opacity: 1;
     transform: translateY(-5px);
     box-shadow: 0 0 -10px var(--shadow-color), 0 0 45px var(--shadow-hover);
-    filter: grayscale(0%);
+    filter: var(--skill-icon-only-filter2);
+    transition: filter var(--transition-speed) var(--transition-easing);
 }
 
 .other-skills {

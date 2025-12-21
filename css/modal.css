@@ -1,13 +1,15 @@
 /* モーダル内のMarkdownコンテンツ用スタイル */
 .modal-body h2 {
     font-size: 1.2rem;
-    color: #4a90e2;
+    color: var(--accent-primary);
     letter-spacing: 2px;
     margin-bottom: 1rem;
     margin-top: 2rem;
     text-transform: uppercase;
-    border-left: 4px solid #4a90e2;
+    border-left: 4px solid var(--accent-primary);
     padding-left: 1rem;
+    transition: color var(--transition-speed) var(--transition-easing),
+                border-color var(--transition-speed) var(--transition-easing);
 }
 
 .modal-body h2:first-child {
@@ -16,15 +18,17 @@
 
 .modal-body h3 {
     font-size: 1rem;
-    color: #2c3e50;
+    color: var(--text-primary);
     margin-bottom: 0.8rem;
     margin-top: 1.5rem;
+    transition: color var(--transition-speed) var(--transition-easing);
 }
 
 .modal-body p {
-    color: #5a6c7d;
+    color: var(--text-secondary);
     line-height: 1.8;
     margin-bottom: 1rem;
+    transition: color var(--transition-speed) var(--transition-easing);
 }
 
 .modal-body ul {
@@ -34,17 +38,19 @@
 }
 
 .modal-body li {
-    color: #5a6c7d;
+    color: var(--text-secondary);
     padding: 0.5rem 0;
     padding-left: 1.5rem;
     position: relative;
+    transition: color var(--transition-speed) var(--transition-easing);
 }
 
 .modal-body li::before {
     content: '▸';
-    color: #4a90e2;
+    color: var(--accent-primary);
     position: absolute;
     left: 0;
+    transition: color var(--transition-speed) var(--transition-easing);
 }
 
 .modal-body ol {
@@ -53,8 +59,9 @@
 }
 
 .modal-body ol li {
-    color: #5a6c7d;
+    color: var(--text-secondary);
     padding: 0.5rem 0;
+    transition: color var(--transition-speed) var(--transition-easing);
 }
 
 .modal-body ol li::before {
@@ -62,25 +69,30 @@
 }
 
 .modal-body strong {
-    color: #2c3e50;
+    color: var(--text-primary);
     font-weight: 600;
+    transition: color var(--transition-speed) var(--transition-easing);
 }
 
 .modal-body code {
-    background: rgba(74, 144, 226, 0.1);
+    background: var(--glow-color);
     padding: 0.2rem 0.4rem;
     border-radius: 3px;
     font-family: 'Courier New', monospace;
     font-size: 0.9em;
-    color: #4a90e2;
+    color: var(--accent-primary);
+    transition: background var(--transition-speed) var(--transition-easing),
+                color var(--transition-speed) var(--transition-easing);
 }
 
 .modal-body pre {
-    background: rgba(74, 144, 226, 0.05);
+    background: var(--bg-card);
     padding: 1rem;
-    border-left: 4px solid #4a90e2;
+    border-left: 4px solid var(--accent-primary);
     overflow-x: auto;
     margin-bottom: 1.5rem;
+    transition: background var(--transition-speed) var(--transition-easing),
+                border-color var(--transition-speed) var(--transition-easing);
 }
 
 .modal-body pre code {

@@ -1,5 +1,4 @@
 .theme-toggle {
-  position: fixed;
   top: 1.5rem;
   right: 1.5rem;
   width: 52px;
@@ -47,7 +46,6 @@
   transform: rotate(0deg) scale(1);
 }
 
-
 #theme-fade {
   position: fixed;
   inset: 0;
@@ -61,4 +59,3 @@
 #theme-fade.active {
   opacity: 1;
 }
-

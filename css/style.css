@@ -1,3 +1,59 @@
+/* ========== CSS変数定義 ========== */
+:root {
+  /* デイテーマの色 */
+  --bg-gradient-start: #f5f7fa;
+  --bg-gradient-end: #e8eef5;
+  --bg-card: rgba(255, 255, 255, 0.8);
+  --bg-header: rgba(255, 255, 255, 0.9);
+  --bg-modal: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+  
+  --text-primary: #2c3e50;
+  --text-secondary: #5a6c7d;
+  --text-tertiary: #7b8fa3;
+  
+  --accent-primary: #4a90e2;
+  --accent-secondary: #a29bfe;
+  
+  --border-color: #e1e8ed;
+  --border-accent: #4a90e2;
+  
+  --shadow-color: rgba(74, 144, 226, 0.2);
+  --shadow-hover: rgba(74, 144, 226, 0.3);
+  --glow-color: rgba(74, 144, 226, 0.15);
+  
+  --line-gradient: linear-gradient(90deg, transparent, #4a90e2, transparent);
+  --accent-gradient: linear-gradient(135deg, #4a90e2, #a29bfe);
+  
+  /* トランジション設定 */
+  --transition-speed: 0.8s;
+  --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root.night-theme {
+  --bg-gradient-start: #1a1d29;
+  --bg-gradient-end: #0f1116;
+  --bg-card: rgba(30, 35, 50, 0.8);
+  --bg-header: rgba(20, 25, 35, 0.9);
+  --bg-modal: linear-gradient(135deg, #1e2332 0%, #1a1d29 100%);
+  
+  --text-primary: #e8eef5;
+  --text-secondary: #b8c5d6;
+  --text-tertiary: #8899aa;
+  
+  --accent-primary: #5ba3ff;
+  --accent-secondary: #b5adff;
+  
+  --border-color: #2a3040;
+  --border-accent: #5ba3ff;
+  
+  --shadow-color: rgba(91, 163, 255, 0.15);
+  --shadow-hover: rgba(91, 163, 255, 0.25);
+  --glow-color: rgba(91, 163, 255, 0.1);
+  
+  --line-gradient: linear-gradient(90deg, transparent, #5ba3ff, transparent);
+  --accent-gradient: linear-gradient(135deg, #5ba3ff, #b5adff);
+}
+
 /* ========== 基本設定 ========== */
 * {
   margin: 0;
@@ -7,9 +63,44 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
-  color: #2c3e50;
+  position: relative;
+  color: var(--text-primary);
   overflow-x: hidden;
+  transition: color var(--transition-speed) var(--transition-easing);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+  z-index: -2;
+  opacity: 1;
+  transition: opacity var(--transition-speed) var(--transition-easing);
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1d29 0%, #0f1116 100%);
+  z-index: -2;
+  opacity: 0;
+  transition: opacity var(--transition-speed) var(--transition-easing);
+}
+
+:root.night-theme body::before {
+  opacity: 0;
+}
+
+:root.night-theme body::after {
+  opacity: 1;
 }
 
 /* ========== 共通要素 ========== */
@@ -26,12 +117,13 @@ body {
 
 .section-title {
   font-size: 3rem;
-  color: #4a90e2;
+  color: var(--accent-primary);
   letter-spacing: 5px;
   margin-bottom: 3rem;
   text-transform: uppercase;
   position: relative;
   display: inline-block;
+  transition: color var(--transition-speed) var(--transition-easing);
 }
 
 .section-title::after {
@@ -41,7 +133,8 @@ body {
   left: 0;
   width: 60%;
   height: 3px;
-  background: linear-gradient(90deg, #4a90e2, #a29bfe);
+  background: var(--accent-gradient);
+  transition: background var(--transition-speed) var(--transition-easing);
 }
 
 /* ========== 固定背景装飾 ========== */
@@ -52,6 +145,7 @@ body {
   position: fixed;
   pointer-events: none;
   z-index: 1;
+  transition: opacity var(--transition-speed) var(--transition-easing);
 }
 
 .decorative-lines {
@@ -64,8 +158,9 @@ body {
 
 .line {
   position: absolute;
-  background: linear-gradient(90deg, transparent, #4a90e2, transparent);
+  background: var(--line-gradient);
   height: 1px;
+  transition: background var(--transition-speed) var(--transition-easing);
 }
 
 .line:nth-child(1) { top: 15%; width: 40%; left: 0; }
@@ -77,13 +172,15 @@ body {
   width: 100%;
   height: 100%;
   opacity: 0.15;
-  background-image: radial-gradient(circle, #4a90e2 1px, transparent 1px);
+  background-image: radial-gradient(circle, var(--accent-primary) 1px, transparent 1px);
   background-size: 30px 30px;
+  transition: background-image var(--transition-speed) var(--transition-easing);
 }
 
 .geometric-shape {
-  border: 2px solid #4a90e2;
+  border: 2px solid var(--accent-primary);
   opacity: 0.2;
+  transition: border-color var(--transition-speed) var(--transition-easing);
 }
 
 .shape-1 { top: 10%; right: 10%; width: 100px; height: 100px; transform: rotate(45deg); }
@@ -95,18 +192,21 @@ body {
   left: 20px;
   width: 100px;
   height: 60px;
-  background: repeating-linear-gradient(90deg, #4a90e2 0px, #4a90e2 2px, transparent 2px, transparent 5px);
+  background: repeating-linear-gradient(90deg, var(--accent-primary) 0px, var(--accent-primary) 2px, transparent 2px, transparent 5px);
   opacity: 0.3;
+  transition: background var(--transition-speed) var(--transition-easing);
 }
 
 /* ========== ヘッダー ========== */
 header {
   position: relative;
   padding: 2rem 5%;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--bg-header);
   backdrop-filter: blur(10px);
-  border-bottom: 2px solid #4a90e2;
+  border-bottom: 2px solid var(--border-accent);
   z-index: 100;
+  transition: background var(--transition-speed) var(--transition-easing),
+              border-color var(--transition-speed) var(--transition-easing);
 }
 
 nav {
@@ -120,9 +220,10 @@ nav {
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #4a90e2;
+  color: var(--accent-primary);
   letter-spacing: 3px;
   text-transform: uppercase;
+  transition: color var(--transition-speed) var(--transition-easing);
 }
 
 .nav-links {
@@ -133,7 +234,7 @@ nav {
 
 .nav-links a {
   text-decoration: none;
-  color: #5a6c7d;
+  color: var(--text-secondary);
   font-weight: 500;
   text-transform: uppercase;
   font-size: 0.85rem;
@@ -142,7 +243,9 @@ nav {
   position: relative;
 }
 
-.nav-links a:hover { color: #4a90e2; }
+.nav-links a:hover { 
+  color: var(--accent-primary); 
+}
 
 .nav-links a::after {
   content: '';
@@ -151,8 +254,8 @@ nav {
   left: 0;
   width: 0;
   height: 2px;
-  background: #4a90e2;
-  transition: width 0.3s;
+  background: var(--accent-primary);
+  transition: width 0.3s, background var(--transition-speed) var(--transition-easing);
 }
 
 .nav-links a:hover::after { width: 100%; }
@@ -163,11 +266,11 @@ nav {
 .skill-item,
 .highlight-card,
 .timeline-content {
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--bg-card);
   backdrop-filter: blur(10px);
-  border: 2px solid #e1e8ed;
+  border: 2px solid var(--border-color);
   padding: 2rem;
-  transition: all 0.3s;
+  transition: all var(--transition-speed) var(--transition-easing);
 }
 
 .project-card,
@@ -183,8 +286,8 @@ nav {
   left: 0;
   width: 4px;
   height: 0;
-  background: linear-gradient(180deg, #4a90e2, #a29bfe);
-  transition: height 0.3s;
+  background: var(--accent-gradient);
+  transition: height 0.3s, background var(--transition-speed) var(--transition-easing);
 }
 
 .project-card:hover::before { height: 100%; }
@@ -192,8 +295,8 @@ nav {
 .project-card:hover,
 .timeline-content:hover {
   transform: translateY(-5px);
-  border-color: #4a90e2;
-  box-shadow: 0 10px 30px rgba(74, 144, 226, 0.2);
+  border-color: var(--border-accent);
+  box-shadow: 0 10px 30px var(--shadow-hover);
 }
 
 .project-card {
@@ -203,24 +306,28 @@ nav {
 
 .skill-item,
 .highlight-card {
-  border-left: 4px solid #4a90e2;
+  border-left: 4px solid var(--accent-primary);
 }
 
 .skill-item:hover,
 .highlight-card:hover {
-  background: rgba(74, 144, 226, 0.1);
+  background: var(--glow-color);
   transform: translateX(5px);
 }
 
-.highlight-card:hover { transform: translateX(10px); border-left-color: #a29bfe; }
+.highlight-card:hover { 
+  transform: translateX(10px); 
+  border-left-color: var(--accent-secondary); 
+}
 
 /* ========== タイトル・テキスト共通 ========== */
 .project-title,
 .skill-name,
 .timeline-heading,
 .highlight-title {
-  color: #2c3e50;
+  color: var(--text-primary);
   letter-spacing: 2px;
+  transition: color var(--transition-speed) var(--transition-easing);
 }
 
 .project-title { font-size: 1.5rem; margin-bottom: 1rem; }
@@ -242,11 +349,12 @@ nav {
 .tech-tag,
 .timeline-tag {
   padding: 0.3rem 0.8rem;
-  background: linear-gradient(135deg, #4a90e2, #a29bfe);
+  background: var(--accent-gradient);
   color: white;
   font-size: 0.75rem;
   letter-spacing: 1px;
   text-transform: uppercase;
+  transition: background var(--transition-speed) var(--transition-easing);
 }
 
 /* ========== グリッド ========== */
@@ -273,9 +381,10 @@ nav {
 }
 
 .highlight-text {
-  color: #5a6c7d;
+  color: var(--text-secondary);
   line-height: 1.6;
   font-size: 0.95rem;
+  transition: color var(--transition-speed) var(--transition-easing);
 }
 
 /* ========== モーダル ========== */
@@ -300,15 +409,17 @@ nav {
 }
 
 .modal-content {
-  background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
-  border: 2px solid #4a90e2;
+  background: var(--bg-modal);
+  border: 2px solid var(--border-accent);
   max-width: 900px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
-  box-shadow: 0 20px 60px rgba(74, 144, 226, 0.3);
+  box-shadow: 0 20px 60px var(--shadow-hover);
   animation: modalSlideIn 0.3s ease-out;
+  transition: background var(--transition-speed) var(--transition-easing),
+              border-color var(--transition-speed) var(--transition-easing);
 }
 
 @keyframes modalSlideIn {
@@ -317,10 +428,11 @@ nav {
 }
 
 .modal-header {
-  background: linear-gradient(135deg, #4a90e2, #a29bfe);
+  background: var(--accent-gradient);
   color: white;
   padding: 2rem;
   position: relative;
+  transition: background var(--transition-speed) var(--transition-easing);
 }
 
 .modal-close {
@@ -363,18 +475,21 @@ nav {
 
 .modal-section-title {
   font-size: 1.2rem;
-  color: #4a90e2;
+  color: var(--accent-primary);
   letter-spacing: 2px;
   margin-bottom: 1rem;
   text-transform: uppercase;
-  border-left: 4px solid #4a90e2;
+  border-left: 4px solid var(--accent-primary);
   padding-left: 1rem;
+  transition: color var(--transition-speed) var(--transition-easing),
+              border-color var(--transition-speed) var(--transition-easing);
 }
 
 .modal-text {
-  color: #5a6c7d;
+  color: var(--text-secondary);
   line-height: 1.8;
   margin-bottom: 1rem;
+  transition: color var(--transition-speed) var(--transition-easing);
 }
 
 .modal-list {
@@ -383,16 +498,18 @@ nav {
 }
 
 .modal-list li {
-  color: #5a6c7d;
+  color: var(--text-secondary);
   padding: 0.5rem 0 0.5rem 1.5rem;
   position: relative;
+  transition: color var(--transition-speed) var(--transition-easing);
 }
 
 .modal-list li::before {
   content: '▸';
-  color: #4a90e2;
+  color: var(--accent-primary);
   position: absolute;
   left: 0;
+  transition: color var(--transition-speed) var(--transition-easing);
 }
 
 /* ========== カーソルグロー・アニメーション ========== */
@@ -401,11 +518,11 @@ nav {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(74, 144, 226, 0.15), transparent 70%);
+  background: radial-gradient(circle, var(--glow-color), transparent 70%);
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%, -50%);
-  transition: opacity 0.3s;
+  transition: background var(--transition-speed) var(--transition-easing);
 }
 
 .fade-in {
@@ -421,33 +538,15 @@ nav {
 
 /* ========== フッター ========== */
 footer {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--bg-header);
   backdrop-filter: blur(10px);
-  border-top: 2px solid #4a90e2;
+  border-top: 2px solid var(--border-accent);
   padding: 2rem 5%;
   text-align: center;
   position: relative;
   z-index: 10;
-}
-
-/* ========== モーダル追加部分 ========== */
-.modal-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.modal-list li {
-    color: #5a6c7d;
-    padding: 0.5rem 0;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-.modal-list li::before {
-    content: '▸';
-    color: #4a90e2;
-    position: absolute;
-    left: 0;
+  transition: background var(--transition-speed) var(--transition-easing),
+              border-color var(--transition-speed) var(--transition-easing);
 }
 
 /* ========== レスポンシブ ========== */

@@ -8,15 +8,14 @@ marked.setOptions({
 
 // Markdownのメタデータを解析
 function parseMarkdown(content) {
-	// 改行コードを統一する
+	// 改行コードを統一
 	content = content.replace(/\r\n/g, "\n").replace(/\r/g, "\n").trim();
 
-	// BOM削除
 	if (content.charCodeAt(0) === 0xfeff) {
 		content = content.substring(1);
 	}
 
-	// メタデータの開始を確認
+	// メタデータ確認
 	if (!content.startsWith("---")) {
 		console.error("メタデータが---で始まっていません");
 		return {
@@ -31,10 +30,9 @@ function parseMarkdown(content) {
 		};
 	}
 
-	// 最初の---を除去
+	// ---を検索
 	content = content.substring(3).trim();
 
-	// 2番目の---を探す
 	const endIndex = content.indexOf("\n---");
 	if (endIndex === -1) {
 		console.error("---が閉じられていません");

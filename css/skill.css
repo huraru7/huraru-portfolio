@@ -1,10 +1,10 @@
 /* ========== スキルアイコン ========== */
 .skill-item {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-card);
     backdrop-filter: blur(10px);
-    border-left: 4px solid #4a90e2;
+    border-left: 4px solid var(--accent-primary);
     padding: 1.5rem;
-    transition: all 0.3s;
+    transition: all var(--transition-speed) var(--transition-easing);
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -17,9 +17,13 @@
     flex-shrink: 0;
 }
 
-.skill-content { flex: 1; }
+.skill-content { 
+    flex: 1; 
+}
 
-.skills-icons { gap: 1.5rem; }
+.skills-icons { 
+    gap: 1.5rem; 
+}
 
 .skill-icon-only {
     width: 60px;
@@ -33,16 +37,19 @@
 .skill-icon-only:hover {
     opacity: 1;
     transform: translateY(-5px);
-    box-shadow: 0 0 -10px rgba(100, 173, 255, 0.4),0 0 45px rgba(129, 120, 255, 0.4);
+    box-shadow: 0 0 -10px var(--shadow-color), 0 0 45px var(--shadow-hover);
     filter: grayscale(0%);
 }
 
-.other-skills { margin-top: 3rem; }
+.other-skills { 
+    margin-top: 3rem; 
+}
 
 .other-skills-title {
     font-size: 1.3rem;
-    color: #7b8fa3;
+    color: var(--text-tertiary);
     letter-spacing: 2px;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
+    transition: color var(--transition-speed) var(--transition-easing);
 }

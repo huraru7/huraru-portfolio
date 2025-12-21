@@ -6,24 +6,24 @@
   --bg-card: rgba(255, 255, 255, 0.8);
   --bg-header: rgba(255, 255, 255, 0.9);
   --bg-modal: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
-  
+
   --text-primary: #2c3e50;
   --text-secondary: #5a6c7d;
   --text-tertiary: #7b8fa3;
-  
+
   --accent-primary: #4a90e2;
   --accent-secondary: #a29bfe;
-  
+
   --border-color: #e1e8ed;
   --border-accent: #4a90e2;
-  
+
   --shadow-color: rgba(74, 144, 226, 0.2);
   --shadow-hover: rgba(74, 144, 226, 0.3);
   --glow-color: rgba(74, 144, 226, 0.15);
-  
+
   --line-gradient: linear-gradient(90deg, transparent, #4a90e2, transparent);
   --accent-gradient: linear-gradient(135deg, #4a90e2, #a29bfe);
-  
+
   /* トランジション設定 */
   --transition-speed: 0.8s;
   --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
@@ -35,21 +35,21 @@
   --bg-card: rgba(30, 35, 50, 0.8);
   --bg-header: rgba(20, 25, 35, 0.9);
   --bg-modal: linear-gradient(135deg, #1e2332 0%, #1a1d29 100%);
-  
+
   --text-primary: #e8eef5;
   --text-secondary: #b8c5d6;
   --text-tertiary: #8899aa;
-  
+
   --accent-primary: #5ba3ff;
   --accent-secondary: #b5adff;
-  
+
   --border-color: #2a3040;
   --border-accent: #5ba3ff;
-  
+
   --shadow-color: rgba(91, 163, 255, 0.15);
   --shadow-hover: rgba(91, 163, 255, 0.25);
   --glow-color: rgba(91, 163, 255, 0.1);
-  
+
   --line-gradient: linear-gradient(90deg, transparent, #5ba3ff, transparent);
   --accent-gradient: linear-gradient(135deg, #5ba3ff, #b5adff);
 }
@@ -419,7 +419,7 @@ nav {
   box-shadow: 0 20px 60px var(--shadow-hover);
   animation: modalSlideIn 0.3s ease-out;
   transition: background var(--transition-speed) var(--transition-easing),
-              border-color var(--transition-speed) var(--transition-easing);
+            border-color var(--transition-speed) var(--transition-easing);
 }
 
 @keyframes modalSlideIn {

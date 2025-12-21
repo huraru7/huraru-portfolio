@@ -312,7 +312,7 @@ nav {
 .skill-item:hover,
 .highlight-card:hover {
   background: var(--glow-color);
-  transform: translateX(5px);
+  transform: translateX(10px);
 }
 
 .highlight-card:hover { 

@@ -1,6 +1,6 @@
 /* ========== CSS変数定義 ========== */
 :root {
-  /* デイテーマの色 */
+  /* カラー */
   --bg-gradient-start: #f5f7fa;
   --bg-gradient-end: #e8eef5;
   --bg-card: rgba(255, 255, 255, 0.8);
@@ -24,6 +24,8 @@
   --line-gradient: linear-gradient(90deg, transparent, #4a90e2, transparent);
   --accent-gradient: linear-gradient(135deg, #4a90e2, #a29bfe);
 
+  --toggle-hover: 0 0 15px rgba(51, 42, 174, 0.9),inset 0 0 10px rgba(107, 106, 106, 0.3);
+
   /* フィルター */
   --skill-icon-only-filter1: grayscale(30%);
   --skill-icon-only-filter2: grayscale(0%);
@@ -35,6 +37,7 @@
 }
 
 :root.night-theme {
+  /* カラー */
   --bg-gradient-start: #1a1d29;
   --bg-gradient-end: #0f1116;
   --bg-card: rgba(30, 35, 50, 0.8);
@@ -57,6 +60,8 @@
 
   --line-gradient: linear-gradient(90deg, transparent, #5ba3ff, transparent);
   --accent-gradient: linear-gradient(135deg, #5ba3ff, #b5adff);
+
+  --toggle-hover: 0 0 15px rgba(175, 169, 255, 0.9),inset 0 0 10px rgba(226, 226, 226, 0.3);
 
     /* フィルター */
   --skill-icon-only-filter1: grayscale(30%) invert(1);
@@ -271,21 +276,48 @@ nav {
 
 
 /* ========== 共通カードスタイル ========== */
-.project-card,
 .skill-item,
-.highlight-card,
+.highlight-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--border-color);
+  padding: 2rem;
+  transition: background var(--transition-speed) var(--transition-easing),
+              border-color var(--transition-speed) var(--transition-easing),
+              transform 0.3s ease;
+}
+
+.project-card,
 .timeline-content {
   background: var(--bg-card);
   backdrop-filter: blur(10px);
   border: 2px solid var(--border-color);
   padding: 2rem;
-  transition: all var(--transition-speed) var(--transition-easing);
-}
-
-.project-card,
-.timeline-content {
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease,
+              box-shadow 0.3s ease,
+              background var(--transition-speed) var(--transition-easing),
+              border-color var(--transition-speed) var(--transition-easing);
+}
+
+.project-card {
+  cursor: pointer;
+  transform-style: preserve-3d;
+}
+
+.project-summary {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    transition: color var(--transition-speed) var(--transition-easing);
+}
+
+.project-detail-link {
+    color: var(--accent-primary);
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    text-align: right;
+    transition: color var(--transition-speed) var(--transition-easing);
 }
 
 .project-card::before {
@@ -306,11 +338,6 @@ nav {
   transform: translateY(-5px);
   border-color: var(--border-accent);
   box-shadow: 0 10px 30px var(--shadow-hover);
-}
-
-.project-card {
-  cursor: pointer;
-  transform-style: preserve-3d;
 }
 
 .skill-item,
@@ -478,7 +505,13 @@ nav {
   opacity: 0.9;
 }
 
-.modal-body { padding: 2rem; }
+.modal-body {
+  padding: 2rem;
+  background: var(--bg-card);
+  transition: color var(--transition-speed) var(--transition-easing),
+                background var(--transition-speed) var(--transition-easing),
+                border-color var(--transition-speed) var(--transition-easing);
+}
 
 .modal-section { margin-bottom: 2rem; }
 
@@ -532,12 +565,6 @@ nav {
   z-index: 9998;
   transform: translate(-50%, -50%);
   transition: background var(--transition-speed) var(--transition-easing);
-}
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s, transform 0.8s;
 }
 
 .fade-in.visible {

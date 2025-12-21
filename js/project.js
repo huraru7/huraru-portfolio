@@ -81,13 +81,13 @@ function createProjectCard(metadata) {
 
 	card.innerHTML = `
         <h3 class="project-title">${metadata.title}</h3>
-        <p style="color: #5a6c7d; line-height: 1.6;">
+        <p class="project-summary">
             ${metadata.summary}
         </p>
         <div class="project-tech">
             ${tags.map((tag) => `<span class="tech-tag">${tag}</span>`).join("")}
         </div>
-        <p style="color: #4a90e2; margin-top: 1rem; font-size: 0.9rem; text-align: right;">詳細を見る →</p>
+        <p class="project-detail-link">詳細を見る →</p>
     `;
 
 	return card;

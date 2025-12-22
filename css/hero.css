@@ -30,7 +30,7 @@
     height: 100%;
     object-fit: cover;
     border: 3px solid var(--accent-primary);
-    box-shadow: 0 0 20px var(--shadow-color), 0 0 30px var(--shadow-hover);
+    box-shadow: 0 0 30px var(--shadow-color), 0 0 20px var(--shadow-hover);
     border-radius: 50%;
     transition: border-color var(--transition-speed) var(--transition-easing),
                 box-shadow var(--transition-speed) var(--transition-easing);

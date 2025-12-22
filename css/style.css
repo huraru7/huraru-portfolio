@@ -11,7 +11,7 @@
   --text-secondary: #5a6c7d;
   --text-tertiary: #7b8fa3;
 
-  --accent-primary: #4a90e2;
+  --accent-primary: #3b88e1;
   --accent-secondary: #a29bfe;
 
   --border-color: #e1e8ed;
@@ -38,15 +38,15 @@
 
 :root.night-theme {
   /* カラー */
-  --bg-gradient-start: #1a1d29;
+  --bg-gradient-start: #222532;
   --bg-gradient-end: #0f1116;
   --bg-card: rgba(30, 35, 50, 0.8);
   --bg-header: rgba(20, 25, 35, 0.9);
   --bg-modal: linear-gradient(135deg, #1e2332 0%, #1a1d29 100%);
 
-  --text-primary: #e8eef5;
+  --text-primary: #e8e9eb;
   --text-secondary: #b8c5d6;
-  --text-tertiary: #8899aa;
+  --text-tertiary: #a3b5c7;
 
   --accent-primary: #5ba3ff;
   --accent-secondary: #b5adff;
@@ -54,8 +54,8 @@
   --border-color: #2a3040;
   --border-accent: #5ba3ff;
 
-  --shadow-color: rgba(91, 163, 255, 0.15);
-  --shadow-hover: rgba(91, 163, 255, 0.25);
+  --shadow-color: rgba(128, 183, 255, 0.15);
+  --shadow-hover: rgba(112, 159, 222, 0.25);
   --glow-color: rgba(91, 163, 255, 0.1);
 
   --line-gradient: linear-gradient(90deg, transparent, #5ba3ff, transparent);
@@ -348,7 +348,7 @@ nav {
 .skill-item:hover,
 .highlight-card:hover {
   background: var(--glow-color);
-  transform: translateX(10px);
+  transform: translateX(7px);
 }
 
 .highlight-card:hover { 
@@ -600,14 +600,9 @@ footer {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-  
-  .hero-image {
-      width: 300px;
-      height: 300px;
-  }
-  
+
   .timeline::before { left: 30px; }
-  
+
   .timeline-item,
   .timeline-item:nth-child(even) {
       flex-direction: column;

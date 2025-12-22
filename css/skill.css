@@ -37,9 +37,8 @@
 .skill-icon-only:hover {
     opacity: 1;
     transform: translateY(-5px);
-    box-shadow: 0 0 -10px var(--shadow-color), 0 0 45px var(--shadow-hover);
-    filter: var(--skill-icon-only-filter2);
-    transition: filter var(--transition-speed) var(--transition-easing);
+    filter: drop-shadow(0 0 5px var(--shadow-color)) drop-shadow(0 0 30px var(--shadow-hover)) var(--skill-icon-only-filter2);
+    transition: filter var(--transition-speed) var(--transition-easing) box-shadow var(--transition-speed) var(--transition-easing);
 }
 
 .other-skills {

@@ -229,6 +229,7 @@ nav {
   align-items: center;
   max-width: 1400px;
   margin: 0 auto;
+  position: relative;
 }
 
 .logo {
@@ -238,6 +239,7 @@ nav {
   letter-spacing: 3px;
   text-transform: uppercase;
   transition: color var(--transition-speed) var(--transition-easing);
+  z-index: 102;
 }
 
 .nav-links {

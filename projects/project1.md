@@ -1,25 +1,14 @@
 ---
 id: project1
-title: PROJECT 01
-subtitle: subtitles
-tags: tag1,tag2,tag3
-summary: summary
+title: Console Othello
+subtitle: オセロAIを搭載したシンプルなオセロゲーム
+tags: C#,Task
+summary: consoleで動かすシンプルオセロ
 ---
 
+## プロジェクト説明
+
+- 制作期間 : 1 ヶ月
+- 制作体制 : 個人制作
+
 ## 概要
-
-概要など
-
-## 主な機能
-
-- 機能をこのように書くことができます。
-
-## 使用技術
-
-使用技術,など,このように,書くことが,できます
-
-## 成果
-
-このように書くことができます。
-
-## ここを変えてみるよ～～～～～

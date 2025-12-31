@@ -1,3 +1,4 @@
+//日の出日の入りの時間を計算するためだけのjs
 function getSunHours(date, latitude, longitude) {
 	const rad = Math.PI / 180;
 	const dayMs = 1000 * 60 * 60 * 24;
@@ -27,7 +28,7 @@ function getSunHours(date, latitude, longitude) {
 	const Jrise = Jtransit - w / (2 * Math.PI);
 	const Jset = Jtransit + w / (2 * Math.PI);
 
-	// 誤差修正で4時間足しています
+	// 誤差修正で4時間足す
 	const sunriseHour = (new Date((Jrise - J1970 + 0.5) * dayMs).getUTCHours() + 4) % 24;
 	const sunsetHour = (new Date((Jset - J1970 + 0.5) * dayMs).getUTCHours() + 4) % 24;
 

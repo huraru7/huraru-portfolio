@@ -11,23 +11,23 @@ const TYPING_CONFIG = {
 		"コードで夢を創る",
 	],
 
-	// 同時に表示する文字の数
+	// 同時に表示する文章の数
 	simultaneousTexts: 3,
 
-	// 各テキストの開始遅延（ミリ秒）
+	// 各テキストの開始遅延（ms）
 	startDelay: 3000,
 
-	// 1文字表示する速度（ミリ秒）
+	// 1文章表示する速度（ms）
 	typingSpeed: 100,
 
-	// 全部表示されてから消えるまでの待機時間（ミリ秒）
+	// 全部表示されてから消えるまでの待機時間（ms）
 	displayDuration: 2500,
 
-	// フェードアウトの速度（ミリ秒）
+	// フェードアウトの速度（ms）
 	fadeOutDuration: 1500,
 
-	// 消えてから次の文字が出るまでの待機時間（ミリ秒）
-	pauseAfterErase: 800,
+	// 消えてから次の文章が出るまでの待機時間（ms）
+	pauseAfterErase: 750,
 
 	// 角度の範囲（-rotation ~ +rotation 度）
 	rotationRange: 30,
@@ -47,7 +47,7 @@ function startTypingLoop(messages) {
 	// 1文字ずつ表示する関数
 	function typeText(textElement, text, callback) {
 		textElement.textContent = "";
-		textElement.style.opacity = "0.08"; // 初期透明度
+		textElement.style.opacity = "0.2"; // 初期透明度
 		let charIndex = 0;
 
 		const typingInterval = setInterval(() => {

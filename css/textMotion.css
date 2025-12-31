@@ -1,0 +1,45 @@
+/* ========== タイピングエフェクト ========== */
+.typing-text-container {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+    width: auto;
+    max-width: 80vw;
+}
+
+.typing-text {
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: var(--text-textmotion);
+    font-family: 'Courier New', monospace;
+    opacity: 0.2;
+    transition: color var(--transition-speed) var(--transition-easing);
+    white-space: nowrap;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 968px) {
+    .typing-text {
+        font-size: 2rem;
+        letter-spacing: 3px;
+    }
+    
+    .typing-text-container {
+        max-width: 90vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .typing-text {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .typing-text {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+}

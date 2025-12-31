@@ -1,24 +1,15 @@
 const TYPING_CONFIG = {
 	// 表示する文章リスト
-	messages: [
-		"UNITY / C#",
-		"GAME DEVELOPMENT",
-		"3D GRAPHICS",
-		"OPTIMIZATION",
-		"SHADER PROGRAMMING",
-		"ゲーム開発",
-		"プログラミング",
-		"コードで夢を創る",
-	],
+	messages: ["Geometric Never-Ending Creating", "Happy New Year", "Creating the world"],
 
 	// 同時に表示する文章の数
-	simultaneousTexts: 3,
+	simultaneousTexts: 4,
 
 	// 各テキストの開始遅延（ms）
 	startDelay: 3000,
 
 	// 1文章表示する速度（ms）
-	typingSpeed: 100,
+	typingSpeed: 90,
 
 	// 全部表示されてから消えるまでの待機時間（ms）
 	displayDuration: 2500,
@@ -30,7 +21,7 @@ const TYPING_CONFIG = {
 	pauseAfterErase: 750,
 
 	// 角度の範囲（-rotation ~ +rotation 度）
-	rotationRange: 30,
+	rotationRange: 45,
 };
 
 function createTypingText() {

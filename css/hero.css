@@ -19,8 +19,8 @@
 
 .hero-image {
     flex-shrink: 0;
-    width: 400px;
-    height: 400px;
+    width: clamp(12.5rem, 7.955rem + 22.73vw, 25rem);
+    height: clamp(12.5rem, 7.955rem + 22.73vw, 25rem);
     position: relative;
     overflow: visible;
 }

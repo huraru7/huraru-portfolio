@@ -25,8 +25,8 @@
 }
 
 .skill-icon-only {
-    width: 60px;
-    height: 60px;
+    width: clamp(1.875rem, 0.721rem + 5.77vw, 3.75rem);
+    height: clamp(1.875rem, 0.721rem + 5.77vw, 3.75rem);
     object-fit: contain;
     opacity: 0.7;
     transition: all 0.3s;

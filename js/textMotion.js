@@ -1,12 +1,12 @@
 const TYPING_CONFIG = {
 	// 表示する文章リスト
-	messages: ["Geometric Never-Ending Creating", "Happy New Year", "Creating the world"],
+	messages: ["Never-Ending Creating", "Hello! 2026!", "Creating the world"],
 
 	// 同時に表示する文章の数
 	simultaneousTexts: 4,
 
 	// 各テキストの開始遅延（ms）
-	startDelay: 3000,
+	startDelay: 1000,
 
 	// 1文章表示する速度（ms）
 	typingSpeed: 90,
@@ -77,20 +77,35 @@ function startTypingLoop(messages) {
 		const container = document.createElement("div");
 		container.className = "typing-text-container";
 
+		// ランダムな位置（0%から100%）
 		const top = Math.random() * 100;
 		const left = Math.random() * 100;
 
+		// ランダムな角度
 		const rotation = (Math.random() - 0.5) * TYPING_CONFIG.rotationRange;
 
+		// ランダムに左寄せか右寄せ
 		const alignment = Math.random() > 0.5 ? "left" : "right";
 
+		container.style.position = "fixed";
 		container.style.top = `${top}%`;
-		container.style.left = `${left}%`;
-		container.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
-		container.style.textAlign = alignment;
+
+		// 左寄せか右寄せで配置方法を変える
+		if (alignment === "left") {
+			container.style.left = `${left}%`;
+			container.style.right = "auto";
+			container.style.transformOrigin = "left top";
+		} else {
+			container.style.right = `${100 - left}%`;
+			container.style.left = "auto";
+			container.style.transformOrigin = "right top";
+		}
+
+		container.style.transform = `rotate(${rotation}deg)`;
 
 		const textElement = document.createElement("div");
 		textElement.className = "typing-text";
+		textElement.style.textAlign = alignment;
 		container.appendChild(textElement);
 
 		document.body.appendChild(container);

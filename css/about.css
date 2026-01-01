@@ -1,7 +1,7 @@
 .about-image {
     flex-shrink: 0;
-    width: 400px;
-    height: 400px;
+    width: clamp(18.75rem, -7.328rem + 43.1vw, 25rem);
+    height: clamp(18.75rem, -7.328rem + 43.1vw, 25rem);
     position: relative;
     overflow: visible;
 }

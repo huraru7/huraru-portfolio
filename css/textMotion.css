@@ -4,42 +4,18 @@
     pointer-events: none;
     z-index: 1;
     width: auto;
-    max-width: 80vw;
+    max-width: clamp(300px, 80vw, 1200px);
+    display: inline-block;
 }
 
 .typing-text {
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 4px;
-    color: var(--text-textmotion);
+    font-size: clamp(1rem, 0.636rem + 1.82vw, 2rem);
+    font-weight: 500;
+    letter-spacing: clamp(1px, 0.3vw, 4px);
+    color: var(--accent-primary);
     font-family: 'Courier New', monospace;
-    opacity: 0.2;
+    opacity: 0.08;
     transition: color var(--transition-speed) var(--transition-easing);
     white-space: nowrap;
-}
-
-/* レスポンシブ対応 */
-@media (max-width: 968px) {
-    .typing-text {
-        font-size: 2rem;
-        letter-spacing: 3px;
-    }
-    
-    .typing-text-container {
-        max-width: 90vw;
-    }
-}
-
-@media (max-width: 768px) {
-    .typing-text {
-        font-size: 1.5rem;
-        letter-spacing: 2px;
-    }
-}
-
-@media (max-width: 480px) {
-    .typing-text {
-        font-size: 1.2rem;
-        letter-spacing: 1px;
-    }
+    display: inline-block;
 }

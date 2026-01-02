@@ -1,6 +1,6 @@
 const TYPING_CONFIG = {
 	// 表示する文章リスト
-	messages: ["Never-Ending Creating", "Hello! 2026!", "Creating the world", "huraru7.github.io"],
+	messages: ["Never-Ending Creating", "Hello! 2026!", "Happy new year!", "Creating the world", "huraru7.github.io"],
 
 	// 同時に表示する文章の数
 	simultaneousTexts: 4,

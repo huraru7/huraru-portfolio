@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="css/toggle.css">
   <link rel="stylesheet" href="css/media.css">
   <link rel="stylesheet" href="css/textMotion.css">
+  <link rel="stylesheet" href="css/qa-modal.css">
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
@@ -173,6 +174,15 @@
             </p>
           </div>
         </div>
+
+        <!-- もっと知るボタンを追加 -->
+        <div class="about-more-btn-container">
+          <button class="about-more-btn" id="aboutMoreBtn">
+            <span>もっと知る</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+
       </div>
   </section>
 
@@ -242,6 +252,115 @@
     </div>
   </section>
 
+  <!-- Q&Aモーダル（footerの前に追加） -->
+  <div class="modal" id="modal-qa" onclick="closeQAModal()">
+    <div class="modal-content qa-modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <button class="modal-close" onclick="closeQAModal()">×</button>
+        <h2 class="modal-title">Q&A</h2>
+        <p class="modal-subtitle">More About Me</p>
+      </div>
+      <div class="modal-body">
+
+        <!-- Q&A 1 -->
+        <div class="qa-item">
+          <div class="qa-question">
+            <span class="qa-icon">Q</span>
+            <h3>ゲーム開発を始めたきっかけは？</h3>
+          </div>
+          <div class="qa-answer">
+            <span class="qa-icon answer">A</span>
+            <p>
+              子供の頃から遊んでいたゲームを自分でも作ってみたいと思ったのがきっかけです。
+              大学でプログラミングを学び、Unityと出会ってから本格的にゲーム開発にのめり込みました。
+            </p>
+          </div>
+        </div>
+
+        <!-- Q&A 2 -->
+        <div class="qa-item">
+          <div class="qa-question">
+            <span class="qa-icon">Q</span>
+            <h3>得意な開発分野は？</h3>
+          </div>
+          <div class="qa-answer">
+            <span class="qa-icon answer">A</span>
+            <p>
+              3Dアクションゲームの開発が特に得意です。プレイヤーコントロール、物理演算、
+              カメラワークなど、プレイ感を左右する部分の実装にこだわっています。
+              また、パフォーマンス最適化も得意としており、60FPS維持を目標に開発しています。
+            </p>
+          </div>
+        </div>
+
+        <!-- Q&A 3 -->
+        <div class="qa-item">
+          <div class="qa-question">
+            <span class="qa-icon">Q</span>
+            <h3>使用している開発環境は？</h3>
+          </div>
+          <div class="qa-answer">
+            <span class="qa-icon answer">A</span>
+            <p>
+              <strong>エディタ:</strong> Visual Studio Code, JetBrains Rider<br>
+              <strong>バージョン管理:</strong> Git, GitHub<br>
+              <strong>デザインツール:</strong> Figma, Blender（簡単なモデリング）<br>
+              <strong>その他:</strong> Jira（タスク管理）, Slack（コミュニケーション）
+            </p>
+          </div>
+        </div>
+
+        <!-- Q&A 4 -->
+        <div class="qa-item">
+          <div class="qa-question">
+            <span class="qa-icon">Q</span>
+            <h3>今後挑戦したいことは？</h3>
+          </div>
+          <div class="qa-answer">
+            <span class="qa-icon answer">A</span>
+            <p>
+              VRゲーム開発に挑戦してみたいと考えています。
+              また、オンラインマルチプレイヤーゲームの大規模開発にも興味があります。
+              技術面では、より高度なシェーダープログラミングやプロシージャル生成にも取り組みたいです。
+            </p>
+          </div>
+        </div>
+
+        <!-- Q&A 5 -->
+        <div class="qa-item">
+          <div class="qa-question">
+            <span class="qa-icon">Q</span>
+            <h3>趣味や好きなゲームは？</h3>
+          </div>
+          <div class="qa-answer">
+            <span class="qa-icon answer">A</span>
+            <p>
+              アクションゲームやRPGが好きで、特に「○○」「××」などをよくプレイします。
+              ゲーム以外では、技術書を読んだり、新しいプログラミング言語を学んだりするのが趣味です。
+            </p>
+          </div>
+        </div>
+
+        <!-- Q&A 6 -->
+        <div class="qa-item">
+          <div class="qa-question">
+            <span class="qa-icon">Q</span>
+            <h3>チーム開発での役割は？</h3>
+          </div>
+          <div class="qa-answer">
+            <span class="qa-icon answer">A</span>
+            <p>
+              プログラマーとして技術実装を担当しつつ、デザイナーやプランナーとの橋渡し役も務めています。
+              技術的な制約を分かりやすく説明したり、実装可能な代替案を提案したりすることで、
+              チーム全体の開発効率向上に貢献しています。
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <footer id="contact">
     <p style="color: #717981; letter-spacing: 2px; font-size: 0.9rem;">
       CONTACT: <span style="color: #4a90e2;">huraru@gmail.com</span>
@@ -249,7 +368,6 @@
     <p style="color: #7b8fa3; margin-top: 1rem; font-size: 0.8rem;">
       2025 this portfolio is designed by huraru.
     </p>
-
   </footer>
 
   <!-- モーダルコンテナ -->

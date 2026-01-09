@@ -1,9 +1,23 @@
+//メッセージ
+const messages = [
+	"Never-Ending Creating",
+	"Hello! 2026!",
+	"Hello World!!",
+	"The longing won't stop",
+	"Creating the world",
+	"huraru7.github.io",
+	"Unity",
+	"In search of the future...",
+];
+
+// 動的メッセージ
+messages.push(`This text is displayed at ${((1 / (messages.length + 1)) * 100).toFixed(1)}%`);
+
 const TYPING_CONFIG = {
-	// 表示する文章リスト
-	messages: ["Never-Ending Creating", "Hello! 2026!", "Happy new year!", "Creating the world", "huraru7.github.io"],
+	messages,
 
 	// 同時に表示する文章の数
-	simultaneousTexts: 4,
+	simultaneousTexts: 3,
 
 	// 各テキストの開始遅延（ms）
 	startDelay: 1000,

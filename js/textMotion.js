@@ -6,7 +6,6 @@ const messages = [
 	"The longing won't stop",
 	"Creating the world",
 	"huraru7.github.io",
-	"Unity",
 	"In search of the future...",
 ];
 

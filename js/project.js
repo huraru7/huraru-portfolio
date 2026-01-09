@@ -1,5 +1,5 @@
 // プロジェクトのMarkdownList
-const projectFiles = ["projects/project1.md"];
+const projectFiles = ["projects/project1.md", "projects/project2.md", "projects/project3.md"];
 
 marked.setOptions({
 	breaks: true,
@@ -79,11 +79,37 @@ function createProjectCard(metadata) {
 	card.className = "project-card fade-in";
 	card.onclick = () => openModal(metadata.id);
 
+	// 画像/動画のHTML生成
+	let mediaHTML = "";
+	if (metadata.video) {
+		// 動画がある場合
+		mediaHTML = `
+            <div class="project-media">
+                <video
+                    src="${metadata.video}"
+                    poster="${metadata.image || ""}"
+                    muted
+                    loop
+                    playsinline
+                    onmouseenter="this.play()"
+                    onmouseleave="this.pause(); this.currentTime=0;"
+                >
+                </video>
+            </div>
+        `;
+	} else if (metadata.image) {
+		// 画像のみの場合
+		mediaHTML = `
+            <div class="project-media">
+                <img src="${metadata.image}" alt="${metadata.title}">
+            </div>
+        `;
+	}
+
 	card.innerHTML = `
+        ${mediaHTML}
         <h3 class="project-title">${metadata.title}</h3>
-        <p class="project-summary">
-            ${metadata.summary}
-        </p>
+        <p class="project-summary">${metadata.summary}</p>
         <div class="project-tech">
             ${tags.map((tag) => `<span class="tech-tag">${tag}</span>`).join("")}
         </div>

@@ -50,8 +50,8 @@
   --text-tertiary: #a3b5c7;
   --text-textmotion:#a2c7ff;
 
-  --accent-primary: #5ba3ff;
-  --accent-secondary: #b5adff;
+  --accent-primary: #94C4FF;
+  --accent-secondary: #beb7fd;
 
   --border-color: #2a3040;
   --border-accent: #5ba3ff;
@@ -587,4 +587,67 @@ footer {
   z-index: 10;
   transition: background var(--transition-speed) var(--transition-easing),
               border-color var(--transition-speed) var(--transition-easing);
+}
+
+.theme-toggle {
+  position: fixed;
+  left: 1.5rem;
+  bottom: 1.5rem;
+
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid #a29bfe;
+  background: radial-gradient(circle, rgba(162,155,254,0.3), rgba(0,0,0,0.8));
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 0 10px rgba(162,155,254,0.6),
+    inset 0 0 8px rgba(255,255,255,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  z-index: 99999;
+}
+
+
+.theme-toggle:hover {
+  transform: scale(1.15) rotate(15deg);
+  box-shadow: var(--toggle-hover);
+}
+
+.theme-toggle .icon {
+  position: absolute;
+  font-size: 1.3rem;
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.theme-toggle .sun {
+  opacity: 1;
+}
+
+.theme-toggle .moon {
+  opacity: 0;
+}
+.theme-toggle.night .sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.theme-toggle.night .moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+#theme-fade {
+  position: fixed;
+  inset: 0;
+  background: black;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 9999;
+}
+
+#theme-fade.active {
+  opacity: 1;
 }

@@ -363,9 +363,14 @@ nav {
 /* ========== タイトル・テキスト共通 ========== */
 .project-title,
 .skill-name,
-.timeline-heading,
-.highlight-title {
+.timeline-heading {
   color: var(--text-primary);
+  letter-spacing: 2px;
+  transition: color var(--transition-speed) var(--transition-easing);
+}
+
+.highlight-title {
+  color: var(--accent-primary);
   letter-spacing: 2px;
   transition: color var(--transition-speed) var(--transition-easing);
 }

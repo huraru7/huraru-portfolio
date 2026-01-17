@@ -1,9 +1,9 @@
 ---
-id: project1
-title: Console Othello
-subtitle: オセロAIを搭載したシンプルなオセロゲーム
-tags: C#,Task
-summary: consoleで動かすシンプルオセロ
+id: project2
+title: Looternity
+subtitle:
+tags: C#,unity,2D,作成中
+summary:
 video: images/test.mp4
 ---
 

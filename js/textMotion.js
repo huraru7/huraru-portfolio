@@ -7,6 +7,13 @@ const messages = [
 	"Creating the world",
 	"huraru7.github.io",
 	"In search of the future...",
+	"Embrace the unknown",
+	"Code is poetry",
+	"Dream, Code, Repeat",
+	"Crafting digital dreams",
+	"Designing the future",
+	"Exploring endless",
+	"Antigravity",
 ];
 
 // 動的メッセージ

@@ -3,7 +3,7 @@ id: project2
 title: Looternity
 subtitle:
 tags: C#,unity,2D,作成中
-summary:
+summary: 世界すら厳選するローグライク作業ゲーム
 video: images/test.mp4
 ---
 

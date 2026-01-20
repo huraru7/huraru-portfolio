@@ -55,7 +55,6 @@ function createTypingText() {
 function startTypingLoop(messages) {
 	let currentIndex = Math.floor(Math.random() * messages.length);
 
-	// 1文字ずつ表示する関数
 	function typeText(textElement, text, callback) {
 		textElement.textContent = "";
 		textElement.style.opacity = "0.2"; // 初期透明度

@@ -19,13 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	function applyTheme(mode) {
 		if (mode === "night") {
-			// <html>タグにnight-themeを追加
 			document.documentElement.classList.add("night-theme");
 		} else {
-			// <html>タグからnight-themeを削除
 			document.documentElement.classList.remove("night-theme");
 		}
-		// ボタンのスタイル切り替え
 		toggleButton.classList.toggle("night", mode === "night");
 	}
 

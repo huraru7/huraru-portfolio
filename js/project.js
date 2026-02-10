@@ -1,12 +1,14 @@
-// プロジェクトのMarkdownList
-const projectFiles = ["projects/project1.md", "projects/project2.md", "projects/project3.md"];
+// ========== 設定 ==========
+const PROJECTS_PER_PAGE = 3; // 1ページあたりの表示数
+let currentPage = 1;
+let totalPages = 1;
 
 marked.setOptions({
 	breaks: true,
 	gfm: true,
 });
 
-// Markdownのメタデータを解析
+// ========== Markdownのメタデータを解析 ==========
 function parseMarkdown(content) {
 	// 改行コードを統一
 	content = content.replace(/\r\n/g, "\n").replace(/\r/g, "\n").trim();
@@ -71,18 +73,17 @@ function parseMarkdown(content) {
 	return { metadata, content: markdownContent };
 }
 
-// プロジェクトカードを生成
+// ========== プロジェクトカードを生成 ==========
 function createProjectCard(metadata) {
 	const tags = metadata.tags ? metadata.tags.split(",").map((tag) => tag.trim()) : [];
 
 	const card = document.createElement("div");
-	card.className = "project-card fade-in";
+	card.className = "project-card fade-in hidden"; // 最初は非表示
 	card.onclick = () => openModal(metadata.id);
 
 	// 画像/動画のHTML生成
 	let mediaHTML = "";
 	if (metadata.video) {
-		// 動画がある場合
 		mediaHTML = `
             <div class="project-media">
                 <video
@@ -98,7 +99,6 @@ function createProjectCard(metadata) {
             </div>
         `;
 	} else if (metadata.image) {
-		// 画像のみの場合
 		mediaHTML = `
             <div class="project-media">
                 <img src="${metadata.image}" alt="${metadata.title}">
@@ -119,7 +119,7 @@ function createProjectCard(metadata) {
 	return card;
 }
 
-// モーダルを生成
+// ========== モーダルを生成 ==========
 function createModal(metadata, htmlContent) {
 	const modal = document.createElement("div");
 	modal.className = "modal";
@@ -127,7 +127,6 @@ function createModal(metadata, htmlContent) {
 	modal.onclick = () => closeModal(metadata.id);
 
 	console.log(`モーダル生成: ${metadata.id}`);
-	console.log("HTMLコンテンツ:", htmlContent);
 
 	modal.innerHTML = `
         <div class="modal-content" onclick="event.stopPropagation()">
@@ -145,7 +144,133 @@ function createModal(metadata, htmlContent) {
 	return modal;
 }
 
-// Markdownファイルを読み込ん部分
+// ========== ページネーション ==========
+
+// 指定ページを表示
+function showPage(page) {
+	const projectGrid = document.getElementById("projectGrid");
+	if (!projectGrid) return;
+
+	const cards = Array.from(projectGrid.querySelectorAll(".project-card"));
+
+	// すべてのカードを非表示
+	cards.forEach((card) => {
+		card.classList.add("hidden");
+		card.classList.remove("page-active");
+	});
+
+	// 現在のページのカードのみ表示
+	const startIndex = (page - 1) * PROJECTS_PER_PAGE;
+	const endIndex = startIndex + PROJECTS_PER_PAGE;
+
+	cards.slice(startIndex, endIndex).forEach((card) => {
+		card.classList.remove("hidden");
+		card.classList.add("page-active");
+	});
+
+	// ページネーションUIを更新
+	updatePaginationUI();
+
+	// スクロールアニメーションを再設定
+	applyScrollAnimation();
+
+	// プロジェクトセクションへスムーズスクロール
+	const projectsSection = document.getElementById("projects");
+	if (projectsSection) {
+		projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+	}
+}
+
+// ページ切り替え
+function goToPage(page) {
+	if (page < 1 || page > totalPages) return;
+	currentPage = page;
+	showPage(currentPage);
+}
+
+// ページネーションUIを更新
+function updatePaginationUI() {
+	const pageInfo = document.getElementById("pageInfo");
+	const prevBtn = document.getElementById("prevBtn");
+	const nextBtn = document.getElementById("nextBtn");
+
+	if (pageInfo) {
+		pageInfo.textContent = `${currentPage} / ${totalPages}`;
+	}
+
+	if (prevBtn) {
+		prevBtn.disabled = currentPage === 1;
+	}
+
+	if (nextBtn) {
+		nextBtn.disabled = currentPage === totalPages;
+	}
+}
+
+// ページネーションを初期化
+function initPagination(totalProjects) {
+	totalPages = Math.ceil(totalProjects / PROJECTS_PER_PAGE);
+
+	const paginationContainer = document.getElementById("paginationContainer");
+	if (!paginationContainer) return;
+
+	// プロジェクトが1ページ分より多い場合のみ表示
+	if (totalProjects > PROJECTS_PER_PAGE) {
+		paginationContainer.style.display = "flex";
+
+		const prevBtn = document.getElementById("prevBtn");
+		const nextBtn = document.getElementById("nextBtn");
+
+		if (prevBtn) {
+			prevBtn.addEventListener("click", () => goToPage(currentPage - 1));
+		}
+
+		if (nextBtn) {
+			nextBtn.addEventListener("click", () => goToPage(currentPage + 1));
+		}
+	}
+
+	// 最初のページを表示
+	showPage(1);
+}
+
+// ========== スクロールアニメーション ==========
+function applyScrollAnimation() {
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add("visible");
+				}
+			});
+		},
+		{
+			threshold: 0.1,
+			rootMargin: "0px 0px -100px 0px",
+		},
+	);
+
+	document.querySelectorAll(".project-card.fade-in:not(.hidden)").forEach((el) => {
+		observer.observe(el);
+	});
+}
+
+// ========== プロジェクトファイルを自動取得 ==========
+async function getProjectFiles() {
+	try {
+		const response = await fetch("projects/index.json");
+		if (!response.ok) throw new Error("index.json not found");
+
+		const data = await response.json();
+		return data.projects.map((file) => `projects/${file}`);
+	} catch (error) {
+		console.error("index.jsonの読み込みに失敗:", error);
+		// フォールバック（手動リスト）
+		return ["projects/project1.md", "projects/project2.md", "projects/project3.md"];
+	}
+}
+
+// ========== Markdownファイルを読み込み ==========
 async function loadProjects() {
 	const projectGrid = document.getElementById("projectGrid");
 	const modalContainer = document.getElementById("modalContainer");
@@ -154,6 +279,9 @@ async function loadProjects() {
 		console.error("projectGrid または modalContainer が見つかりません");
 		return;
 	}
+
+	// プロジェクトファイルのリストを取得
+	const projectFiles = await getProjectFiles();
 
 	for (const file of projectFiles) {
 		try {
@@ -165,7 +293,6 @@ async function loadProjects() {
 			}
 
 			const markdown = await response.text();
-
 			const { metadata, content } = parseMarkdown(markdown);
 
 			// メタデータの必須項目チェック
@@ -176,7 +303,6 @@ async function loadProjects() {
 
 			// MarkdownをHTMLに変換
 			const htmlContent = marked.parse(content);
-			console.log("変換されたHTML:", htmlContent);
 
 			// プロジェクトカードを追加
 			const card = createProjectCard(metadata);
@@ -192,27 +318,22 @@ async function loadProjects() {
 		}
 	}
 
-	// スクロールアニメーションを適用
-	const observer = new IntersectionObserver(
-		(entries) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					entry.target.classList.add("visible");
-				}
-			});
-		},
-		{
-			threshold: 0.1,
-			rootMargin: "0px 0px -100px 0px",
-		}
-	);
+	// 読み込んだプロジェクトの総数を取得してページネーションを初期化
+	const totalProjects = projectGrid.querySelectorAll(".project-card").length;
 
-	document.querySelectorAll(".project-card.fade-in").forEach((el) => {
-		observer.observe(el);
-	});
+	if (totalProjects === 0) {
+		projectGrid.innerHTML = `
+			<p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">
+				プロジェクトが見つかりませんでした。
+			</p>
+		`;
+		return;
+	}
+
+	initPagination(totalProjects);
 }
 
-// ロード
+// ========== ロード ==========
 if (document.readyState === "loading") {
 	document.addEventListener("DOMContentLoaded", loadProjects);
 } else {

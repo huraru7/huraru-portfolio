@@ -213,8 +213,19 @@
   <section class="section" id="projects">
     <div class="container">
       <h2 class="section-title">PROJECTS</h2>
+
+      <!-- プロジェクトグリッド -->
       <div class="project-grid" id="projectGrid">
-        <!-- プロジェクト生成部分 -->
+        <!-- JavaScriptで動的に追加される -->
+      </div>
+
+      <!-- ページネーション -->
+      <div class="pagination-container" id="paginationContainer" style="display: none;">
+        <div class="pagination-buttons">
+          <button class="pagination-btn prev" id="prevBtn">Prev</button>
+          <div class="pagination-info" id="pageInfo">1 / 1</div>
+          <button class="pagination-btn next" id="nextBtn">Next</button>
+        </div>
       </div>
     </div>
   </section>

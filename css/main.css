@@ -713,23 +713,13 @@ footer {
   opacity: 1;
 }
 
-/* ページネーション */
-.project-card.hidden {
-    display: none;
-}
 
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.project-card.page-active {
-    animation: fadeInUp 0.4s ease-out;
-}
-
+/* ========== ページネーション ========== */
 .pagination-container {
+    display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 2rem;
     margin-top: 3rem;
 }
 
@@ -748,11 +738,8 @@ footer {
     font-weight: 600;
     letter-spacing: 1px;
     cursor: pointer;
+    transition: all 0.3s ease;
     text-transform: uppercase;
-    transition: all 0.3s ease,
-                background var(--transition-speed) var(--transition-easing),
-                border-color var(--transition-speed) var(--transition-easing),
-                color var(--transition-speed) var(--transition-easing);
 }
 
 .pagination-btn:hover:not(:disabled) {
@@ -767,8 +754,13 @@ footer {
     cursor: not-allowed;
 }
 
-.pagination-btn.prev::before { content: '← '; }
-.pagination-btn.next::after { content: ' →'; }
+.pagination-btn.prev::before {
+    content: '← ';
+}
+
+.pagination-btn.next::after {
+    content: ' →';
+}
 
 .pagination-info {
     padding: 0.8rem 1.5rem;
@@ -781,6 +773,28 @@ footer {
     transition: all var(--transition-speed) var(--transition-easing);
 }
 
+/* プロジェクトカードの初期状態（非表示） */
+.project-card.hidden {
+    display: none;
+}
+
+/* ページ切り替えアニメーション */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-card.active {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* レスポンシブ対応 */
 @media (max-width: 768px) {
     .pagination-buttons {
         flex-direction: column;
@@ -789,5 +803,9 @@ footer {
     
     .pagination-btn {
         width: 100%;
+    }
+    
+    .pagination-info {
+        order: -1;
     }
 }

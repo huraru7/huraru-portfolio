@@ -212,25 +212,32 @@ function initPagination(totalProjects) {
 	totalPages = Math.ceil(totalProjects / PROJECTS_PER_PAGE);
 
 	const paginationContainer = document.getElementById("paginationContainer");
-	if (!paginationContainer) return;
+	if (!paginationContainer) {
+		console.error("paginationContainerが見つかりません");
+		return;
+	}
 
-	// プロジェクトが1ページ分より多い場合のみ表示
 	if (totalProjects > PROJECTS_PER_PAGE) {
+		// style指定とクラス両方で確実に表示
 		paginationContainer.style.display = "flex";
+		paginationContainer.classList.add("visible");
 
 		const prevBtn = document.getElementById("prevBtn");
 		const nextBtn = document.getElementById("nextBtn");
 
 		if (prevBtn) {
 			prevBtn.addEventListener("click", () => goToPage(currentPage - 1));
+		} else {
+			console.error("prevBtnが見つかりません");
 		}
 
 		if (nextBtn) {
 			nextBtn.addEventListener("click", () => goToPage(currentPage + 1));
+		} else {
+			console.error("nextBtnが見つかりません");
 		}
 	}
 
-	// 最初のページを表示
 	showPage(1);
 }
 

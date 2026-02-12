@@ -2,51 +2,19 @@
   .hero-title { font-size: 3rem; }
   .section-title { font-size: 2rem; }
   .nav-links { gap: 1rem; }
-  
+
   .hero-content,
   .about-content {
       flex-direction: column;
       text-align: center;
   }
-  
+
   .about-content {
       grid-template-columns: 1fr;
       gap: 2rem;
   }
 
-  .timeline {
-    padding-left: 0;
-  }
-  
-  .timeline::before {
-    left: 20px;
-  }
-  
-  .timeline-item,
-  .timeline-item:nth-child(even) {
-    flex-direction: column;
-    padding-left: 0;
-    margin-left: 0;
-  }
-  
-  .timeline-date {
-    text-align: left;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    padding-left: 50px;
-  }
-  
-  .timeline-content {
-    margin-left: 10px;
-    border-left: 4px solid var(--accent-primary);
-  }
-  
-  .timeline-item::before {
-    left: 20px;
-    transform: translateX(-50%);
-  }
-
-  .about-image{
+  .about-image {
     display: none;
   }
 }
@@ -104,27 +72,7 @@
     justify-content: center;
     gap: 1rem;
   }
-  
-  .timeline::before {
-    left: 15px;
-  }
-  
-  .timeline-item::before {
-    left: 15px;
-    width: 12px;
-    height: 12px;
-  }
-  
-  .timeline-date {
-    padding-left: 40px;
-    font-size: 0.95rem;
-  }
-  
-  .timeline-content {
-    margin-left: 5px;
-    padding: 1.5rem;
-  }
-  
+
   .modal {
     padding: 1rem;
   }
@@ -145,7 +93,6 @@
     font-size: 1.3rem;
     letter-spacing: 2px;
   }
-  
 }
 
 @media (max-width: 480px) {
@@ -153,23 +100,17 @@
     font-size: 2rem;
     letter-spacing: 2px;
   }
-  
+
   .section-title {
     font-size: 1.5rem;
     letter-spacing: 2px;
   }
-  
+
   .project-card,
-  .skill-item,
-  .timeline-content {
+  .skill-item {
     padding: 1rem;
   }
-  
-  .timeline-date {
-    padding-left: 35px;
-    font-size: 0.85rem;
-  }
-  
+
   .modal-header,
   .modal-body {
     padding: 1rem;

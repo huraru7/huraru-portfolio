@@ -18,7 +18,6 @@
 
   <link rel="icon" type="image/png" href="images/favicon.png">
 
-
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/skill.css">
@@ -29,22 +28,19 @@
   <link rel="stylesheet" href="css/qa-modal.css">
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
   <script src="js/Sunrise_Sunset.js"></script>
   <script src="js/Theme.js"></script>
   <script src="js/project.js"></script>
   <script src="js/textMotion.js"></script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NQN0302N3X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-NQN0302N3X');
+  </script>
 </head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NQN0302N3X"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-NQN0302N3X');
-</script>
 
 <body>
   <div class="decorative-lines">
@@ -66,11 +62,9 @@
     <span class="icon moon">🌙</span>
   </button>
 
-  <!-- ヘッター -->
   <header>
     <nav>
       <div class="logo">PORTFOLIO</div>
-
       <ul class="nav-links">
         <li><a href="#top">TOP</a></li>
         <li><a href="#about">ABOUT</a></li>
@@ -80,30 +74,26 @@
     </nav>
   </header>
 
-  <!--top-->
   <section class="hero" id="top">
     <div class="hero-content">
-      <!--文字部分-->
       <div class="hero-text">
         <div class="hero-subtitle">huraru</div>
         <h1 class="hero-title">PORTFOLIO</h1>
-        <p style="font-size: 1rem; color: #A6B3BF; letter-spacing: 2px; margin-top: 1rem;">
+        <p class="hero-description">
           Geometric <span class="accent-text">Never-Ending</span> Creating
         </p>
       </div>
 
-      <!--画像部分-->
-      <div class="hero-image">
-        <img src="images/huraru/huraru1.webp" alt="huraru1" class="hero-slide active" fetchpriority=high>
-        <img src="images/huraru/huraru2.webp" alt="huraru2" class="hero-slide">
-        <img src="images/huraru/huraru3.webp" alt="huraru3" class="hero-slide">
-        <img src="images/huraru/huraru4.webp" alt="huraru4" class="hero-slide">
-        <img src="images/huraru/huraru5.webp" alt="huraru5" class="hero-slide">
+      <div class="hero-image circular-image-ring">
+        <img src="images/huraru/huraru1.webp" alt="huraru1" class="hero-slide circular-image active" fetchpriority=high>
+        <img src="images/huraru/huraru2.webp" alt="huraru2" class="hero-slide circular-image">
+        <img src="images/huraru/huraru3.webp" alt="huraru3" class="hero-slide circular-image">
+        <img src="images/huraru/huraru4.webp" alt="huraru4" class="hero-slide circular-image">
+        <img src="images/huraru/huraru5.webp" alt="huraru5" class="hero-slide circular-image">
       </div>
     </div>
   </section>
 
-  <!-- 自己紹介 -->
   <section class="section" id="about">
     <div class="container">
       <h2 class="section-title">ABOUT huraru</h2>
@@ -114,22 +104,18 @@
             <span class="profile-key">NAME</span>
             <span class="profile-value">huraru</span>
           </div>
-
           <div class="profile-row">
             <span class="profile-key">BIRTHDAY</span>
             <span class="profile-value">5/28</span>
           </div>
-
           <div class="profile-row">
             <span class="profile-key">LOCATION</span>
             <span class="profile-value">japan , Tokyo</span>
           </div>
-
           <div class="profile-row">
             <span class="profile-key">AFFILIATION</span>
             <span class="profile-value">vantan game academy</span>
           </div>
-
           <div class="profile-row">
             <span class="profile-key">LINKS</span>
             <span class="profile-value profile-links">
@@ -149,8 +135,8 @@
             </span>
           </div>
         </div>
-        <div class="about-image">
-          <img src="images/huraru/huraru5.webp" alt="huraru5">
+        <div class="about-image circular-image-ring">
+          <img src="images/huraru/huraru5.webp" alt="huraru5" class="circular-image">
         </div>
       </div>
 
@@ -189,7 +175,6 @@
               常に新しい技術や知識を追求し、幅広い知識を手に入れる。
             </p>
           </div>
-
           <div class="highlight-card">
             <h4 class="highlight-title">すべてに手を伸ばす</h4>
             <p class="highlight-text">
@@ -198,28 +183,21 @@
           </div>
         </div>
 
-        <!-- もっと知るボタンを追加 -->
         <div class="about-more-btn-container">
           <button class="about-more-btn" id="aboutMoreBtn">
             <span>詳しく</span>
             <span class="btn-arrow">→</span>
           </button>
         </div>
-
       </div>
   </section>
 
-  <!-- プロジェクト -->
   <section class="section" id="projects">
     <div class="container">
       <h2 class="section-title">PROJECTS</h2>
 
-      <!-- プロジェクトグリッド -->
-      <div class="project-grid" id="projectGrid">
-        <!-- JavaScriptで動的に追加される -->
-      </div>
+      <div class="project-grid" id="projectGrid"></div>
 
-      <!-- ページネーション -->
       <div class="pagination-container" id="paginationContainer" style="display: none;">
         <div class="pagination-buttons">
           <button class="pagination-btn prev" id="prevBtn">Prev</button>
@@ -230,44 +208,41 @@
     </div>
   </section>
 
-  <!-- スキル -->
   <section class="section" id="skill">
     <div class="container">
       <h2 class="section-title">SKILLS</h2>
 
-      <!--メインスキル-->
       <div class="skills-grid">
         <div class="skill-item">
           <img src="images/skills/unity.svg" alt="Unity" class="skill-icon-only">
           <div class="skill-content">
             <div class="skill-name">Unity Engine</div>
-            <p style="color: #7b8fa3; font-size: 0.9rem;">ゲームエンジン</p>
+            <p class="skill-description">ゲームエンジン</p>
           </div>
         </div>
         <div class="skill-item">
           <img src="images/skills/github.svg" alt="github" class="skill-icon-only">
           <div class="skill-content">
             <div class="skill-name">Github</div>
-            <p style="color: #7b8fa3; font-size: 0.9rem;">バージョン管理</p>
+            <p class="skill-description">バージョン管理</p>
           </div>
         </div>
         <div class="skill-item">
           <img src="images/skills/javascript.svg" alt="javascript" class="skill-icon-only">
           <div class="skill-content">
             <div class="skill-name">JavaScript</div>
-            <p style="color: #7b8fa3; font-size: 0.9rem;">プログラミング言語</p>
+            <p class="skill-description">プログラミング言語</p>
           </div>
         </div>
         <div class="skill-item">
           <img src="images/skills/csharp.svg" alt="csharp" class="skill-icon">
           <div class="skill-content">
             <div class="skill-name">C#</div>
-            <p style="color: #7b8fa3; font-size: 0.9rem;">プログラミング言語</p>
+            <p class="skill-description">プログラミング言語</p>
           </div>
         </div>
       </div>
 
-      <!--その他のスキル-->
       <div class="other-skills">
         <h3 class="other-skills-title">OTHER</h3>
         <div class="skills-icons">
@@ -282,11 +257,9 @@
           <img src="images/skills/python.svg" alt="python" class="skill-icon-only">
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- Q&Aモーダル -->
   <div class="modal" id="modal-qa" onclick="closeQAModal()">
     <div class="modal-content qa-modal-content" onclick="event.stopPropagation()">
       <div class="modal-header">
@@ -295,8 +268,6 @@
         <p class="modal-subtitle">More About Me</p>
       </div>
       <div class="modal-body">
-
-        <!-- Q&A -->
         <div class="qa-item">
           <div class="qa-question">
             <span class="qa-icon">Q</span>
@@ -304,9 +275,7 @@
           </div>
           <div class="qa-answer">
             <span class="qa-icon answer">A</span>
-            <p>
-              内容
-            </p>
+            <p>内容</p>
           </div>
 
           <div class="qa-question">
@@ -315,34 +284,27 @@
           </div>
           <div class="qa-answer">
             <span class="qa-icon answer">A</span>
-            <p>
-              内容
-            </p>
+            <p>内容</p>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 
   <footer id="contact">
-    <p style="color: #A6B3BF; letter-spacing: 2px; font-size: 0.9rem;">
-      CONTACT: <span style="color: #5ba3ff;">hurarunium@gmail.com</span>
+    <p class="footer-text">
+      CONTACT: <span class="footer-email">hurarunium@gmail.com</span>
     </p>
-    <p style="color: #A6B3BF; margin-top: 1rem; font-size: 0.8rem;">
+    <p class="footer-copyright">
       2025 this portfolio is designed by huraru.
     </p>
   </footer>
 
-  <!-- モーダルコンテナ -->
-  <div id="modalContainer">
-    <!-- モーダル生成部分 -->
-  </div>
+  <div id="modalContainer"></div>
 
   <script src="js/Modal.js"></script>
   <script src="js/dotMotion.js"></script>
   <script src="js/topImage.js"></script>
-
 </body>
 
 </html>

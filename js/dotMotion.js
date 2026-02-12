@@ -11,7 +11,6 @@ function createGlitchDots() {
         z-index: 1;
     `;
 
-	// 複数の種類のドットを生成
 	for (let i = 0; i < 25; i++) {
 		const dot = document.createElement("div");
 		const size = Math.random() > 0.6 ? 6 : 3;

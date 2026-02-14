@@ -1,8 +1,8 @@
 ---
-id: project3
-title: Mekanism Potato
+id: project4
+title: DragCore
 subtitle:
-tags: minecraft,modpack
+tags: Unity,C#,
 summary: ポテトが主役のMinecraftModPack
 video: images/test.mp4
 ---

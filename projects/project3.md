@@ -4,7 +4,7 @@ title: Mekanism Potato
 subtitle:
 tags: minecraft,modpack
 summary: ポテトが主役のMinecraftModPack
-video: images/test.mp4
+image: images/Asset/mekanismPotato.png
 ---
 
 ## プロジェクト説明

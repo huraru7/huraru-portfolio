@@ -4,7 +4,7 @@ title: Console Othello
 subtitle: オセロAIを搭載したシンプルなオセロゲーム
 tags: C#,Task
 summary: consoleで動かすシンプルオセロ
-video: images/test.mp4
+image: images/Asset/ConsoleOthello.png
 ---
 
 ## プロジェクト説明

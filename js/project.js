@@ -1,109 +1,64 @@
-// プロジェクトのMarkdownList
-const projectFiles = ["projects/project1.md", "projects/project2.md", "projects/project3.md"];
+const PROJECTS_PER_PAGE = 3;
+let currentPage = 1;
+let totalPages = 1;
 
-marked.setOptions({
-	breaks: true,
-	gfm: true,
-});
+marked.setOptions({ breaks: true, gfm: true });
 
-// Markdownのメタデータを解析
 function parseMarkdown(content) {
-	// 改行コードを統一
 	content = content.replace(/\r\n/g, "\n").replace(/\r/g, "\n").trim();
 
 	if (content.charCodeAt(0) === 0xfeff) {
 		content = content.substring(1);
 	}
 
-	// メタデータ確認
-	if (!content.startsWith("---")) {
-		console.error("メタデータが---で始まっていません");
-		return {
-			metadata: {
-				id: "unknown",
-				title: "タイトルなし",
-				subtitle: "",
-				tags: "",
-				summary: "",
-			},
-			content: content,
-		};
-	}
+	const fallback = {
+		metadata: { id: "unknown", title: "タイトルなし", subtitle: "", tags: "", summary: "" },
+		content: content,
+	};
 
-	// ---を検索
+	if (!content.startsWith("---")) return fallback;
+
 	content = content.substring(3).trim();
-
 	const endIndex = content.indexOf("\n---");
-	if (endIndex === -1) {
-		console.error("---が閉じられていません");
-		return {
-			metadata: {
-				id: "unknown",
-				title: "タイトルなし",
-				subtitle: "",
-				tags: "",
-				summary: "",
-			},
-			content: content,
-		};
-	}
+	if (endIndex === -1) return fallback;
 
-	// メタデータ部分と本文を分離
 	const metaText = content.substring(0, endIndex).trim();
 	const markdownContent = content.substring(endIndex + 4).trim();
 
-	// メタデータを解析
 	const metadata = {};
 	metaText.split("\n").forEach((line) => {
 		line = line.trim();
 		if (!line) return;
-
 		const colonIndex = line.indexOf(":");
 		if (colonIndex > 0) {
-			const key = line.substring(0, colonIndex).trim();
-			const value = line.substring(colonIndex + 1).trim();
-			metadata[key] = value;
+			metadata[line.substring(0, colonIndex).trim()] = line.substring(colonIndex + 1).trim();
 		}
 	});
-
-	console.log("解析されたメタデータ:", metadata);
 
 	return { metadata, content: markdownContent };
 }
 
-// プロジェクトカードを生成
 function createProjectCard(metadata) {
 	const tags = metadata.tags ? metadata.tags.split(",").map((tag) => tag.trim()) : [];
-
 	const card = document.createElement("div");
-	card.className = "project-card fade-in";
+	card.className = "project-card fade-in hidden";
 	card.onclick = () => openModal(metadata.id);
 
-	// 画像/動画のHTML生成
 	let mediaHTML = "";
 	if (metadata.video) {
-		// 動画がある場合
 		mediaHTML = `
             <div class="project-media">
-                <video
-                    src="${metadata.video}"
-                    poster="${metadata.image || ""}"
-                    muted
-                    loop
-                    playsinline
+                <video src="${metadata.video}" poster="${metadata.image || ""}"
+                    muted loop playsinline
                     onmouseenter="this.play()"
-                    onmouseleave="this.pause(); this.currentTime=0;"
-                >
+                    onmouseleave="this.pause(); this.currentTime=0;">
                 </video>
-            </div>
-        `;
+            </div>`;
 	} else if (metadata.image) {
-		// 画像のみの場合
 		mediaHTML = `
             <div class="project-media">
                 <img src="${metadata.image}" alt="${metadata.title}">
-            </div>
-        `;
+            </div>`;
 	}
 
 	card.innerHTML = `
@@ -119,15 +74,11 @@ function createProjectCard(metadata) {
 	return card;
 }
 
-// モーダルを生成
 function createModal(metadata, htmlContent) {
 	const modal = document.createElement("div");
 	modal.className = "modal";
 	modal.id = `modal-${metadata.id}`;
 	modal.onclick = () => closeModal(metadata.id);
-
-	console.log(`モーダル生成: ${metadata.id}`);
-	console.log("HTMLコンテンツ:", htmlContent);
 
 	modal.innerHTML = `
         <div class="modal-content" onclick="event.stopPropagation()">
@@ -145,54 +96,71 @@ function createModal(metadata, htmlContent) {
 	return modal;
 }
 
-// Markdownファイルを読み込ん部分
-async function loadProjects() {
+function showPage(page) {
 	const projectGrid = document.getElementById("projectGrid");
-	const modalContainer = document.getElementById("modalContainer");
+	if (!projectGrid) return;
 
-	if (!projectGrid || !modalContainer) {
-		console.error("projectGrid または modalContainer が見つかりません");
-		return;
+	const cards = Array.from(projectGrid.querySelectorAll(".project-card"));
+
+	cards.forEach((card) => {
+		card.classList.add("hidden");
+		card.classList.remove("page-active");
+	});
+
+	const startIndex = (page - 1) * PROJECTS_PER_PAGE;
+	const endIndex = startIndex + PROJECTS_PER_PAGE;
+
+	cards.slice(startIndex, endIndex).forEach((card) => {
+		card.classList.remove("hidden");
+		card.classList.add("page-active");
+	});
+
+	updatePaginationUI();
+	applyScrollAnimation();
+
+	const projectsSection = document.getElementById("projects");
+	if (projectsSection) {
+		projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+	}
+}
+
+function goToPage(page) {
+	if (page < 1 || page > totalPages) return;
+	currentPage = page;
+	showPage(currentPage);
+}
+
+function updatePaginationUI() {
+	const pageInfo = document.getElementById("pageInfo");
+	const prevBtn = document.getElementById("prevBtn");
+	const nextBtn = document.getElementById("nextBtn");
+
+	if (pageInfo) pageInfo.textContent = `${currentPage} / ${totalPages}`;
+	if (prevBtn) prevBtn.disabled = currentPage === 1;
+	if (nextBtn) nextBtn.disabled = currentPage === totalPages;
+}
+
+function initPagination(totalProjects) {
+	totalPages = Math.ceil(totalProjects / PROJECTS_PER_PAGE);
+
+	const paginationContainer = document.getElementById("paginationContainer");
+	if (!paginationContainer) return;
+
+	if (totalProjects > PROJECTS_PER_PAGE) {
+		paginationContainer.style.display = "flex";
+		paginationContainer.classList.add("visible");
+
+		const prevBtn = document.getElementById("prevBtn");
+		const nextBtn = document.getElementById("nextBtn");
+
+		if (prevBtn) prevBtn.addEventListener("click", () => goToPage(currentPage - 1));
+		if (nextBtn) nextBtn.addEventListener("click", () => goToPage(currentPage + 1));
 	}
 
-	for (const file of projectFiles) {
-		try {
-			console.log(`読み込み中: ${file}`);
-			const response = await fetch(file);
+	showPage(1);
+}
 
-			if (!response.ok) {
-				throw new Error(`HTTP error! status: ${response.status}`);
-			}
-
-			const markdown = await response.text();
-
-			const { metadata, content } = parseMarkdown(markdown);
-
-			// メタデータの必須項目チェック
-			if (!metadata.id || !metadata.title) {
-				console.error(`${file}: id または title が見つかりません`, metadata);
-				continue;
-			}
-
-			// MarkdownをHTMLに変換
-			const htmlContent = marked.parse(content);
-			console.log("変換されたHTML:", htmlContent);
-
-			// プロジェクトカードを追加
-			const card = createProjectCard(metadata);
-			projectGrid.appendChild(card);
-
-			// モーダルを追加
-			const modal = createModal(metadata, htmlContent);
-			modalContainer.appendChild(modal);
-
-			console.log(`${file} の読み込み成功`);
-		} catch (error) {
-			console.error(`Failed to load ${file}:`, error);
-		}
-	}
-
-	// スクロールアニメーションを適用
+function applyScrollAnimation() {
 	const observer = new IntersectionObserver(
 		(entries) => {
 			entries.forEach((entry) => {
@@ -201,18 +169,63 @@ async function loadProjects() {
 				}
 			});
 		},
-		{
-			threshold: 0.1,
-			rootMargin: "0px 0px -100px 0px",
-		}
+		{ threshold: 0.1, rootMargin: "0px 0px -100px 0px" },
 	);
 
-	document.querySelectorAll(".project-card.fade-in").forEach((el) => {
+	document.querySelectorAll(".project-card.fade-in:not(.hidden)").forEach((el) => {
 		observer.observe(el);
 	});
 }
 
-// ロード
+async function getProjectFiles() {
+	try {
+		const response = await fetch("projects/index.json");
+		if (!response.ok) throw new Error("index.json not found");
+		const data = await response.json();
+		return data.projects.map((file) => `projects/${file}`);
+	} catch {
+		return ["projects/project1.md", "projects/project2.md", "projects/project3.md"];
+	}
+}
+
+async function loadProjects() {
+	const projectGrid = document.getElementById("projectGrid");
+	const modalContainer = document.getElementById("modalContainer");
+	if (!projectGrid || !modalContainer) return;
+
+	const projectFiles = await getProjectFiles();
+
+	for (const file of projectFiles) {
+		try {
+			const response = await fetch(file);
+			if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+			const markdown = await response.text();
+			const { metadata, content } = parseMarkdown(markdown);
+
+			if (!metadata.id || !metadata.title) continue;
+
+			const htmlContent = marked.parse(content);
+			projectGrid.appendChild(createProjectCard(metadata));
+			modalContainer.appendChild(createModal(metadata, htmlContent));
+		} catch (error) {
+			console.error(`Failed to load ${file}:`, error);
+		}
+	}
+
+	const totalProjects = projectGrid.querySelectorAll(".project-card").length;
+
+	if (totalProjects === 0) {
+		projectGrid.innerHTML = `
+			<p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">
+				プロジェクトが見つかりませんでした。
+			</p>`;
+		return;
+	}
+
+	initPagination(totalProjects);
+}
+
 if (document.readyState === "loading") {
 	document.addEventListener("DOMContentLoaded", loadProjects);
 } else {

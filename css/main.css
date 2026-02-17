@@ -278,6 +278,38 @@ nav {
 
 .nav-links a:hover::after { width: 100%; }
 
+/* ========== ハンバーガーメニュー ========== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 102;
+}
+
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.active .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
 
 /* ========== 共通カードスタイル ========== */
 .skill-item,
@@ -291,23 +323,19 @@ nav {
               transform 0.3s ease;
 }
 
-.project-card,
-.timeline-content {
+.project-card {
   background: var(--bg-card);
   backdrop-filter: blur(10px);
   border: 2px solid var(--border-color);
   padding: 2rem;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+  transform-style: preserve-3d;
   transition: transform 0.3s ease,
               box-shadow 0.3s ease,
               background var(--transition-speed) var(--transition-easing),
               border-color var(--transition-speed) var(--transition-easing);
-}
-
-.project-card {
-  cursor: pointer;
-  transform-style: preserve-3d;
 }
 
 .project-summary {
@@ -337,8 +365,7 @@ nav {
 
 .project-card:hover::before { height: 100%; }
 
-.project-card:hover,
-.timeline-content:hover {
+.project-card:hover {
   transform: translateY(-5px);
   border-color: var(--border-accent);
   box-shadow: 0 10px 30px var(--shadow-hover);
@@ -362,8 +389,7 @@ nav {
 
 /* ========== タイトル・テキスト共通 ========== */
 .project-title,
-.skill-name,
-.timeline-heading {
+.skill-name {
   color: var(--text-primary);
   letter-spacing: 2px;
   transition: color var(--transition-speed) var(--transition-easing);
@@ -377,12 +403,10 @@ nav {
 
 .project-title { font-size: 1.5rem; margin-bottom: 1rem; }
 .skill-name { font-size: 1.1rem; font-weight: bold; margin-bottom: 0.5rem; letter-spacing: 1px; }
-.timeline-heading { font-size: 1.3rem; margin-bottom: 0.5rem; }
 .highlight-title { font-size: 1.1rem; margin-bottom: 0.8rem; }
 
 /* ========== タグ共通 ========== */
 .project-tech,
-.timeline-tags,
 .skills-tags,
 .skills-icons {
   display: flex;
@@ -391,8 +415,7 @@ nav {
   margin-top: 1rem;
 }
 
-.tech-tag,
-.timeline-tag {
+.tech-tag {
   padding: 0.3rem 0.8rem;
   background: var(--accent-gradient);
   color: white;
@@ -410,15 +433,8 @@ nav {
   margin-top: 3rem;
 }
 
-.project-grid { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+.project-grid { grid-template-columns: repeat(auto-fill, minmax(clamp(200px, 30vw, 350px), 1fr)); justify-content: center; }
 .skills-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-
-/* ========== ハイライトカード ========== */
-.about-highlights {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
 
 .highlight-icon {
   font-size: 2rem;
@@ -563,22 +579,69 @@ nav {
   transition: color var(--transition-speed) var(--transition-easing);
 }
 
-/* ========== カーソルグロー・アニメーション ========== */
-.cursor-glow {
-  position: fixed;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--glow-color), transparent 70%);
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: background var(--transition-speed) var(--transition-easing);
-}
-
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ========== 円形画像共通 ========== */
+.circular-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 3px solid var(--accent-primary);
+  box-shadow: 0 0 30px var(--shadow-color), 0 0 20px var(--shadow-hover);
+  border-radius: 50%;
+  transition: border-color var(--transition-speed) var(--transition-easing),
+              box-shadow var(--transition-speed) var(--transition-easing);
+}
+
+.circular-image-ring::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--accent-secondary);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+  transition: border-color var(--transition-speed) var(--transition-easing);
+}
+
+/* ========== ユーティリティ ========== */
+.hero-description {
+  font-size: 1rem;
+  color: var(--text-tertiary);
+  letter-spacing: 2px;
+  margin-top: 1rem;
+  transition: color var(--transition-speed) var(--transition-easing);
+}
+
+.skill-description {
+  color: var(--text-tertiary);
+  font-size: 0.9rem;
+  transition: color var(--transition-speed) var(--transition-easing);
+}
+
+.footer-text {
+  color: var(--text-tertiary);
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  transition: color var(--transition-speed) var(--transition-easing);
+}
+
+.footer-copyright {
+  color: var(--text-tertiary);
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  transition: color var(--transition-speed) var(--transition-easing);
+}
+
+.footer-email {
+  color: var(--accent-primary);
+  transition: color var(--transition-speed) var(--transition-easing);
 }
 
 /* ========== フッター ========== */
@@ -614,16 +677,6 @@ footer {
   z-index: 99999;
 }
 
-/* ========== プロジェクトカードの画像/動画 ========== */
-.project-card {
-    cursor: pointer;
-    transform-style: preserve-3d;
-    transition: transform 0.3s ease,
-                box-shadow 0.3s ease,
-                background var(--transition-speed) var(--transition-easing),
-                border-color var(--transition-speed) var(--transition-easing);
-    overflow: hidden;
-}
 .project-media {
     width: 100%;
     aspect-ratio: 16 / 9;
@@ -647,12 +700,6 @@ footer {
     transform: scale(1.05);
 }
 
-.project-media:hover {
-    opacity: 1;
-}
-
-
-/* タグ配置の調整 */
 .project-tech {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -699,16 +746,95 @@ footer {
   transform: rotate(0deg) scale(1);
 }
 
-#theme-fade {
-  position: fixed;
-  inset: 0;
-  background: black;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  z-index: 9999;
+/* ========== ページネーション ========== */
+.pagination-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
 }
 
-#theme-fade.active {
-  opacity: 1;
+.pagination-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.pagination-btn {
+    padding: 0.8rem 1.5rem;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.pagination-btn.prev::before {
+    content: '← ';
+}
+
+.pagination-btn.next::after {
+    content: ' →';
+}
+
+.pagination-info {
+    padding: 0.8rem 1.5rem;
+    background: var(--glow-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all var(--transition-speed) var(--transition-easing);
+}
+
+/* プロジェクトカードの初期状態（非表示） */
+.project-card.hidden {
+    display: none;
+}
+
+/* ページ切り替えアニメーション */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-card.active {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .pagination-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .pagination-info {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
 }

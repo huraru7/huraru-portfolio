@@ -65,7 +65,12 @@
   <header>
     <nav>
       <div class="logo">PORTFOLIO</div>
-      <ul class="nav-links">
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
         <li><a href="#top">TOP</a></li>
         <li><a href="#about">ABOUT</a></li>
         <li><a href="#projects">PROJECTS</a></li>
@@ -277,7 +282,9 @@
             <span class="qa-icon answer">A</span>
             <p>内容</p>
           </div>
+        </div>
 
+        <div class="qa-item">
           <div class="qa-question">
             <span class="qa-icon">Q</span>
             <h3>貴方にとってゲームを創るとは?</h3>
@@ -302,6 +309,22 @@
 
   <div id="modalContainer"></div>
 
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
   <script src="js/Modal.js"></script>
   <script src="js/dotMotion.js"></script>
   <script src="js/topImage.js"></script>

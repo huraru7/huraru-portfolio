@@ -21,10 +21,32 @@
 
 @media (max-width: 768px) {
   nav {
-    flex-direction: column;
-    gap: 1.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
-  
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+    padding-top: 1.5rem;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
   .logo {
     font-size: 1.2rem;
   }
@@ -57,7 +79,7 @@
   }
   
   .project-grid {
-    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   
   .project-card {

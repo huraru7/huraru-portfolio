@@ -2,8 +2,8 @@
 id: project4
 title: DragCore
 subtitle:
-tags: Unity,C#,
-summary: ポテトが主役のMinecraftModPack
+tags: Unity,C#
+summary:
 video: images/test.mp4
 ---
 

@@ -5,6 +5,10 @@ subtitle:
 tags: minecraft,modpack
 summary: ポテトが主役のMinecraftModPack
 image: images/Asset/mekanismPotato.png
+teamSize: 1人
+period: 3ヶ月
+startDate:
+endDate:
 ---
 
 ## プロジェクト説明

@@ -5,6 +5,10 @@ subtitle:
 tags: Unity,C#
 summary:
 video: images/test.mp4
+teamSize: 1人
+period: 3ヶ月
+startDate:
+endDate:
 ---
 
 ## プロジェクト説明

@@ -99,3 +99,36 @@
     background: none;
     padding: 0;
 }
+
+/* プロジェクト情報グリッド */
+.project-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg-card);
+    border-left: 4px solid var(--accent-primary);
+    transition: background var(--transition-speed) var(--transition-easing),
+                border-color var(--transition-speed) var(--transition-easing);
+}
+
+.project-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.project-info-label {
+    font-size: 0.65rem;
+    color: var(--accent-primary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color var(--transition-speed) var(--transition-easing);
+}
+
+.project-info-value {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    transition: color var(--transition-speed) var(--transition-easing);
+}

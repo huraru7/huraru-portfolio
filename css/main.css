@@ -826,6 +826,74 @@ footer {
     animation: fadeInUp 0.5s ease-out;
 }
 
+/* ========== ソートUI ========== */
+.sort-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.sort-label {
+    font-size: 0.75rem;
+    color: var(--accent-primary);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: color var(--transition-speed) var(--transition-easing);
+}
+
+.sort-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.sort-select {
+    padding: 0.5rem 0.8rem;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s ease,
+                background var(--transition-speed) var(--transition-easing),
+                color var(--transition-speed) var(--transition-easing);
+}
+
+.sort-select:focus,
+.sort-select:hover {
+    border-color: var(--accent-primary);
+}
+
+.sort-order-btn {
+    padding: 0.5rem 1rem;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease,
+                background var(--transition-speed) var(--transition-easing),
+                color var(--transition-speed) var(--transition-easing);
+}
+
+.sort-order-btn:hover {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+@media (max-width: 480px) {
+    .sort-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     .pagination-btn {

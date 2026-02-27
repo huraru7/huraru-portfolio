@@ -201,6 +201,20 @@
     <div class="container">
       <h2 class="section-title">PROJECTS</h2>
 
+      <div class="sort-container" id="sortContainer" style="display: none;">
+        <span class="sort-label">SORT</span>
+        <div class="sort-controls">
+          <select id="sortField" class="sort-select">
+            <option value="">デフォルト</option>
+            <option value="teamSize">制作人数</option>
+            <option value="period">制作期間</option>
+            <option value="startDate">開始日</option>
+            <option value="endDate">終了日</option>
+          </select>
+          <button id="sortOrderBtn" class="sort-order-btn" data-order="asc">↑ 昇順</button>
+        </div>
+      </div>
+
       <div class="project-grid" id="projectGrid"></div>
 
       <div class="pagination-container" id="paginationContainer" style="display: none;">

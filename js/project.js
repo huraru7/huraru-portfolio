@@ -1,6 +1,13 @@
-const PROJECTS_PER_PAGE = 3;
+function getProjectsPerPage() {
+	const width = window.innerWidth;
+	if (width <= 480) return 1;
+	if (width <= 768) return 2;
+	return 3;
+}
+
 let currentPage = 1;
 let totalPages = 1;
+const projectsData = [];
 
 marked.setOptions({ breaks: true, gfm: true });
 
@@ -74,6 +81,30 @@ function createProjectCard(metadata) {
 	return card;
 }
 
+function createProjectInfoHTML(metadata) {
+	const fields = [
+		{ key: "teamSize", label: "制作人数" },
+		{ key: "period", label: "制作期間" },
+		{ key: "startDate", label: "開始日" },
+		{ key: "endDate", label: "終了日" },
+	];
+
+	const items = fields
+		.filter((f) => metadata[f.key])
+		.map(
+			(f) => `
+			<div class="project-info-item">
+				<span class="project-info-label">${f.label}</span>
+				<span class="project-info-value">${metadata[f.key]}</span>
+			</div>`,
+		)
+		.join("");
+
+	if (!items) return "";
+
+	return `<div class="project-info-grid">${items}</div>`;
+}
+
 function createModal(metadata, htmlContent) {
 	const modal = document.createElement("div");
 	modal.className = "modal";
@@ -88,6 +119,7 @@ function createModal(metadata, htmlContent) {
                 <p class="modal-subtitle">${metadata.subtitle || ""}</p>
             </div>
             <div class="modal-body">
+                ${createProjectInfoHTML(metadata)}
                 ${htmlContent}
             </div>
         </div>
@@ -107,8 +139,9 @@ function showPage(page) {
 		card.classList.remove("page-active");
 	});
 
-	const startIndex = (page - 1) * PROJECTS_PER_PAGE;
-	const endIndex = startIndex + PROJECTS_PER_PAGE;
+	const perPage = getProjectsPerPage();
+	const startIndex = (page - 1) * perPage;
+	const endIndex = startIndex + perPage;
 
 	cards.slice(startIndex, endIndex).forEach((card) => {
 		card.classList.remove("hidden");
@@ -140,13 +173,39 @@ function updatePaginationUI() {
 	if (nextBtn) nextBtn.disabled = currentPage === totalPages;
 }
 
-function initPagination(totalProjects) {
-	totalPages = Math.ceil(totalProjects / PROJECTS_PER_PAGE);
+function refreshPagination() {
+	const projectGrid = document.getElementById("projectGrid");
+	if (!projectGrid) return;
+
+	const totalProjects = projectGrid.querySelectorAll(".project-card").length;
+	const perPage = getProjectsPerPage();
+	totalPages = Math.ceil(totalProjects / perPage);
 
 	const paginationContainer = document.getElementById("paginationContainer");
 	if (!paginationContainer) return;
 
-	if (totalProjects > PROJECTS_PER_PAGE) {
+	if (totalProjects > perPage) {
+		paginationContainer.style.display = "flex";
+		paginationContainer.classList.add("visible");
+	} else {
+		paginationContainer.style.display = "none";
+	}
+
+	if (currentPage > totalPages) {
+		currentPage = totalPages;
+	}
+
+	showPage(currentPage);
+}
+
+function initPagination(totalProjects) {
+	const perPage = getProjectsPerPage();
+	totalPages = Math.ceil(totalProjects / perPage);
+
+	const paginationContainer = document.getElementById("paginationContainer");
+	if (!paginationContainer) return;
+
+	if (totalProjects > perPage) {
 		paginationContainer.style.display = "flex";
 		paginationContainer.classList.add("visible");
 
@@ -156,6 +215,12 @@ function initPagination(totalProjects) {
 		if (prevBtn) prevBtn.addEventListener("click", () => goToPage(currentPage - 1));
 		if (nextBtn) nextBtn.addEventListener("click", () => goToPage(currentPage + 1));
 	}
+
+	let resizeTimer;
+	window.addEventListener("resize", () => {
+		clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(refreshPagination, 200);
+	});
 
 	showPage(1);
 }
@@ -174,6 +239,77 @@ function applyScrollAnimation() {
 
 	document.querySelectorAll(".project-card.fade-in:not(.hidden)").forEach((el) => {
 		observer.observe(el);
+	});
+}
+
+function parseNumericValue(str) {
+	if (!str) return null;
+	const match = str.match(/\d+(\.\d+)?/);
+	return match ? parseFloat(match[0]) : null;
+}
+
+function getDateTimestamp(str) {
+	if (!str) return null;
+	const d = new Date(str);
+	return isNaN(d.getTime()) ? null : d.getTime();
+}
+
+function getSortValue(metadata, field) {
+	switch (field) {
+		case "teamSize":
+		case "period":
+			return parseNumericValue(metadata[field]);
+		case "startDate":
+		case "endDate":
+			return getDateTimestamp(metadata[field]);
+		default:
+			return null;
+	}
+}
+
+function applySortAndRender(field, order) {
+	const projectGrid = document.getElementById("projectGrid");
+	if (!projectGrid) return;
+
+	const sorted = [...projectsData];
+	if (field) {
+		sorted.sort((a, b) => {
+			const va = getSortValue(a.metadata, field);
+			const vb = getSortValue(b.metadata, field);
+			if (va === null && vb === null) return 0;
+			if (va === null) return 1;
+			if (vb === null) return -1;
+			const diff = va - vb;
+			return order === "desc" ? -diff : diff;
+		});
+	} else {
+		sorted.sort((a, b) => a.originalIndex - b.originalIndex);
+	}
+
+	sorted.forEach((p) => projectGrid.appendChild(p.card));
+	currentPage = 1;
+	refreshPagination();
+}
+
+function initSort() {
+	const sortContainer = document.getElementById("sortContainer");
+	const sortField = document.getElementById("sortField");
+	const sortOrderBtn = document.getElementById("sortOrderBtn");
+	if (!sortContainer || !sortField || !sortOrderBtn) return;
+
+	sortContainer.style.display = "";
+
+	sortField.addEventListener("change", () => {
+		applySortAndRender(sortField.value, sortOrderBtn.dataset.order);
+	});
+
+	sortOrderBtn.addEventListener("click", () => {
+		const newOrder = sortOrderBtn.dataset.order === "asc" ? "desc" : "asc";
+		sortOrderBtn.dataset.order = newOrder;
+		sortOrderBtn.textContent = newOrder === "asc" ? "↑ 昇順" : "↓ 降順";
+		if (sortField.value) {
+			applySortAndRender(sortField.value, newOrder);
+		}
 	});
 }
 
@@ -206,7 +342,9 @@ async function loadProjects() {
 			if (!metadata.id || !metadata.title) continue;
 
 			const htmlContent = marked.parse(content);
-			projectGrid.appendChild(createProjectCard(metadata));
+			const card = createProjectCard(metadata);
+			projectsData.push({ metadata, card, originalIndex: projectsData.length });
+			projectGrid.appendChild(card);
 			modalContainer.appendChild(createModal(metadata, htmlContent));
 		} catch (error) {
 			console.error(`Failed to load ${file}:`, error);
@@ -224,6 +362,7 @@ async function loadProjects() {
 	}
 
 	initPagination(totalProjects);
+	initSort();
 }
 
 if (document.readyState === "loading") {

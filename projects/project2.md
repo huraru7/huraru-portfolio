@@ -5,6 +5,10 @@ subtitle:
 tags: C#,unity,2D,作成中
 summary: 世界すら厳選するローグライク放置ゲーム
 video: images/test.mp4
+teamSize: 1人
+period: 2ヶ月
+startDate:
+endDate:
 ---
 
 ## プロジェクト説明

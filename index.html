@@ -17,6 +17,7 @@
   <meta property="og:description" content="ふらるのポートフォリオ">
 
   <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preload" as="image" href="images/huraru/huraru1.webp">
 
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/hero.css">
@@ -27,11 +28,11 @@
   <link rel="stylesheet" href="css/textMotion.css">
   <link rel="stylesheet" href="css/qa-modal.css">
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="js/Sunrise_Sunset.js"></script>
-  <script src="js/Theme.js"></script>
-  <script src="js/project.js"></script>
-  <script src="js/textMotion.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+  <script src="js/Sunrise_Sunset.js" defer></script>
+  <script src="js/Theme.js" defer></script>
+  <script src="js/project.js" defer></script>
+  <script src="js/textMotion.js" defer></script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NQN0302N3X"></script>
   <script>
@@ -91,10 +92,10 @@
 
       <div class="hero-image circular-image-ring">
         <img src="images/huraru/huraru1.webp" alt="huraru1" class="hero-slide circular-image active" fetchpriority=high>
-        <img src="images/huraru/huraru2.webp" alt="huraru2" class="hero-slide circular-image">
-        <img src="images/huraru/huraru3.webp" alt="huraru3" class="hero-slide circular-image">
-        <img src="images/huraru/huraru4.webp" alt="huraru4" class="hero-slide circular-image">
-        <img src="images/huraru/huraru5.webp" alt="huraru5" class="hero-slide circular-image">
+        <img src="images/huraru/huraru2.webp" alt="huraru2" class="hero-slide circular-image" loading="lazy">
+        <img src="images/huraru/huraru3.webp" alt="huraru3" class="hero-slide circular-image" loading="lazy">
+        <img src="images/huraru/huraru4.webp" alt="huraru4" class="hero-slide circular-image" loading="lazy">
+        <img src="images/huraru/huraru5.webp" alt="huraru5" class="hero-slide circular-image" loading="lazy">
       </div>
     </div>
   </section>
@@ -141,7 +142,7 @@
           </div>
         </div>
         <div class="about-image circular-image-ring">
-          <img src="images/huraru/huraru5.webp" alt="huraru5" class="circular-image">
+          <img src="images/huraru/huraru5.webp" alt="huraru5" class="circular-image" loading="lazy">
         </div>
       </div>
 

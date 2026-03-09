@@ -154,7 +154,7 @@
     border: 1px solid var(--border-color);
     color: var(--text-primary);
     text-decoration: none;
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 0.95rem;
     transition: all 0.3s ease;
 }

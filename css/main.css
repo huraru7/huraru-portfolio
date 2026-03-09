@@ -78,7 +78,7 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   position: relative;
   color: var(--text-primary);
   overflow-x: hidden;
@@ -478,12 +478,12 @@ nav {
   overflow-y: auto;
   position: relative;
   box-shadow: 0 20px 60px var(--shadow-hover);
-  animation: modalSlideIn 0.3s ease-out;
+  animation: modal-slide-in 0.3s ease-out;
   transition: background var(--transition-speed) var(--transition-easing),
             border-color var(--transition-speed) var(--transition-easing);
 }
 
-@keyframes modalSlideIn {
+@keyframes modal-slide-in {
   from { opacity: 0; transform: translateY(-50px); }
   to { opacity: 1; transform: translateY(0); }
 }
@@ -811,7 +811,7 @@ footer {
 }
 
 /* ページ切り替えアニメーション */
-@keyframes fadeInUp {
+@keyframes fade-in-up {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -823,7 +823,7 @@ footer {
 }
 
 .project-card.active {
-    animation: fadeInUp 0.5s ease-out;
+    animation: fade-in-up 0.5s ease-out;
 }
 
 /* ========== ソートUI ========== */

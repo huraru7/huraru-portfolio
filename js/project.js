@@ -1,4 +1,12 @@
 function getProjectsPerPage() {
+	const grid = document.getElementById("projectGrid");
+	if (grid) {
+		const cols = window.getComputedStyle(grid).gridTemplateColumns;
+		if (cols && cols !== "none") {
+			const count = cols.trim().split(/\s+/).length;
+			if (count > 0) return count;
+		}
+	}
 	const width = window.innerWidth;
 	if (width <= 480) return 1;
 	if (width <= 768) return 2;

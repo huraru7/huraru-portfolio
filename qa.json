@@ -1,6 +1,10 @@
 [
   {
-    "question": "貴方にとってゲームを創るとは何ですか？",
+    "question": "質問",
+    "answer": "内容"
+  },
+  {
+    "question": "質問",
     "answer": "内容"
   }
 ]

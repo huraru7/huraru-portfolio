@@ -63,10 +63,7 @@
   <div class="geometric-shape shape-2"></div>
   <div class="geometric-shape shape-3"></div>
 
-  <button id="theme-toggle" class="theme-toggle">
-    <span class="icon sun">☀</span>
-    <span class="icon moon">🌙</span>
-  </button>
+  <button id="settings-btn" aria-label="設定を開く">⚙</button>
 
   <header>
     <nav>
@@ -284,6 +281,28 @@
       </div>
     </div>
   </section>
+
+  <div class="modal" id="modal-settings" onclick="closeSettingsModal()">
+    <div class="modal-content settings-modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <button class="modal-close" onclick="closeSettingsModal()">×</button>
+        <h2 class="modal-title">SETTINGS</h2>
+        <p class="modal-subtitle">System Configuration</p>
+      </div>
+      <div class="modal-body">
+        <div class="settings-section">
+          <h3 class="settings-section-title">DISPLAY</h3>
+          <div class="settings-row">
+            <span class="settings-label">DARK MODE</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="theme-switch">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="modal" id="modal-qa" onclick="closeQAModal()">
     <div class="modal-content qa-modal-content" onclick="event.stopPropagation()">

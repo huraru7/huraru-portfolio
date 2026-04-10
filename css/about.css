@@ -38,19 +38,28 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 4rem;
-    padding: 3rem;
-    background: var(--bg-card);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--border-color);
+    padding: 1.5rem 0;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    transition: background var(--transition-speed) var(--transition-easing),
-                border-color var(--transition-speed) var(--transition-easing);
 }
 
-.stat-item { 
+.stat-item {
     text-align: center;
+    padding: 1rem;
+    position: relative;
+}
+
+.stat-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: var(--accent-gradient);
+    transition: background var(--transition-speed) var(--transition-easing);
 }
 
 .stat-number {
@@ -58,7 +67,9 @@
     font-weight: bold;
     color: var(--accent-primary);
     letter-spacing: 2px;
-    transition: color var(--transition-speed) var(--transition-easing);
+    text-shadow: 0 0 20px var(--shadow-color), 0 0 40px var(--glow-color);
+    transition: color var(--transition-speed) var(--transition-easing),
+                text-shadow var(--transition-speed) var(--transition-easing);
 }
 
 .stat-label {
@@ -84,27 +95,19 @@
 .profile-container {
     max-width: 900px;
     margin: 0 auto;
-    background: var(--bg-card);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--border-color);
-    border-left: 6px solid var(--accent-primary);
+    background: transparent;
+    border-left: 3px solid var(--accent-primary);
     padding: 0;
     overflow: hidden;
-    transition: background var(--transition-speed) var(--transition-easing),
-                border-color var(--transition-speed) var(--transition-easing);
+    transition: border-color var(--transition-speed) var(--transition-easing);
 }
 
 .profile-row {
     display: grid;
     grid-template-columns: 200px 1fr;
-    padding: 1.5rem 2rem;
-    border-bottom: 1px solid var(--border-color);
-    transition: background 0.2s ease,
-                border-color var(--transition-speed) var(--transition-easing);
-}
-
-.profile-row:last-child {
-    border-bottom: none;
+    padding: 1.25rem 2rem;
+    border-radius: 0 4px 4px 0;
+    transition: background 0.2s ease;
 }
 
 .profile-row:hover {
@@ -175,22 +178,38 @@
     transition: transform 0.3s ease, filter var(--transition-speed) var(--transition-easing);
 }
 
+/* ========== ハイライトカード（枠線なし） ========== */
+.highlight-card {
+    background: transparent !important;
+    border: none !important;
+    border-left: 3px solid var(--accent-primary) !important;
+    padding: 1rem 0 1rem 1.5rem;
+    transition: border-color var(--transition-speed) var(--transition-easing),
+                transform 0.3s ease !important;
+}
+
+.highlight-card:hover {
+    background: var(--glow-color) !important;
+    transform: translateX(6px) !important;
+    border-left-color: var(--accent-secondary) !important;
+}
+
 
 @media (max-width: 768px) {
     .profile-container {
-        border-left-width: 4px;
+        border-left-width: 3px;
     }
-    
+
     .profile-row {
         grid-template-columns: 1fr;
         gap: 0.5rem;
-        padding: 1.25rem 1.5rem;
+        padding: 1rem 1.5rem;
     }
-    
+
     .profile-key {
         font-size: 0.75rem;
     }
-    
+
     .profile-value {
         font-size: 1rem;
         padding-left: 1rem;
@@ -209,9 +228,9 @@
 
 @media (max-width: 480px) {
     .profile-row {
-        padding: 1rem;
+        padding: 0.875rem 1rem;
     }
-    
+
     .profile-section-title {
         font-size: 1.5rem;
         letter-spacing: 2px;

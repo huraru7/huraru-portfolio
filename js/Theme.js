@@ -8,22 +8,20 @@ function getAutoTheme() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-	const themeSwitch = document.getElementById("theme-switch");
+	const toggleButton = document.getElementById("theme-toggle");
+	if (!toggleButton) return;
 
 	function applyTheme(mode) {
 		document.documentElement.classList.toggle("night-theme", mode === "night");
-		if (themeSwitch) {
-			themeSwitch.checked = mode === "night";
-		}
+		toggleButton.classList.toggle("night", mode === "night");
 	}
 
 	applyTheme(localStorage.getItem("theme") || getAutoTheme());
 
-	if (themeSwitch) {
-		themeSwitch.addEventListener("change", () => {
-			const next = themeSwitch.checked ? "night" : "day";
-			applyTheme(next);
-			localStorage.setItem("theme", next);
-		});
-	}
+	toggleButton.addEventListener("click", () => {
+		const current = localStorage.getItem("theme") || getAutoTheme();
+		const next = current === "night" ? "day" : "night";
+		applyTheme(next);
+		localStorage.setItem("theme", next);
+	});
 });

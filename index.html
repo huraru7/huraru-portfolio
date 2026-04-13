@@ -63,22 +63,26 @@
   <div class="geometric-shape shape-2"></div>
   <div class="geometric-shape shape-3"></div>
 
-  <button id="settings-btn" aria-label="設定を開く">⚙</button>
-
   <header>
     <nav>
-      <div class="logo">PORTFOLIO</div>
-      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
+      <a href="#top" class="logo">PORTFOLIO</a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#top">TOP</a></li>
-        <li><a href="#about">ABOUT</a></li>
         <li><a href="#projects">PROJECTS</a></li>
+        <li><a href="#about">ABOUT</a></li>
         <li><a href="#skill">SKILL</a></li>
       </ul>
+      <div class="nav-actions">
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <button id="theme-toggle" class="theme-toggle">
+          <span class="icon sun">☀</span>
+          <span class="icon moon">🌙</span>
+        </button>
+      </div>
     </nav>
   </header>
 
@@ -98,6 +102,21 @@
         <img src="images/huraru/huraru3.webp" alt="huraru3" class="hero-slide circular-image" loading="lazy">
         <img src="images/huraru/huraru4.webp" alt="huraru4" class="hero-slide circular-image" loading="lazy">
         <img src="images/huraru/huraru5.webp" alt="huraru5" class="hero-slide circular-image" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section-title">PROJECTS</h2>
+
+      <div class="project-grid" id="projectGrid" data-featured="true"></div>
+
+      <div class="view-all-container">
+        <a href="all-projects.html" class="view-all-btn">
+          <span>VIEW ALL PROJECTS</span>
+          <span class="btn-arrow">→</span>
+        </a>
       </div>
     </div>
   </section>
@@ -200,36 +219,6 @@
       </div>
   </section>
 
-  <section class="section" id="projects">
-    <div class="container">
-      <h2 class="section-title">PROJECTS</h2>
-
-      <div class="sort-container" id="sortContainer" style="display: none;">
-        <span class="sort-label">SORT</span>
-        <div class="sort-controls">
-          <select id="sortField" class="sort-select">
-            <option value="">デフォルト</option>
-            <option value="teamSize">制作人数</option>
-            <option value="period">制作期間</option>
-            <option value="startDate">開始日</option>
-            <option value="endDate">終了日</option>
-          </select>
-          <button id="sortOrderBtn" class="sort-order-btn" data-order="asc">↑ 昇順</button>
-        </div>
-      </div>
-
-      <div class="project-grid" id="projectGrid"></div>
-
-      <div class="pagination-container" id="paginationContainer" style="display: none;">
-        <div class="pagination-buttons">
-          <button class="pagination-btn prev" id="prevBtn">Prev</button>
-          <div class="pagination-info" id="pageInfo">1 / 1</div>
-          <button class="pagination-btn next" id="nextBtn">Next</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="section" id="skill">
     <div class="container">
       <h2 class="section-title">SKILLS</h2>
@@ -281,28 +270,6 @@
       </div>
     </div>
   </section>
-
-  <div class="modal" id="modal-settings" onclick="closeSettingsModal()">
-    <div class="modal-content settings-modal-content" onclick="event.stopPropagation()">
-      <div class="modal-header">
-        <button class="modal-close" onclick="closeSettingsModal()">×</button>
-        <h2 class="modal-title">SETTINGS</h2>
-        <p class="modal-subtitle">System Configuration</p>
-      </div>
-      <div class="modal-body">
-        <div class="settings-section">
-          <h3 class="settings-section-title">DISPLAY</h3>
-          <div class="settings-row">
-            <span class="settings-label">DARK MODE</span>
-            <label class="toggle-switch">
-              <input type="checkbox" id="theme-switch">
-              <span class="toggle-slider"></span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="modal" id="modal-qa" onclick="closeQAModal()">
     <div class="modal-content qa-modal-content" onclick="event.stopPropagation()">

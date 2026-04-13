@@ -326,10 +326,21 @@ async function getProjectFiles() {
 		const response = await fetch("projects/index.json");
 		if (!response.ok) throw new Error("index.json not found");
 		const data = await response.json();
-		return data.projects.map((file) => `projects/${file}`);
+		const grid = document.getElementById("projectGrid");
+		const isFeatured = grid && grid.dataset.featured === "true";
+		const files = (isFeatured && data.featured) ? data.featured : data.projects;
+		return files.map((file) => `projects/${file}`);
 	} catch {
 		return ["projects/project1.md", "projects/project2.md", "projects/project3.md"];
 	}
+}
+
+function showAllFeatured() {
+	document.querySelectorAll(".project-card").forEach((card) => {
+		card.classList.remove("hidden");
+		card.classList.add("page-active");
+	});
+	applyScrollAnimation();
 }
 
 async function loadProjects() {
@@ -369,8 +380,13 @@ async function loadProjects() {
 		return;
 	}
 
-	initPagination(totalProjects);
-	initSort();
+	const isFeatured = projectGrid && projectGrid.dataset.featured === "true";
+	if (isFeatured) {
+		showAllFeatured();
+	} else {
+		initPagination(totalProjects);
+		initSort();
+	}
 }
 
 if (document.readyState === "loading") {

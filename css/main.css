@@ -244,7 +244,8 @@ body::after {
 
 /* ========== ヘッダー ========== */
 header {
-  position: relative;
+  position: sticky;
+  top: 0;
   padding: 2rem 5%;
   background: var(--bg-header);
   backdrop-filter: blur(10px);
@@ -273,6 +274,21 @@ nav {
   text-transform: uppercase;
   transition: color var(--transition-speed) var(--transition-easing);
   z-index: 102;
+}
+
+a.logo {
+  text-decoration: none;
+  color: var(--accent-primary);
+}
+
+a.logo:hover {
+  color: var(--accent-secondary);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .nav-links {
@@ -705,31 +721,50 @@ footer {
               border-color var(--transition-speed) var(--transition-easing);
 }
 
-#settings-btn {
-  position: fixed;
-  left: 1.5rem;
-  bottom: 1.5rem;
-
-  width: 52px;
-  height: 52px;
+.theme-toggle {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 2px solid #a29bfe;
-  background: radial-gradient(circle, rgba(162,155,254,0.3), rgba(0,0,0,0.8));
+  background: radial-gradient(circle, rgba(162,155,254,0.3), rgba(0,0,0,0.7));
   cursor: pointer;
   display: grid;
   place-items: center;
   box-shadow:
     0 0 10px rgba(162,155,254,0.6),
     inset 0 0 8px rgba(255,255,255,0.2);
-  transition: transform 0.4s ease, box-shadow 0.3s;
-  z-index: 99999;
-  font-size: 1.5rem;
-  color: #a29bfe;
+  transition: transform 0.3s, box-shadow 0.3s;
+  flex-shrink: 0;
+  position: relative;
 }
 
-#settings-btn:hover {
-  transform: rotate(90deg) scale(1.12);
+.theme-toggle:hover {
+  transform: scale(1.15) rotate(15deg);
   box-shadow: var(--toggle-hover);
+}
+
+.theme-toggle .icon {
+  position: absolute;
+  font-size: 1.1rem;
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.theme-toggle .sun {
+  opacity: 1;
+}
+
+.theme-toggle .moon {
+  opacity: 0;
+}
+
+.theme-toggle.night .sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.theme-toggle.night .moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
 }
 
 .project-media {
@@ -773,85 +808,53 @@ footer {
     }
 }
 
-/* ========== 設定モーダル ========== */
-.settings-modal-content {
-  max-width: 480px;
+
+/* ========== VIEW ALL ボタン ========== */
+.view-all-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
 }
 
-.settings-section {
-  margin-bottom: 2rem;
-}
-
-.settings-section-title {
-  font-size: 0.75rem;
+.view-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 2.5rem;
+  background: transparent;
+  border: 2px solid var(--accent-primary);
   color: var(--accent-primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
   letter-spacing: 3px;
   text-transform: uppercase;
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border-color);
-  transition: color var(--transition-speed) var(--transition-easing),
-              border-color var(--transition-speed) var(--transition-easing);
-}
-
-.settings-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 0;
-}
-
-.settings-label {
-  font-size: 0.9rem;
-  color: var(--text-primary);
-  letter-spacing: 1px;
-  font-family: 'Courier New', monospace;
-  transition: color var(--transition-speed) var(--transition-easing);
-}
-
-/* ピル型トグルスイッチ */
-.toggle-switch {
   position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 26px;
-  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.3s ease, border-color var(--transition-speed) var(--transition-easing);
 }
 
-.toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.toggle-slider {
-  position: absolute;
-  inset: 0;
-  background: var(--border-color);
-  border-radius: 26px;
-  transition: background 0.3s ease;
-}
-
-.toggle-slider::before {
+.view-all-btn::before {
   content: '';
   position: absolute;
-  width: 20px;
-  height: 20px;
-  left: 3px;
-  top: 3px;
-  background: white;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  inset: 0;
+  background: var(--accent-gradient);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease, background var(--transition-speed) var(--transition-easing);
 }
 
-.toggle-switch input:checked + .toggle-slider {
-  background: var(--accent-primary);
-  box-shadow: 0 0 10px var(--shadow-color);
+.view-all-btn:hover {
+  color: white;
 }
 
-.toggle-switch input:checked + .toggle-slider::before {
-  transform: translateX(24px);
+.view-all-btn:hover::before {
+  transform: translateX(0);
+}
+
+.view-all-btn span,
+.view-all-btn .btn-arrow {
+  position: relative;
+  z-index: 1;
 }
 
 /* ========== ページネーション ========== */

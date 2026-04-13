@@ -35,6 +35,7 @@
     width: 100%;
     gap: 0;
     padding-top: 1.5rem;
+    order: 3;
   }
 
   .nav-links.open {
@@ -47,8 +48,13 @@
     border-bottom: 1px solid var(--border-color);
   }
 
-  .logo {
+  .logo,
+  a.logo {
     font-size: 1.2rem;
+  }
+
+  .nav-actions {
+    order: 2;
   }
   
   .hero {

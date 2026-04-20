@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Projects | huraru's Portfolio</title>
+  <meta name="description" content="huraru の全プロジェクト一覧">
+  <meta name="author" content="huraru">
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/skill.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/media.css">
+
+  <script src="js/vendor/marked.min.js" defer></script>
+  <script src="js/Sunrise_Sunset.js" defer></script>
+  <script src="js/Theme.js" defer></script>
+  <script src="js/project.js" defer></script>
+  <script src="js/Modal.js" defer></script>
+  <script src="js/dotMotion.js" defer></script>
+</head>
+
+<body>
+  <div class="decorative-lines">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+
+  <div class="dots-pattern"></div>
+  <div class="barcode"></div>
+
+  <div class="geometric-shape shape-1"></div>
+  <div class="geometric-shape shape-2"></div>
+  <div class="geometric-shape shape-3"></div>
+
+  <header>
+    <nav>
+      <a href="index.html" class="logo">PORTFOLIO</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">TOP</a></li>
+        <li><a href="index.html#about">ABOUT</a></li>
+        <li><a href="index.html#skill">SKILL</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <button id="theme-toggle" class="theme-toggle">
+          <span class="icon sun">☀</span>
+          <span class="icon moon">🌙</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section-title">ALL PROJECTS</h2>
+
+      <div class="sort-container" id="sortContainer" style="display: none;">
+        <span class="sort-label">SORT</span>
+        <div class="sort-controls">
+          <select id="sortField" class="sort-select">
+            <option value="">デフォルト</option>
+            <option value="teamSize">制作人数</option>
+            <option value="period">制作期間</option>
+            <option value="startDate">開始日</option>
+            <option value="endDate">終了日</option>
+          </select>
+          <button id="sortOrderBtn" class="sort-order-btn" data-order="asc">↑ 昇順</button>
+        </div>
+      </div>
+
+      <div class="project-grid" id="projectGrid"></div>
+
+      <div class="pagination-container" id="paginationContainer" style="display: none;">
+        <div class="pagination-buttons">
+          <button class="pagination-btn prev" id="prevBtn">Prev</button>
+          <div class="pagination-info" id="pageInfo">1 / 1</div>
+          <button class="pagination-btn next" id="nextBtn">Next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p class="footer-text">
+      CONTACT: <span class="footer-email">hurarunium@gmail.com</span>
+    </p>
+    <p class="footer-copyright">
+      2025 this portfolio is designed by huraru.
+    </p>
+  </footer>
+
+  <div id="modalContainer"></div>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+
+</html>

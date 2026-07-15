@@ -1,0 +1,11 @@
+{
+  "works": [
+    "featured-game.json",
+    "featured-published.json",
+    "featured-design-doc.json",
+    "console-othello.json",
+    "portfolio.json",
+    "mekanism-potato.json",
+    "dragcore.json"
+  ]
+}

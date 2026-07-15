@@ -23,6 +23,8 @@
   nav {
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0;
   }
 
   .hamburger {
@@ -35,6 +37,7 @@
     width: 100%;
     gap: 0;
     padding-top: 1.5rem;
+    margin-left: 0;
     order: 3;
   }
 

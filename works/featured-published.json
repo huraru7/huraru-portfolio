@@ -1,0 +1,34 @@
+{
+  "id": "featured-published",
+  "title": "[TODO: 代表作2 - 公開済み作品タイトル]",
+  "subtitle": "[TODO: 一言サブタイトル]",
+  "tags": ["ゲーム"],
+  "summary": "[TODO: カード用の短い説明]",
+  "image": null,
+  "video": null,
+  "featured": true,
+  "featuredRole": "published",
+  "myRole": "[TODO: チーム/ジャム作品の場合は具体的な担当範囲を明記。個人制作の場合はその旨を明記。]",
+  "teamSize": "[TODO]",
+  "period": "[TODO]",
+  "startDate": "",
+  "endDate": "",
+  "designIntent": "[TODO: なぜこの企画か、誰が楽しむのかを明示]",
+  "philosophyLink": "[TODO: 設計思想のどの部分と繋がるかを一言で]",
+  "metrics": [
+    { "label": "[TODO: 想定ユーザー像]", "value": "[TODO]" }
+  ],
+  "blocks": [
+    { "type": "text", "content": "[TODO: 企画概要をここに記載]" },
+    {
+      "type": "flowchart",
+      "src": "[TODO: フローチャート画像パス]",
+      "caption": "[TODO: システムの流れを3〜5ステップで視覚化]"
+    }
+  ],
+  "postmortem": {
+    "reception": "[TODO: 公開後、実際にどう遊ばれたか(反応・数値があれば記載)]",
+    "gap": "[TODO: 想定と違ったこと、そこから何を直したか]",
+    "reflection": "[TODO: 今の設計思想に照らして、当時の判断をどう振り返るか]"
+  }
+}

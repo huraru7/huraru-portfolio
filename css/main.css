@@ -259,8 +259,9 @@ header {
 
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 2.5rem;
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
@@ -295,6 +296,7 @@ a.logo:hover {
   display: flex;
   gap: 2.5rem;
   list-style: none;
+  margin-left: auto;
 }
 
 .nav-links a {

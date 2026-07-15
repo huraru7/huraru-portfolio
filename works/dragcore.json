@@ -1,0 +1,24 @@
+{
+  "id": "dragcore",
+  "title": "DragCore",
+  "subtitle": "",
+  "tags": ["ゲーム"],
+  "summary": "[TODO: 概要を記載]",
+  "image": null,
+  "video": "images/test.mp4",
+  "featured": false,
+  "featuredRole": null,
+  "myRole": "単独制作。[TODO: 担当詳細を記載]",
+  "teamSize": "1人",
+  "period": "3ヶ月",
+  "startDate": "",
+  "endDate": "",
+  "designIntent": "[TODO: 企画意図を記載]",
+  "philosophyLink": "",
+  "metrics": [],
+  "blocks": [
+    { "type": "text", "content": "### プロジェクト説明\n\n- 制作期間: 3ヶ月\n- 制作体制: 個人制作" },
+    { "type": "text", "content": "[TODO: 概要を記載]" }
+  ],
+  "postmortem": null
+}

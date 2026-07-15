@@ -1,0 +1,24 @@
+{
+  "id": "mekanism-potato",
+  "title": "Mekanism Potato",
+  "subtitle": "",
+  "tags": ["その他"],
+  "summary": "ポテトが主役のMinecraft ModPack",
+  "image": "images/Asset/mekanismPotato.png",
+  "video": null,
+  "featured": false,
+  "featuredRole": null,
+  "myRole": "単独制作。ModPack全体の企画・バランス調整・構成を担当。",
+  "teamSize": "1人",
+  "period": "3ヶ月",
+  "startDate": "",
+  "endDate": "",
+  "designIntent": "[TODO: 企画意図を記載]",
+  "philosophyLink": "",
+  "metrics": [],
+  "blocks": [
+    { "type": "text", "content": "### プロジェクト説明\n\n- 制作期間: 3ヶ月\n- 制作体制: 個人制作" },
+    { "type": "text", "content": "[TODO: 概要を記載]" }
+  ],
+  "postmortem": null
+}

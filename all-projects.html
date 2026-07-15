@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Projects | huraru's Portfolio</title>
-  <meta name="description" content="huraru の全プロジェクト一覧">
+  <title>All Works | huraru's Portfolio</title>
+  <meta name="description" content="huraru の全作品アーカイブ">
   <meta name="author" content="huraru">
 
   <link rel="icon" type="image/png" href="images/favicon.png">
@@ -13,12 +13,14 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/skill.css">
   <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/works.css">
   <link rel="stylesheet" href="css/media.css">
 
   <script src="js/vendor/marked.min.js" defer></script>
   <script src="js/Sunrise_Sunset.js" defer></script>
   <script src="js/Theme.js" defer></script>
-  <script src="js/project.js" defer></script>
+  <script src="js/blockRenderer.js" defer></script>
+  <script src="js/works.js" defer></script>
   <script src="js/Modal.js" defer></script>
   <script src="js/dotMotion.js" defer></script>
 </head>
@@ -44,6 +46,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">TOP</a></li>
         <li><a href="index.html#about">ABOUT</a></li>
+        <li><a href="index.html#featured-works">WORKS</a></li>
         <li><a href="index.html#skill">SKILL</a></li>
       </ul>
       <div class="nav-actions">
@@ -62,7 +65,15 @@
 
   <section class="section" id="projects">
     <div class="container">
-      <h2 class="section-title">ALL PROJECTS</h2>
+      <h2 class="section-title">ALL WORKS</h2>
+
+      <div class="tag-filter" id="tagFilter">
+        <button class="tag-chip active" data-tag="">すべて</button>
+        <button class="tag-chip" data-tag="ゲーム">ゲーム</button>
+        <button class="tag-chip" data-tag="二次創作">二次創作</button>
+        <button class="tag-chip" data-tag="企画書">企画書</button>
+        <button class="tag-chip" data-tag="その他">その他</button>
+      </div>
 
       <div class="sort-container" id="sortContainer" style="display: none;">
         <span class="sort-label">SORT</span>
@@ -79,14 +90,6 @@
       </div>
 
       <div class="project-grid" id="projectGrid"></div>
-
-      <div class="pagination-container" id="paginationContainer" style="display: none;">
-        <div class="pagination-buttons">
-          <button class="pagination-btn prev" id="prevBtn">Prev</button>
-          <div class="pagination-info" id="pageInfo">1 / 1</div>
-          <button class="pagination-btn next" id="nextBtn">Next</button>
-        </div>
-      </div>
     </div>
   </section>
 

@@ -9,10 +9,10 @@
   <meta name="keywords" content="プログラマー,ポートフォリオ,huraru,ふらる">
   <meta name="author" content="huraru">
 
-  <meta property="og:image" content="https://huraru7.github.io/huraru-portfolio/images/og-image.jpg">
+  <meta property="og:image" content="https://portfolio.huraru.com/images/og-image.jpg">
   <meta property="og:image:width" content="1299">
   <meta property="og:image:height" content="630">
-  <meta property="og:url" content="https://huraru7.github.io/huraru-portfolio/">
+  <meta property="og:url" content="https://portfolio.huraru.com/">
   <meta property="og:title" content="huraru`s Portfolio">
   <meta property="og:description" content="ふらるのポートフォリオ">
 
@@ -27,12 +27,14 @@
   <link rel="stylesheet" href="css/modal.css">
   <link rel="stylesheet" href="css/qa-modal.css">
   <link rel="stylesheet" href="css/textMotion.css">
+  <link rel="stylesheet" href="css/works.css">
   <link rel="stylesheet" href="css/media.css">
 
   <script src="js/vendor/marked.min.js" defer></script>
   <script src="js/Sunrise_Sunset.js" defer></script>
   <script src="js/Theme.js" defer></script>
-  <script src="js/project.js" defer></script>
+  <script src="js/blockRenderer.js" defer></script>
+  <script src="js/works.js" defer></script>
   <script src="js/textMotion.js" defer></script>
   <script src="js/Modal.js" defer></script>
   <script src="js/dotMotion.js" defer></script>
@@ -68,8 +70,8 @@
       <a href="#top" class="logo">PORTFOLIO</a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#top">TOP</a></li>
-        <li><a href="#projects">PROJECTS</a></li>
         <li><a href="#about">ABOUT</a></li>
+        <li><a href="#featured-works">WORKS</a></li>
         <li><a href="#skill">SKILL</a></li>
       </ul>
       <div class="nav-actions">
@@ -102,21 +104,6 @@
         <img src="images/huraru/huraru3.webp" alt="huraru3" class="hero-slide circular-image" loading="lazy">
         <img src="images/huraru/huraru4.webp" alt="huraru4" class="hero-slide circular-image" loading="lazy">
         <img src="images/huraru/huraru5.webp" alt="huraru5" class="hero-slide circular-image" loading="lazy">
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="projects">
-    <div class="container">
-      <h2 class="section-title">PROJECTS</h2>
-
-      <div class="project-grid" id="projectGrid" data-featured="true"></div>
-
-      <div class="view-all-container">
-        <a href="all-projects.html" class="view-all-btn">
-          <span>VIEW ALL PROJECTS</span>
-          <span class="btn-arrow">→</span>
-        </a>
       </div>
     </div>
   </section>
@@ -171,12 +158,10 @@
         <div class="about-text">
           <h3 class="about-subtitle">Aspiring Game Creator</h3>
           <p class="about-description">
-            - C#（Unity）
-            - JavaScript（Web / ポートフォリオ）
+            [TODO: 自分が先頭に立って何かを動かした経験の一文をここに記載]
           </p>
           <p class="about-description">
-            - Unity 2022
-            - 個人制作（設計・実装）
+            「単純なルールほど、自分で気づいた瞬間の快感が深い」という考えを軸に、装飾より構造そのものを作り込むことを大切にしています。感覚的な面白さを、誰かに説明できる論理に落とし込むのが得意です。
           </p>
 
           <div class="about-stats">
@@ -217,6 +202,25 @@
           </button>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section" id="featured-works">
+    <div class="container">
+      <h2 class="section-title">WORKS</h2>
+      <p class="section-lead">
+        「一つの設計思想を、異なる媒体で検証し続けている」ことを示す代表作3点です。
+      </p>
+
+      <div class="project-grid featured-works-grid" id="featuredWorksGrid"></div>
+
+      <div class="view-all-container">
+        <a href="all-projects.html" class="view-all-btn">
+          <span>VIEW ALL PROJECTS</span>
+          <span class="btn-arrow">→</span>
+        </a>
+      </div>
+    </div>
   </section>
 
   <section class="section" id="skill">

@@ -19,10 +19,11 @@
   <script src="js/vendor/marked.min.js" defer></script>
   <script src="js/Sunrise_Sunset.js" defer></script>
   <script src="js/Theme.js" defer></script>
-  <script src="js/blockRenderer.js" defer></script>
-  <script src="js/works.js" defer></script>
   <script src="js/Modal.js" defer></script>
   <script src="js/dotMotion.js" defer></script>
+  <script src="js/work-parser.js" defer></script>
+  <script src="js/work-renderer.js" defer></script>
+  <script src="js/works-app.js" defer></script>
 </head>
 
 <body>
@@ -67,27 +68,7 @@
     <div class="container">
       <h2 class="section-title">ALL WORKS</h2>
 
-      <div class="tag-filter" id="tagFilter">
-        <button class="tag-chip active" data-tag="">すべて</button>
-        <button class="tag-chip" data-tag="ゲーム">ゲーム</button>
-        <button class="tag-chip" data-tag="二次創作">二次創作</button>
-        <button class="tag-chip" data-tag="企画書">企画書</button>
-        <button class="tag-chip" data-tag="その他">その他</button>
-      </div>
-
-      <div class="sort-container" id="sortContainer" style="display: none;">
-        <span class="sort-label">SORT</span>
-        <div class="sort-controls">
-          <select id="sortField" class="sort-select">
-            <option value="">デフォルト</option>
-            <option value="teamSize">制作人数</option>
-            <option value="period">制作期間</option>
-            <option value="startDate">開始日</option>
-            <option value="endDate">終了日</option>
-          </select>
-          <button id="sortOrderBtn" class="sort-order-btn" data-order="asc">↑ 昇順</button>
-        </div>
-      </div>
+      <div class="tag-filter" id="tagFilter"></div>
 
       <div class="project-grid" id="projectGrid"></div>
     </div>
@@ -102,7 +83,14 @@
     </p>
   </footer>
 
-  <div id="modalContainer"></div>
+  <div id="work-modal" class="work-modal">
+    <div class="work-modal-inner">
+      <button class="work-modal-close" onclick="closeWorkModal()">×</button>
+      <h2 class="p-title"></h2>
+      <div class="p-tags"></div>
+      <div class="p-body"></div>
+    </div>
+  </div>
 
   <script>
     const hamburger = document.getElementById('hamburger');

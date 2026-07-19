@@ -33,13 +33,14 @@
   <script src="js/vendor/marked.min.js" defer></script>
   <script src="js/Sunrise_Sunset.js" defer></script>
   <script src="js/Theme.js" defer></script>
-  <script src="js/blockRenderer.js" defer></script>
-  <script src="js/works.js" defer></script>
   <script src="js/textMotion.js" defer></script>
   <script src="js/Modal.js" defer></script>
   <script src="js/dotMotion.js" defer></script>
   <script src="js/topImage.js" defer></script>
   <script src="js/qa.js" defer></script>
+  <script src="js/work-parser.js" defer></script>
+  <script src="js/work-renderer.js" defer></script>
+  <script src="js/works-app.js" defer></script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NQN0302N3X"></script>
   <script>
@@ -296,7 +297,14 @@
     </p>
   </footer>
 
-  <div id="modalContainer"></div>
+  <div id="work-modal" class="work-modal">
+    <div class="work-modal-inner">
+      <button class="work-modal-close" onclick="closeWorkModal()">×</button>
+      <h2 class="p-title"></h2>
+      <div class="p-tags"></div>
+      <div class="p-body"></div>
+    </div>
+  </div>
 
   <script>
     const hamburger = document.getElementById('hamburger');

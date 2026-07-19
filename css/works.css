@@ -11,18 +11,13 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
-.featured-work-card {
-    display: flex;
-    flex-direction: column;
+/* ========== 作品カード ========== */
+.work-card-tags {
+    margin-bottom: 0.75rem;
 }
 
-.work-philosophy-tag {
-    font-size: 0.75rem;
-    color: var(--accent-primary);
-    border-left: 3px solid var(--border-accent);
-    padding-left: 0.6rem;
-    margin: 0.5rem 0;
-    line-height: 1.5;
+.tag {
+    font-family: 'Courier New', monospace;
 }
 
 /* ========== タグ絞り込み ========== */
@@ -58,11 +53,163 @@
     color: #fff;
 }
 
-.project-card.filtered-out {
-    display: none !important;
+/* ========== 共有モーダル(#work-modal) ========== */
+.work-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(10, 14, 25, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 4vh 5%;
+    overflow-y: auto;
 }
 
-/* ========== My role / 企画意図 / 数字的根拠 ========== */
+.work-modal.is-open {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.work-modal-inner {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    background: var(--bg-modal);
+    border: 1px solid var(--border-accent);
+    box-shadow: var(--neon-glow);
+    padding: 2.5rem;
+    margin: auto;
+    transition: background var(--transition-speed) var(--transition-easing),
+                border-color var(--transition-speed) var(--transition-easing);
+}
+
+.work-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.work-modal-close:hover {
+    color: var(--accent-primary);
+}
+
+.p-title {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    padding-right: 2rem;
+}
+
+.p-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.p-tag {
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    padding: 0.25rem 0.6rem;
+    background: var(--glow-color);
+    color: var(--accent-primary);
+}
+
+/* ========== ブロックレンダラー(work-renderer.js) ========== */
+.work-text {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.work-text strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.work-inline-img {
+    max-width: 100%;
+    display: block;
+    margin: 0.5rem 0;
+}
+
+.work-image,
+.work-flowchart {
+    margin: 1.5rem 0;
+}
+
+.work-image img,
+.work-flowchart img {
+    width: 100%;
+    display: block;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+}
+
+.work-image figcaption,
+.work-caption {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.work-image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin: 1.5rem 0 0.5rem;
+}
+
+.work-image-pair img {
+    width: 100%;
+    display: block;
+    border: 1px solid var(--border-color);
+}
+
+.work-row {
+    display: grid;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.work-video {
+    margin: 1.5rem 0;
+}
+
+.work-video-frame {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+}
+
+.work-video-frame iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.work-custom-fallback {
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    font-style: italic;
+    padding: 0.75rem 1rem;
+    border: 1px dashed var(--border-color);
+    margin: 1.5rem 0;
+}
+
+/* ========== ポストモーテム(custom: postmortem) ========== */
 .work-block-label {
     display: block;
     font-size: 0.65rem;
@@ -72,35 +219,6 @@
     margin-bottom: 0.4rem;
 }
 
-.work-role-block,
-.work-intent-block {
-    margin-bottom: 1.5rem;
-    padding: 1rem 1.25rem;
-    background: var(--bg-card);
-    border-left: 4px solid var(--border-accent);
-}
-
-.work-role-block p,
-.work-intent-block p {
-    color: var(--text-primary);
-    line-height: 1.8;
-}
-
-.work-metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    padding: 1rem 1.25rem;
-    background: var(--bg-card);
-    border-left: 4px solid var(--border-accent);
-}
-
-.work-metrics-grid .work-block-label {
-    grid-column: 1 / -1;
-}
-
-/* ========== ポストモーテム ========== */
 .work-postmortem {
     margin-top: 2.5rem;
     padding-top: 1.5rem;
@@ -124,89 +242,17 @@
     line-height: 1.8;
 }
 
-/* ========== ブロックレンダラー ========== */
-.work-figure {
-    margin: 1.5rem 0;
-}
-
-.work-figure img {
-    width: 100%;
-    display: block;
-    border: 1px solid var(--border-color);
-}
-
-.work-figure figcaption {
-    font-size: 0.8rem;
-    color: var(--text-tertiary);
-    margin-top: 0.5rem;
-    text-align: center;
-}
-
-.img-pair {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    margin: 1.5rem 0 0.5rem;
-}
-
-.img-pair img {
-    width: 100%;
-    display: block;
-    border: 1px solid var(--border-color);
-}
-
-.img-pair-caption {
-    font-size: 0.8rem;
-    color: var(--text-tertiary);
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-.flowchart {
-    background: var(--bg-card);
-}
-
-.row {
-    display: grid;
-    gap: 1.5rem;
-    margin: 1.5rem 0;
-}
-
-.video-embed {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%;
-    margin: 1.5rem 0;
-}
-
-.video-embed iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-.work-custom-note {
-    font-size: 0.85rem;
-    color: var(--text-tertiary);
-    font-style: italic;
-    padding: 0.75rem 1rem;
-    border: 1px dashed var(--border-color);
-}
-
 @media (max-width: 768px) {
     .featured-works-grid {
         grid-template-columns: 1fr;
     }
 
-    .img-pair,
-    .row {
+    .work-image-pair,
+    .work-row {
         grid-template-columns: 1fr !important;
     }
 
-    .work-metrics-grid {
-        grid-template-columns: 1fr;
+    .work-modal-inner {
+        padding: 1.75rem;
     }
 }

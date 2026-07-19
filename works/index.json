@@ -1,11 +1,16 @@
 {
   "works": [
-    "featured-game.json",
-    "featured-published.json",
-    "featured-design-doc.json",
-    "console-othello.json",
-    "portfolio.json",
-    "mekanism-potato.json",
-    "dragcore.json"
+    "featured-game.md",
+    "featured-published.md",
+    "featured-design-doc.md",
+    "console-othello.md",
+    "portfolio.md",
+    "mekanism-potato.md",
+    "dragcore.md"
+  ],
+  "featured": [
+    "featured-game.md",
+    "featured-published.md",
+    "featured-design-doc.md"
   ]
 }

@@ -1,3 +1,5 @@
 .DS_Store
 work-block-editor.html
+md-directive-preview.html
+parseWorkFile.js
 tools/

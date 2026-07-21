@@ -59,9 +59,11 @@ const { title, description, keywords, ogImage, ogUrl, preloadImage } = Astro.pro
   <div class="dots-pattern"></div>
   <div class="barcode"></div>
 
-  <slot />
+  <div class="geometric-shape shape-1"></div>
+  <div class="geometric-shape shape-2"></div>
+  <div class="geometric-shape shape-3"></div>
 
-  <div id="modalContainer"></div>
+  <slot />
 
   <script is:inline>
     const hamburger = document.getElementById('hamburger');

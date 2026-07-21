@@ -1,0 +1,84 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  ogImage?: string;
+  ogUrl?: string;
+  preloadImage?: string;
+}
+
+const { title, description, keywords, ogImage, ogUrl, preloadImage } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  {keywords && <meta name="keywords" content={keywords}>}
+  <meta name="author" content="huraru">
+
+  {ogImage && (
+    <>
+      <meta property="og:image" content={ogImage}>
+      <meta property="og:image:width" content="1299">
+      <meta property="og:image:height" content="630">
+      <meta property="og:url" content={ogUrl}>
+      <meta property="og:title" content={title}>
+      <meta property="og:description" content={description}>
+    </>
+  )}
+
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  {preloadImage && <link rel="preload" as="image" href={preloadImage}>}
+
+  <slot name="head" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NQN0302N3X"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-NQN0302N3X');
+  </script>
+</head>
+
+<body>
+  <div class="decorative-lines">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+
+  <div class="dots-pattern"></div>
+  <div class="barcode"></div>
+
+  <slot />
+
+  <div id="modalContainer"></div>
+
+  <script is:inline>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+
+</html>

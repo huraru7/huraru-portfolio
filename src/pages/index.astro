@@ -1,70 +1,37 @@
-<!DOCTYPE html>
-<html lang="ja">
+---
+import Layout from '../layouts/Layout.astro';
+---
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>huraru`s Portfolio</title>
-  <meta name="description" content="ふらるのポートフォリオ">
-  <meta name="keywords" content="プログラマー,ポートフォリオ,huraru,ふらる">
-  <meta name="author" content="huraru">
+<Layout
+  title="huraru`s Portfolio"
+  description="ふらるのポートフォリオ"
+  keywords="プログラマー,ポートフォリオ,huraru,ふらる"
+  ogImage="https://portfolio.huraru.com/images/og-image.jpg"
+  ogUrl="https://portfolio.huraru.com/"
+  preloadImage="/images/huraru/huraru1.webp"
+>
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/hero.css">
+    <link rel="stylesheet" href="/css/about.css">
+    <link rel="stylesheet" href="/css/skill.css">
+    <link rel="stylesheet" href="/css/modal.css">
+    <link rel="stylesheet" href="/css/qa-modal.css">
+    <link rel="stylesheet" href="/css/textMotion.css">
+    <link rel="stylesheet" href="/css/works.css">
+    <link rel="stylesheet" href="/css/media.css">
 
-  <meta property="og:image" content="https://portfolio.huraru.com/images/og-image.jpg">
-  <meta property="og:image:width" content="1299">
-  <meta property="og:image:height" content="630">
-  <meta property="og:url" content="https://portfolio.huraru.com/">
-  <meta property="og:title" content="huraru`s Portfolio">
-  <meta property="og:description" content="ふらるのポートフォリオ">
-
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="preload" as="image" href="images/huraru/huraru1.webp">
-
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/hero.css">
-  <link rel="stylesheet" href="css/about.css">
-  <link rel="stylesheet" href="css/skill.css">
-  <link rel="stylesheet" href="css/modal.css">
-  <link rel="stylesheet" href="css/qa-modal.css">
-  <link rel="stylesheet" href="css/textMotion.css">
-  <link rel="stylesheet" href="css/works.css">
-  <link rel="stylesheet" href="css/media.css">
-
-  <script src="js/vendor/marked.min.js" defer></script>
-  <script src="js/Sunrise_Sunset.js" defer></script>
-  <script src="js/Theme.js" defer></script>
-  <script src="js/textMotion.js" defer></script>
-  <script src="js/Modal.js" defer></script>
-  <script src="js/dotMotion.js" defer></script>
-  <script src="js/topImage.js" defer></script>
-  <script src="js/qa.js" defer></script>
-  <script src="js/work-parser.js" defer></script>
-  <script src="js/work-renderer.js" defer></script>
-  <script src="js/works-app.js" defer></script>
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NQN0302N3X"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-NQN0302N3X');
-  </script>
-</head>
-
-<body>
-  <div class="decorative-lines">
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
-  </div>
-
-  <div class="dots-pattern"></div>
-  <div class="barcode"></div>
-
-  <div class="geometric-shape shape-1"></div>
-  <div class="geometric-shape shape-2"></div>
-  <div class="geometric-shape shape-3"></div>
+    <script src="/js/vendor/marked.min.js" defer></script>
+    <script src="/js/Sunrise_Sunset.js" defer></script>
+    <script src="/js/Theme.js" defer></script>
+    <script src="/js/textMotion.js" defer></script>
+    <script src="/js/Modal.js" defer></script>
+    <script src="/js/topImage.js" defer></script>
+    <script src="/js/qa.js" defer></script>
+    <script src="/js/work-parser.js" defer></script>
+    <script src="/js/work-renderer.js" defer></script>
+    <script src="/js/works-app.js" defer></script>
+  </Fragment>
 
   <header>
     <nav>
@@ -100,11 +67,11 @@
       </div>
 
       <div class="hero-image circular-image-ring">
-        <img src="images/huraru/huraru1.webp" alt="huraru1" class="hero-slide circular-image active" fetchpriority=high>
-        <img src="images/huraru/huraru2.webp" alt="huraru2" class="hero-slide circular-image" loading="lazy">
-        <img src="images/huraru/huraru3.webp" alt="huraru3" class="hero-slide circular-image" loading="lazy">
-        <img src="images/huraru/huraru4.webp" alt="huraru4" class="hero-slide circular-image" loading="lazy">
-        <img src="images/huraru/huraru5.webp" alt="huraru5" class="hero-slide circular-image" loading="lazy">
+        <img src="/images/huraru/huraru1.webp" alt="huraru1" class="hero-slide circular-image active" fetchpriority="high">
+        <img src="/images/huraru/huraru2.webp" alt="huraru2" class="hero-slide circular-image" loading="lazy">
+        <img src="/images/huraru/huraru3.webp" alt="huraru3" class="hero-slide circular-image" loading="lazy">
+        <img src="/images/huraru/huraru4.webp" alt="huraru4" class="hero-slide circular-image" loading="lazy">
+        <img src="/images/huraru/huraru5.webp" alt="huraru5" class="hero-slide circular-image" loading="lazy">
       </div>
     </div>
   </section>
@@ -135,23 +102,23 @@
             <span class="profile-key">LINKS</span>
             <span class="profile-value profile-links">
               <a href="https://github.com/huraru7" target="_blank" rel="noopener noreferrer" class="profile-link">
-                <img src="images/skills/github.svg" alt="GitHub" class="link-icon">
+                <img src="/images/skills/github.svg" alt="GitHub" class="link-icon">
                 GitHub
               </a>
               <a href="https://legacy.curseforge.com/members/huraru/projects" target="_blank" rel="noopener noreferrer"
                 class="profile-link">
-                <img src="images/skills/curseforge.svg" alt="CurseForge" class="link-icon">
+                <img src="/images/skills/curseforge.svg" alt="CurseForge" class="link-icon">
                 CurseForge
               </a>
               <a href="https://x.com/hurarunium_sabu" target="_blank" rel="noopener noreferrer" class="profile-link">
-                <img src="images/x.svg" alt="X(Twitter)" class="link-icon">
+                <img src="/images/x.svg" alt="X(Twitter)" class="link-icon">
                 X (Twitter)
               </a>
             </span>
           </div>
         </div>
         <div class="about-image circular-image-ring">
-          <img src="images/huraru/huraru5.webp" alt="huraru5" class="circular-image" loading="lazy">
+          <img src="/images/huraru/huraru5.webp" alt="huraru5" class="circular-image" loading="lazy">
         </div>
       </div>
 
@@ -230,28 +197,28 @@
 
       <div class="skills-grid">
         <div class="skill-item">
-          <img src="images/skills/unity.svg" alt="Unity" class="skill-icon-only">
+          <img src="/images/skills/unity.svg" alt="Unity" class="skill-icon-only">
           <div class="skill-content">
             <div class="skill-name">Unity Engine</div>
             <p class="skill-description">ゲームエンジン</p>
           </div>
         </div>
         <div class="skill-item">
-          <img src="images/skills/github.svg" alt="github" class="skill-icon-only">
+          <img src="/images/skills/github.svg" alt="github" class="skill-icon-only">
           <div class="skill-content">
             <div class="skill-name">Github</div>
             <p class="skill-description">バージョン管理</p>
           </div>
         </div>
         <div class="skill-item">
-          <img src="images/skills/javascript.svg" alt="javascript" class="skill-icon-only">
+          <img src="/images/skills/javascript.svg" alt="javascript" class="skill-icon-only">
           <div class="skill-content">
             <div class="skill-name">JavaScript</div>
             <p class="skill-description">プログラミング言語</p>
           </div>
         </div>
         <div class="skill-item">
-          <img src="images/skills/csharp.svg" alt="csharp" class="skill-icon">
+          <img src="/images/skills/csharp.svg" alt="csharp" class="skill-icon">
           <div class="skill-content">
             <div class="skill-name">C#</div>
             <p class="skill-description">プログラミング言語</p>
@@ -262,15 +229,15 @@
       <div class="other-skills">
         <h3 class="other-skills-title">OTHER</h3>
         <div class="skills-icons">
-          <img src="images/skills/VScode.svg" alt="VScode" class="skill-icon-only">
-          <img src="images/skills/sourcetree.svg" alt="sourcetree" class="skill-icon-only">
-          <img src="images/skills/blockbench.svg" alt="blockbench" class="skill-icon-only">
-          <img src="images/skills/clipStudioPaint.svg" alt="clipStudioPaint" class="skill-icon-only">
-          <img src="images/skills/aseprite.svg" alt="aseprite" class="skill-icon-only">
-          <img src="images/skills/curseforge.svg" alt="curseforge" class="skill-icon-only">
-          <img src="images/skills/html5.svg" alt="html" class="skill-icon-only">
-          <img src="images/skills/css.svg" alt="css" class="skill-icon-only">
-          <img src="images/skills/python.svg" alt="python" class="skill-icon-only">
+          <img src="/images/skills/VScode.svg" alt="VScode" class="skill-icon-only">
+          <img src="/images/skills/sourcetree.svg" alt="sourcetree" class="skill-icon-only">
+          <img src="/images/skills/blockbench.svg" alt="blockbench" class="skill-icon-only">
+          <img src="/images/skills/clipStudioPaint.svg" alt="clipStudioPaint" class="skill-icon-only">
+          <img src="/images/skills/aseprite.svg" alt="aseprite" class="skill-icon-only">
+          <img src="/images/skills/curseforge.svg" alt="curseforge" class="skill-icon-only">
+          <img src="/images/skills/html5.svg" alt="html" class="skill-icon-only">
+          <img src="/images/skills/css.svg" alt="css" class="skill-icon-only">
+          <img src="/images/skills/python.svg" alt="python" class="skill-icon-only">
         </div>
       </div>
     </div>
@@ -305,23 +272,4 @@
       <div class="p-body"></div>
     </div>
   </div>
-
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navLinks.classList.toggle('open');
-    });
-
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('open');
-      });
-    });
-  </script>
-</body>
-
-</html>
+</Layout>

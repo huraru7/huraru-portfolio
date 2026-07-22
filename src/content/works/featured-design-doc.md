@@ -5,6 +5,8 @@ subtitle:
 tags: 企画書
 image:
 summary: TODO カード用の短い説明
+order: 3
+featured: true
 ---
 
 [TODO: カード用の短い説明]

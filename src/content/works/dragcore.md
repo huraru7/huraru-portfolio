@@ -5,6 +5,8 @@ subtitle:
 tags: ゲーム
 image:
 summary: TODO 概要を記載
+order: 7
+featured: false
 ---
 
 [TODO: 概要を記載]

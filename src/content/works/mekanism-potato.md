@@ -5,6 +5,8 @@ subtitle:
 tags: その他
 image: images/Asset/mekanismPotato.png
 summary: ポテトが主役のMinecraft ModPack
+order: 6
+featured: false
 ---
 
 [TODO: 概要を記載]

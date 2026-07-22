@@ -5,6 +5,8 @@ subtitle: オセロAIを搭載したシンプルなオセロゲーム
 tags: ゲーム
 image: images/Asset/ConsoleOthello.png
 summary: consoleで動かすシンプルオセロ
+order: 4
+featured: false
 ---
 
 コンソール上で動作する、AI対戦可能なオセロ。

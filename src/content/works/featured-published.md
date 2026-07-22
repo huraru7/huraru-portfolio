@@ -5,6 +5,8 @@ subtitle:
 tags: ゲーム
 image:
 summary: TODO カード用の短い説明
+order: 2
+featured: true
 ---
 
 [TODO: カード用の短い説明]

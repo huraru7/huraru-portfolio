@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import BlockRenderer from '../../components/BlockRenderer.astro';
+import { parseWorkBlocks } from '../../lib/parseWorkBody';
+
+export async function getStaticPaths() {
+  const works = await getCollection('works');
+  return works.map((work) => ({
+    params: { id: work.id },
+    props: { work },
+  }));
+}
+
+const { work } = Astro.props;
+const blocks = parseWorkBlocks(work.body ?? '');
+---
+
+<Layout title={`${work.data.title} | huraru's Portfolio`} description={work.data.summary}>
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/skill.css">
+    <link rel="stylesheet" href="/css/works.css">
+    <link rel="stylesheet" href="/css/media.css">
+
+    <script src="/js/Theme.js" defer></script>
+  </Fragment>
+
+  <header>
+    <nav>
+      <a href="/index.html" class="logo">PORTFOLIO</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/index.html">TOP</a></li>
+        <li><a href="/index.html#about">ABOUT</a></li>
+        <li><a href="/index.html#featured-works">WORKS</a></li>
+        <li><a href="/index.html#skill">SKILL</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <button id="theme-toggle" class="theme-toggle">
+          <span class="icon sun">☀</span>
+          <span class="icon moon">🌙</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="section" id="work-detail">
+    <div class="container">
+      <a href="/all-projects.html" class="view-all-btn work-back-link">
+        <span>← 一覧に戻る</span>
+      </a>
+
+      <h1 class="section-title">{work.data.title}</h1>
+      {work.data.subtitle && <p class="section-lead">{work.data.subtitle}</p>}
+
+      <div class="p-tags work-detail-tags">
+        {work.data.tags.map((t) => <span class="p-tag">{t}</span>)}
+      </div>
+
+      <div class="p-body work-detail-body">
+        {blocks.map((b) => <BlockRenderer block={b} />)}
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p class="footer-text">
+      CONTACT: <span class="footer-email">hurarunium@gmail.com</span>
+    </p>
+    <p class="footer-copyright">
+      2025 this portfolio is designed by huraru.
+    </p>
+  </footer>
+</Layout>

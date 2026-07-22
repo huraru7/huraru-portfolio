@@ -1,5 +1,14 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { parseWorkBlocks } from '../lib/parseWorkBody';
+
+const allWorks = (await getCollection('works')).sort((a, b) => a.data.order - b.data.order);
+const allWorksWithBlocks = allWorks.map((work) => ({
+  work,
+  blocks: parseWorkBlocks(work.body ?? ''),
+}));
 ---
 
 <Layout
@@ -13,14 +22,10 @@ import Layout from '../layouts/Layout.astro';
     <link rel="stylesheet" href="/css/works.css">
     <link rel="stylesheet" href="/css/media.css">
 
-    <script src="/js/vendor/marked.min.js" defer></script>
     <script src="/js/dotMotion.js" defer></script>
-    <script src="/js/Sunrise_Sunset.js" defer></script>
     <script src="/js/Theme.js" defer></script>
     <script src="/js/Modal.js" defer></script>
-    <script src="/js/work-parser.js" defer></script>
-    <script src="/js/work-renderer.js" defer></script>
-    <script src="/js/works-app.js" defer></script>
+    <script src="/js/tag-filter.js" defer></script>
   </Fragment>
 
   <header>
@@ -52,7 +57,11 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="tag-filter" id="tagFilter"></div>
 
-      <div class="project-grid" id="projectGrid"></div>
+      <div class="project-grid" id="projectGrid">
+        {allWorksWithBlocks.map(({ work, blocks }) => (
+          <ProjectCard work={work} blocks={blocks} />
+        ))}
+      </div>
     </div>
   </section>
 
@@ -64,13 +73,4 @@ import Layout from '../layouts/Layout.astro';
       2025 this portfolio is designed by huraru.
     </p>
   </footer>
-
-  <div id="work-modal" class="work-modal">
-    <div class="work-modal-inner">
-      <button class="work-modal-close" onclick="closeWorkModal()">×</button>
-      <h2 class="p-title"></h2>
-      <div class="p-tags"></div>
-      <div class="p-body"></div>
-    </div>
-  </div>
 </Layout>

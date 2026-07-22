@@ -1,6 +1,6 @@
 ---
 id: featured-design-doc
-title: [TODO: 代表作3 - 企画書/システム設計タイトル]
+title: "[TODO: 代表作3 - 企画書/システム設計タイトル]"
 subtitle:
 tags: 企画書
 image:

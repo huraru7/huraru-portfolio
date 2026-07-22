@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { WorkBlock } from '../lib/parseWorkBody';
+import { getCardExcerpt } from '../lib/parseWorkBody';
+
+interface Props {
+  work: CollectionEntry<'works'>;
+  blocks: WorkBlock[];
+}
+
+const { work, blocks } = Astro.props;
+const excerpt = getCardExcerpt(work.data.summary, blocks);
+const imageSrc = work.data.image ? `/${work.data.image.replace(/^\/+/, '')}` : '';
+---
+
+<a
+  href={`/works/${work.id}.html`}
+  class="work-card project-card"
+  data-tags={work.data.tags.join(',')}
+>
+  {imageSrc && (
+    <div class="project-media">
+      <img src={imageSrc} alt={work.data.title} />
+    </div>
+  )}
+  <h3 class="project-title">{work.data.title}</h3>
+  <div class="work-card-tags project-tech">
+    {work.data.tags.map((t) => <span class="tag tech-tag">{t}</span>)}
+  </div>
+  <p class="work-card-excerpt project-summary">{excerpt}</p>
+  <p class="project-detail-link">詳細を見る →</p>
+</a>

@@ -1,0 +1,101 @@
+---
+import type { WorkBlock } from '../lib/parseWorkBody';
+import { renderMarkdownChunk, mdInline } from '../lib/renderMarkdownChunk';
+import BlockRenderer from './BlockRenderer.astro';
+
+interface Props {
+  block: WorkBlock;
+}
+
+const { block } = Astro.props;
+
+function withLeadingSlash(src: string): string {
+  return src ? `/${src.replace(/^\/+/, '')}` : '';
+}
+
+function videoEmbedSrc(provider: string, id: string): string {
+  if (!id) return '';
+  return provider === 'vimeo'
+    ? `https://player.vimeo.com/video/${id}`
+    : `https://www.youtube.com/embed/${id}`;
+}
+
+let markdownHtml = '';
+if (block.type === 'markdown') {
+  markdownHtml = await renderMarkdownChunk(block.content);
+}
+
+let postmortemHtml = '';
+if (block.type === 'custom' && block.render === 'postmortem') {
+  postmortemHtml = `<div class="work-postmortem">
+      <h3 class="work-postmortem-title">ポストモーテム</h3>
+      <div class="postmortem-step">
+        <span class="work-block-label">公開後の反応</span>
+        <p>${mdInline((block.reception as string) || '')}</p>
+      </div>
+      <div class="postmortem-step">
+        <span class="work-block-label">想定とのギャップ</span>
+        <p>${mdInline((block.gap as string) || '')}</p>
+      </div>
+      <div class="postmortem-step">
+        <span class="work-block-label">今の設計思想からの振り返り</span>
+        <p>${mdInline((block.reflection as string) || '')}</p>
+      </div>
+    </div>`;
+}
+---
+
+{block.type === 'markdown' && (
+  <div class="work-text" set:html={markdownHtml} />
+)}
+
+{block.type === 'image' && (
+  <figure class="work-image">
+    <img src={withLeadingSlash(block.src)} loading="lazy" />
+    {block.caption && <figcaption>{block.caption}</figcaption>}
+  </figure>
+)}
+
+{block.type === 'flowchart' && (
+  <div class="work-flowchart">
+    <img src={withLeadingSlash(block.src)} loading="lazy" />
+    {block.caption && <div class="work-caption">{block.caption}</div>}
+  </div>
+)}
+
+{block.type === 'image-pair' && (
+  <div class="work-image-pair">
+    {block.src.map((s) => <img src={withLeadingSlash(s)} loading="lazy" />)}
+    {block.caption && <div class="work-caption">{block.caption}</div>}
+  </div>
+)}
+
+{block.type === 'video' && (
+  <div class="work-video">
+    <div class="work-video-frame">
+      <iframe src={videoEmbedSrc(block.provider, block.id)} allowfullscreen loading="lazy" />
+    </div>
+    {block.caption && <div class="work-caption">{block.caption}</div>}
+  </div>
+)}
+
+{block.type === 'row' && (
+  <div
+    class="work-row"
+    style={`grid-template-columns:${block.columns.map((c) => `${c.ratio}fr`).join(' ')}`}
+  >
+    {block.columns.map((c) => (
+      <div class="work-col">
+        {c.blocks.map((b) => <BlockRenderer block={b} />)}
+      </div>
+    ))}
+  </div>
+)}
+
+{block.type === 'custom' && block.render === 'postmortem' && (
+  <Fragment set:html={postmortemHtml} />
+)}
+
+{block.type === 'custom' && block.render !== 'postmortem' && (
+  <div class="work-custom-fallback">{(block.note as string) || ''}</div>
+)}

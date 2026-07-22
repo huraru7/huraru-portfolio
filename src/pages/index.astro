@@ -1,5 +1,15 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { parseWorkBlocks } from '../lib/parseWorkBody';
+
+const featuredWorks = (await getCollection('works', ({ data }) => data.featured))
+  .sort((a, b) => a.data.order - b.data.order);
+const featuredWorksWithBlocks = featuredWorks.map((work) => ({
+  work,
+  blocks: parseWorkBlocks(work.body ?? ''),
+}));
 ---
 
 <Layout
@@ -21,17 +31,12 @@ import Layout from '../layouts/Layout.astro';
     <link rel="stylesheet" href="/css/works.css">
     <link rel="stylesheet" href="/css/media.css">
 
-    <script src="/js/vendor/marked.min.js" defer></script>
     <script src="/js/dotMotion.js" defer></script>
-    <script src="/js/Sunrise_Sunset.js" defer></script>
     <script src="/js/Theme.js" defer></script>
     <script src="/js/textMotion.js" defer></script>
     <script src="/js/Modal.js" defer></script>
     <script src="/js/topImage.js" defer></script>
     <script src="/js/qa.js" defer></script>
-    <script src="/js/work-parser.js" defer></script>
-    <script src="/js/work-renderer.js" defer></script>
-    <script src="/js/works-app.js" defer></script>
   </Fragment>
 
   <header>
@@ -181,7 +186,11 @@ import Layout from '../layouts/Layout.astro';
         「一つの設計思想を、異なる媒体で検証し続けている」ことを示す代表作3点です。
       </p>
 
-      <div class="project-grid featured-works-grid" id="featuredWorksGrid"></div>
+      <div class="project-grid featured-works-grid" id="featuredWorksGrid">
+        {featuredWorksWithBlocks.map(({ work, blocks }) => (
+          <ProjectCard work={work} blocks={blocks} />
+        ))}
+      </div>
 
       <div class="view-all-container">
         <a href="all-projects.html" class="view-all-btn">
@@ -264,13 +273,4 @@ import Layout from '../layouts/Layout.astro';
       2025 this portfolio is designed by huraru.
     </p>
   </footer>
-
-  <div id="work-modal" class="work-modal">
-    <div class="work-modal-inner">
-      <button class="work-modal-close" onclick="closeWorkModal()">×</button>
-      <h2 class="p-title"></h2>
-      <div class="p-tags"></div>
-      <div class="p-body"></div>
-    </div>
-  </div>
 </Layout>

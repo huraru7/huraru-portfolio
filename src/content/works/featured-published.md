@@ -1,6 +1,6 @@
 ---
 id: featured-published
-title: [TODO: 代表作2 - 公開済み作品タイトル]
+title: "[TODO: 代表作2 - 公開済み作品タイトル]"
 subtitle:
 tags: ゲーム
 image:

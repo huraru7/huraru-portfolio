@@ -17,6 +17,18 @@ const { title, description, keywords, ogImage, ogUrl, preloadImage } = Astro.pro
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/js/Sunrise_Sunset.js" is:inline></script>
+  <script is:inline>
+    (function () {
+      function getAutoTheme() {
+        var now = new Date();
+        var sun = getSunHours(now, 35.6895, 139.6917);
+        return now.getHours() >= sun.sunriseHour && now.getHours() < sun.sunsetHour ? "day" : "night";
+      }
+      var mode = localStorage.getItem("theme") || getAutoTheme();
+      if (mode === "night") document.documentElement.classList.add("night-theme");
+    })();
+  </script>
   <title>{title}</title>
   <meta name="description" content={description}>
   {keywords && <meta name="keywords" content={keywords}>}

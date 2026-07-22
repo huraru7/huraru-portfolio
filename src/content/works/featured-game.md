@@ -1,6 +1,6 @@
 ---
 id: featured-game
-title: [TODO: 代表作1 - ゲーム作品タイトル]
+title: "[TODO: 代表作1 - ゲーム作品タイトル]"
 subtitle:
 tags: ゲーム
 image:

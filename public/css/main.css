@@ -381,6 +381,9 @@ a.logo:hover {
   overflow: hidden;
   cursor: pointer;
   transform-style: preserve-3d;
+  display: block;
+  text-decoration: none;
+  color: inherit;
   transition: transform 0.3s ease,
               box-shadow 0.3s ease,
               background var(--transition-speed) var(--transition-easing),

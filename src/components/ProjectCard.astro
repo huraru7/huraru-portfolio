@@ -1,7 +1,9 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import type { WorkBlock } from '../lib/parseWorkBody';
 import { getCardExcerpt } from '../lib/parseWorkBody';
+import { resolveWorkImage } from '../lib/resolveWorkImage';
 
 interface Props {
   work: CollectionEntry<'works'>;
@@ -10,7 +12,8 @@ interface Props {
 
 const { work, blocks } = Astro.props;
 const excerpt = getCardExcerpt(work.data.summary, blocks);
-const imageSrc = work.data.image ? `/${work.data.image.replace(/^\/+/, '')}` : '';
+const optimizedImage = resolveWorkImage(work.data.image);
+const fallbackImageSrc = work.data.image ? `/${work.data.image.replace(/^\/+/, '')}` : '';
 ---
 
 <a
@@ -18,9 +21,13 @@ const imageSrc = work.data.image ? `/${work.data.image.replace(/^\/+/, '')}` : '
   class="work-card project-card"
   data-tags={work.data.tags.join(',')}
 >
-  {imageSrc && (
+  {optimizedImage ? (
     <div class="project-media">
-      <img src={imageSrc} alt={work.data.title} />
+      <Image src={optimizedImage} alt={work.data.title} />
+    </div>
+  ) : fallbackImageSrc && (
+    <div class="project-media">
+      <img src={fallbackImageSrc} alt={work.data.title} />
     </div>
   )}
   <h3 class="project-title">{work.data.title}</h3>

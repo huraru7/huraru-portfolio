@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import type { WorkBlock } from '../lib/parseWorkBody';
 import { renderMarkdownChunk, mdInline } from '../lib/renderMarkdownChunk';
+import { resolveWorkImage } from '../lib/resolveWorkImage';
 import BlockRenderer from './BlockRenderer.astro';
 
 interface Props {
@@ -24,6 +26,13 @@ let markdownHtml = '';
 if (block.type === 'markdown') {
   markdownHtml = await renderMarkdownChunk(block.content);
 }
+
+const optimizedImage = block.type === 'image' || block.type === 'flowchart'
+  ? resolveWorkImage(block.src)
+  : null;
+const optimizedImagePair = block.type === 'image-pair'
+  ? block.src.map((s) => resolveWorkImage(s))
+  : null;
 
 let postmortemHtml = '';
 if (block.type === 'custom' && block.render === 'postmortem') {
@@ -51,21 +60,35 @@ if (block.type === 'custom' && block.render === 'postmortem') {
 
 {block.type === 'image' && (
   <figure class="work-image">
-    <img src={withLeadingSlash(block.src)} loading="lazy" />
+    {optimizedImage ? (
+      <Image src={optimizedImage} alt="" loading="lazy" />
+    ) : (
+      <img src={withLeadingSlash(block.src)} loading="lazy" />
+    )}
     {block.caption && <figcaption>{block.caption}</figcaption>}
   </figure>
 )}
 
 {block.type === 'flowchart' && (
   <div class="work-flowchart">
-    <img src={withLeadingSlash(block.src)} loading="lazy" />
+    {optimizedImage ? (
+      <Image src={optimizedImage} alt="" loading="lazy" />
+    ) : (
+      <img src={withLeadingSlash(block.src)} loading="lazy" />
+    )}
     {block.caption && <div class="work-caption">{block.caption}</div>}
   </div>
 )}
 
 {block.type === 'image-pair' && (
   <div class="work-image-pair">
-    {block.src.map((s) => <img src={withLeadingSlash(s)} loading="lazy" />)}
+    {block.src.map((s, i) => (
+      optimizedImagePair?.[i] ? (
+        <Image src={optimizedImagePair[i]} alt="" loading="lazy" />
+      ) : (
+        <img src={withLeadingSlash(s)} loading="lazy" />
+      )
+    ))}
     {block.caption && <div class="work-caption">{block.caption}</div>}
   </div>
 )}

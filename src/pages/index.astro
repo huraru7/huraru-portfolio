@@ -1,8 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { parseWorkBlocks } from '../lib/parseWorkBody';
+import huraru1 from '../assets/huraru/huraru1.webp';
+import huraru2 from '../assets/huraru/huraru2.webp';
+import huraru3 from '../assets/huraru/huraru3.webp';
+import huraru4 from '../assets/huraru/huraru4.webp';
+import huraru5 from '../assets/huraru/huraru5.webp';
 
 const featuredWorks = (await getCollection('works', ({ data }) => data.featured))
   .sort((a, b) => a.data.order - b.data.order);
@@ -18,7 +24,7 @@ const featuredWorksWithBlocks = featuredWorks.map((work) => ({
   keywords="プログラマー,ポートフォリオ,huraru,ふらる"
   ogImage="https://portfolio.huraru.com/images/og-image.jpg"
   ogUrl="https://portfolio.huraru.com/"
-  preloadImage="/images/huraru/huraru1.webp"
+  preloadImage={huraru1.src}
   isHome
 >
   <Fragment slot="head">
@@ -51,11 +57,11 @@ const featuredWorksWithBlocks = featuredWorks.map((work) => ({
       </div>
 
       <div class="hero-image circular-image-ring">
-        <img src="/images/huraru/huraru1.webp" alt="huraru1" class="hero-slide circular-image active" fetchpriority="high">
-        <img src="/images/huraru/huraru2.webp" alt="huraru2" class="hero-slide circular-image" loading="lazy">
-        <img src="/images/huraru/huraru3.webp" alt="huraru3" class="hero-slide circular-image" loading="lazy">
-        <img src="/images/huraru/huraru4.webp" alt="huraru4" class="hero-slide circular-image" loading="lazy">
-        <img src="/images/huraru/huraru5.webp" alt="huraru5" class="hero-slide circular-image" loading="lazy">
+        <Image src={huraru1} alt="huraru1" class="hero-slide circular-image active" fetchpriority="high" />
+        <Image src={huraru2} alt="huraru2" class="hero-slide circular-image" loading="lazy" />
+        <Image src={huraru3} alt="huraru3" class="hero-slide circular-image" loading="lazy" />
+        <Image src={huraru4} alt="huraru4" class="hero-slide circular-image" loading="lazy" />
+        <Image src={huraru5} alt="huraru5" class="hero-slide circular-image" loading="lazy" />
       </div>
     </div>
   </section>
@@ -102,7 +108,7 @@ const featuredWorksWithBlocks = featuredWorks.map((work) => ({
           </div>
         </div>
         <div class="about-image circular-image-ring">
-          <img src="/images/huraru/huraru5.webp" alt="huraru5" class="circular-image" loading="lazy">
+          <Image src={huraru5} alt="huraru5" class="circular-image" loading="lazy" />
         </div>
       </div>
 

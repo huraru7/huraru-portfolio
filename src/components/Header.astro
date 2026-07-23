@@ -1,0 +1,31 @@
+---
+interface Props {
+  isHome?: boolean;
+}
+
+const { isHome = false } = Astro.props;
+const home = isHome ? '' : '/index.html';
+---
+
+<header>
+  <nav>
+    <a href={isHome ? '#top' : '/index.html'} class="logo">PORTFOLIO</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href={`${home}#top`}>TOP</a></li>
+      <li><a href={`${home}#about`}>ABOUT</a></li>
+      <li><a href={`${home}#featured-works`}>WORKS</a></li>
+      <li><a href={`${home}#skill`}>SKILL</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <button id="theme-toggle" class="theme-toggle">
+        <span class="icon sun">☀</span>
+        <span class="icon moon">🌙</span>
+      </button>
+    </div>
+  </nav>
+</header>

@@ -19,6 +19,7 @@ const featuredWorksWithBlocks = featuredWorks.map((work) => ({
   ogImage="https://portfolio.huraru.com/images/og-image.jpg"
   ogUrl="https://portfolio.huraru.com/"
   preloadImage="/images/huraru/huraru1.webp"
+  isHome
 >
   <Fragment slot="head">
     <link rel="stylesheet" href="/css/main.css">
@@ -38,29 +39,6 @@ const featuredWorksWithBlocks = featuredWorks.map((work) => ({
     <script src="/js/topImage.js" defer></script>
     <script src="/js/qa.js" defer></script>
   </Fragment>
-
-  <header>
-    <nav>
-      <a href="#top" class="logo">PORTFOLIO</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#top">TOP</a></li>
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#featured-works">WORKS</a></li>
-        <li><a href="#skill">SKILL</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button class="hamburger" id="hamburger" aria-label="メニューを開く">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-        <button id="theme-toggle" class="theme-toggle">
-          <span class="icon sun">☀</span>
-          <span class="icon moon">🌙</span>
-        </button>
-      </div>
-    </nav>
-  </header>
 
   <section class="hero" id="top">
     <div class="hero-content">
@@ -265,12 +243,4 @@ const featuredWorksWithBlocks = featuredWorks.map((work) => ({
     </div>
   </div>
 
-  <footer id="contact">
-    <p class="footer-text">
-      CONTACT: <span class="footer-email">hurarunium@gmail.com</span>
-    </p>
-    <p class="footer-copyright">
-      2025 this portfolio is designed by huraru.
-    </p>
-  </footer>
 </Layout>

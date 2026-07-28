@@ -246,7 +246,7 @@ body::after {
 header {
   position: sticky;
   top: 0;
-  padding: 2rem 5%;
+  padding: 0.98rem 5%;
   background: var(--bg-header);
   backdrop-filter: blur(10px);
   border-bottom: 2px solid var(--border-accent);

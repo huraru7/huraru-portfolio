@@ -1,3 +1,10 @@
+/* ========== 作品詳細ページ ========== */
+.work-back-link {
+    display: flex;
+    width: fit-content;
+    margin-bottom: 2rem;
+}
+
 /* ========== FEATURED WORKS (代表作) ========== */
 .section-lead {
     color: var(--text-secondary);

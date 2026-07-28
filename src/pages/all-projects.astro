@@ -3,6 +3,11 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { parseWorkBlocks } from '../lib/parseWorkBody';
+import '../styles/main.css';
+import '../styles/skill.css';
+import '../styles/modal.css';
+import '../styles/works.css';
+import '../styles/media.css';
 
 const allWorks = (await getCollection('works')).sort((a, b) => a.data.order - b.data.order);
 const allWorksWithBlocks = allWorks.map((work) => ({
@@ -16,16 +21,12 @@ const allWorksWithBlocks = allWorks.map((work) => ({
   description="huraru の全作品アーカイブ"
 >
   <Fragment slot="head">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/skill.css">
-    <link rel="stylesheet" href="/css/modal.css">
-    <link rel="stylesheet" href="/css/works.css">
-    <link rel="stylesheet" href="/css/media.css">
-
-    <script src="/js/dotMotion.js" defer></script>
-    <script src="/js/Theme.js" defer></script>
-    <script src="/js/Modal.js" defer></script>
-    <script src="/js/tag-filter.js" defer></script>
+    <script>
+      import '../scripts/dotMotion.js';
+      import '../scripts/theme.js';
+      import '../scripts/modal.js';
+      import '../scripts/tagFilter.js';
+    </script>
   </Fragment>
 
   <section class="section" id="projects">

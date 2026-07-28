@@ -1,252 +1,242 @@
 ---
-import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
-import Layout from '../layouts/Layout.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import { parseWorkBlocks } from '../lib/parseWorkBody';
-import huraru1 from '../assets/huraru/huraru1.webp';
-import huraru2 from '../assets/huraru/huraru2.webp';
-import huraru3 from '../assets/huraru/huraru3.webp';
-import huraru4 from '../assets/huraru/huraru4.webp';
-import huraru5 from '../assets/huraru/huraru5.webp';
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { parseWorkBlocks } from "../lib/parseWorkBody";
+import huraru1 from "../assets/huraru/huraru1.webp";
+import huraru2 from "../assets/huraru/huraru2.webp";
+import huraru3 from "../assets/huraru/huraru3.webp";
+import huraru4 from "../assets/huraru/huraru4.webp";
+import huraru5 from "../assets/huraru/huraru5.webp";
+import githubSvg from "../assets/images/skills/github.svg";
+import curseforgeSvg from "../assets/images/skills/curseforge.svg";
+import xSvg from "../assets/images/x.svg";
+import unitySvg from "../assets/images/skills/unity.svg";
+import javascriptSvg from "../assets/images/skills/javascript.svg";
+import csharpSvg from "../assets/images/skills/csharp.svg";
+import vscodeSvg from "../assets/images/skills/VScode.svg";
+import sourcetreeSvg from "../assets/images/skills/sourcetree.svg";
+import blockbenchSvg from "../assets/images/skills/blockbench.svg";
+import clipStudioPaintSvg from "../assets/images/skills/clipStudioPaint.svg";
+import asepriteSvg from "../assets/images/skills/aseprite.svg";
+import html5Svg from "../assets/images/skills/html5.svg";
+import cssSvg from "../assets/images/skills/css.svg";
+import pythonSvg from "../assets/images/skills/python.svg";
+import "../styles/main.css";
+import "../styles/hero.css";
+import "../styles/about.css";
+import "../styles/skill.css";
+import "../styles/modal.css";
+import "../styles/textMotion.css";
+import "../styles/works.css";
+import "../styles/media.css";
 
-const featuredWorks = (await getCollection('works', ({ data }) => data.featured))
-  .sort((a, b) => a.data.order - b.data.order);
+const featuredWorks = (await getCollection("works", ({ data }) => data.featured)).sort((a, b) => a.data.order - b.data.order);
 const featuredWorksWithBlocks = featuredWorks.map((work) => ({
-  work,
-  blocks: parseWorkBlocks(work.body ?? ''),
+	work,
+	blocks: parseWorkBlocks(work.body ?? ""),
 }));
 ---
 
 <Layout
-  title="huraru`s Portfolio"
-  description="ふらるのポートフォリオ"
-  keywords="プログラマー,ポートフォリオ,huraru,ふらる"
-  ogImage="https://portfolio.huraru.com/images/og-image.jpg"
-  ogUrl="https://portfolio.huraru.com/"
-  preloadImage={huraru1.src}
-  isHome
+	title="huraru`s Portfolio"
+	description="ふらるのポートフォリオ"
+	keywords="プログラマー,ポートフォリオ,huraru,ふらる"
+	ogImage="https://portfolio.huraru.com/images/og-image.jpg"
+	ogUrl="https://portfolio.huraru.com/"
+	preloadImage={huraru1.src}
+	isHome
 >
-  <Fragment slot="head">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/hero.css">
-    <link rel="stylesheet" href="/css/about.css">
-    <link rel="stylesheet" href="/css/skill.css">
-    <link rel="stylesheet" href="/css/modal.css">
-    <link rel="stylesheet" href="/css/qa-modal.css">
-    <link rel="stylesheet" href="/css/textMotion.css">
-    <link rel="stylesheet" href="/css/works.css">
-    <link rel="stylesheet" href="/css/media.css">
+	<Fragment slot="head">
+		<script>
+			import "../scripts/dotMotion.js";
+			import "../scripts/theme.js";
+			import "../scripts/textMotion.js";
+			import "../scripts/topImage.js";
+		</script>
+	</Fragment>
 
-    <script src="/js/dotMotion.js" defer></script>
-    <script src="/js/Theme.js" defer></script>
-    <script src="/js/textMotion.js" defer></script>
-    <script src="/js/Modal.js" defer></script>
-    <script src="/js/topImage.js" defer></script>
-    <script src="/js/qa.js" defer></script>
-  </Fragment>
+	<section class="hero" id="top">
+		<div class="hero-content">
+			<div class="hero-text">
+				<div class="hero-subtitle">huraru</div>
+				<h1 class="hero-title">PORTFOLIO</h1>
+				<p class="hero-description">
+					Geometric <span class="accent-text">Never-Ending</span> Creating
+				</p>
+			</div>
 
-  <section class="hero" id="top">
-    <div class="hero-content">
-      <div class="hero-text">
-        <div class="hero-subtitle">huraru</div>
-        <h1 class="hero-title">PORTFOLIO</h1>
-        <p class="hero-description">
-          Geometric <span class="accent-text">Never-Ending</span> Creating
-        </p>
-      </div>
+			<div class="hero-image circular-image-ring">
+				<Image src={huraru1} alt="huraru1" class="hero-slide circular-image active" fetchpriority="high" />
+				<Image src={huraru2} alt="huraru2" class="hero-slide circular-image" loading="lazy" />
+				<Image src={huraru3} alt="huraru3" class="hero-slide circular-image" loading="lazy" />
+				<Image src={huraru4} alt="huraru4" class="hero-slide circular-image" loading="lazy" />
+				<Image src={huraru5} alt="huraru5" class="hero-slide circular-image" loading="lazy" />
+			</div>
+		</div>
+	</section>
 
-      <div class="hero-image circular-image-ring">
-        <Image src={huraru1} alt="huraru1" class="hero-slide circular-image active" fetchpriority="high" />
-        <Image src={huraru2} alt="huraru2" class="hero-slide circular-image" loading="lazy" />
-        <Image src={huraru3} alt="huraru3" class="hero-slide circular-image" loading="lazy" />
-        <Image src={huraru4} alt="huraru4" class="hero-slide circular-image" loading="lazy" />
-        <Image src={huraru5} alt="huraru5" class="hero-slide circular-image" loading="lazy" />
-      </div>
-    </div>
-  </section>
+	<section class="section" id="about">
+		<div class="container">
+			<h2 class="section-title">ABOUT</h2>
 
-  <section class="section" id="about">
-    <div class="container">
-      <h2 class="section-title">ABOUT huraru</h2>
+			<div class="about-content">
+				<div class="profile-container">
+					<div class="profile-row">
+						<span class="profile-key">NAME</span>
+						<span class="profile-value">huraru</span>
+					</div>
+					<div class="profile-row">
+						<span class="profile-key">BIRTHDAY</span>
+						<span class="profile-value">5/28</span>
+					</div>
+					<div class="profile-row">
+						<span class="profile-key">LOCATION</span>
+						<span class="profile-value">japan , Tokyo</span>
+					</div>
+					<div class="profile-row">
+						<span class="profile-key">AFFILIATION</span>
+						<span class="profile-value">vantan game academy</span>
+					</div>
+					<div class="profile-row">
+						<span class="profile-key">LINKS</span>
+						<span class="profile-value profile-links">
+							<a href="https://github.com/huraru7" target="_blank" rel="noopener noreferrer" class="profile-link">
+								<Image src={githubSvg} alt="GitHub" class="link-icon" />
+								GitHub
+							</a>
+							<a
+								href="https://legacy.curseforge.com/members/huraru/projects"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="profile-link"
+							>
+								<Image src={curseforgeSvg} alt="CurseForge" class="link-icon" />
+								CurseForge
+							</a>
+							<a href="https://x.com/hurarunium_sabu" target="_blank" rel="noopener noreferrer" class="profile-link">
+								<Image src={xSvg} alt="X(Twitter)" class="link-icon" />
+								X (Twitter)
+							</a>
+						</span>
+					</div>
+				</div>
+				<div class="about-image circular-image-ring">
+					<Image src={huraru5} alt="huraru5" class="circular-image" loading="lazy" />
+				</div>
 
-      <div class="about-content">
-        <div class="profile-container">
-          <div class="profile-row">
-            <span class="profile-key">NAME</span>
-            <span class="profile-value">huraru</span>
-          </div>
-          <div class="profile-row">
-            <span class="profile-key">BIRTHDAY</span>
-            <span class="profile-value">5/28</span>
-          </div>
-          <div class="profile-row">
-            <span class="profile-key">LOCATION</span>
-            <span class="profile-value">japan , Tokyo</span>
-          </div>
-          <div class="profile-row">
-            <span class="profile-key">AFFILIATION</span>
-            <span class="profile-value">vantan game academy</span>
-          </div>
-          <div class="profile-row">
-            <span class="profile-key">LINKS</span>
-            <span class="profile-value profile-links">
-              <a href="https://github.com/huraru7" target="_blank" rel="noopener noreferrer" class="profile-link">
-                <img src="/images/skills/github.svg" alt="GitHub" class="link-icon">
-                GitHub
-              </a>
-              <a href="https://legacy.curseforge.com/members/huraru/projects" target="_blank" rel="noopener noreferrer"
-                class="profile-link">
-                <img src="/images/skills/curseforge.svg" alt="CurseForge" class="link-icon">
-                CurseForge
-              </a>
-              <a href="https://x.com/hurarunium_sabu" target="_blank" rel="noopener noreferrer" class="profile-link">
-                <img src="/images/x.svg" alt="X(Twitter)" class="link-icon">
-                X (Twitter)
-              </a>
-            </span>
-          </div>
-        </div>
-        <div class="about-image circular-image-ring">
-          <Image src={huraru5} alt="huraru5" class="circular-image" loading="lazy" />
-        </div>
-      </div>
+				<div class="about-text">
+					<h3 class="about-subtitle">Aspiring Game Creator</h3>
+					<p class="about-description">[TODO: 自分が先頭に立って何かを動かした経験の一文をここに記載]</p>
+					<p class="about-description">
+						「単純なルールほど、自分で気づいた瞬間の快感が深い」という考えを軸に、装飾より構造そのものを作り込むことを大切にしています。感覚的な面白さを、誰かに説明できる論理に落とし込むのが得意です。
+					</p>
+				</div>
 
-      <div class="about-content">
-        <div class="about-text">
-          <h3 class="about-subtitle">Aspiring Game Creator</h3>
-          <p class="about-description">
-            [TODO: 自分が先頭に立って何かを動かした経験の一文をここに記載]
-          </p>
-          <p class="about-description">
-            「単純なルールほど、自分で気づいた瞬間の快感が深い」という考えを軸に、装飾より構造そのものを作り込むことを大切にしています。感覚的な面白さを、誰かに説明できる論理に落とし込むのが得意です。
-          </p>
+				<div class="about-highlights">
+					<div class="highlight-card">
+						<h4 class="highlight-title">終わりのない学びを</h4>
+						<p class="highlight-text">常に新しい技術や知識を追求し、幅広い知識を手に入れる。</p>
+					</div>
+					<div class="highlight-card">
+						<h4 class="highlight-title">すべてに手を伸ばす</h4>
+						<p class="highlight-text">常に様々の分野に興味を示し、知識量の引き出しでアイデアを形にする。</p>
+					</div>
+				</div>
 
-          <div class="about-stats">
-            <div class="stat-item">
-              <div class="stat-number">2+</div>
-              <div class="stat-label">Years Learning</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">5+</div>
-              <div class="stat-label">Projects</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">3+</div>
-              <div class="stat-label">Language</div>
-            </div>
-          </div>
-        </div>
+				<div class="about-stats">
+					<div class="stat-item">
+						<div class="stat-number">2+</div>
+						<div class="stat-label">Years Learning</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-number">5+</div>
+						<div class="stat-label">Projects</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-number">3+</div>
+						<div class="stat-label">Language</div>
+					</div>
+				</div>
 
-        <div class="about-highlights">
-          <div class="highlight-card">
-            <h4 class="highlight-title">終わりのない学びを</h4>
-            <p class="highlight-text">
-              常に新しい技術や知識を追求し、幅広い知識を手に入れる。
-            </p>
-          </div>
-          <div class="highlight-card">
-            <h4 class="highlight-title">すべてに手を伸ばす</h4>
-            <p class="highlight-text">
-              常に様々の分野に興味を示し、知識量の引き出しでアイデアを形にする。
-            </p>
-          </div>
-        </div>
+				<div class="about-more-btn-container">
+					<a href="https://huraru.com" target="_blank" rel="noopener noreferrer" class="about-more-btn">
+						<span>詳しく</span>
+						<span class="btn-arrow">→</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
 
-        <div class="about-more-btn-container">
-          <button class="about-more-btn" id="aboutMoreBtn">
-            <span>詳しく</span>
-            <span class="btn-arrow">→</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
+	<section class="section" id="featured-works">
+		<div class="container">
+			<h2 class="section-title">WORKS</h2>
+			<p class="section-lead">今までの創造した世界たち</p>
 
-  <section class="section" id="featured-works">
-    <div class="container">
-      <h2 class="section-title">WORKS</h2>
-      <p class="section-lead">
-        「一つの設計思想を、異なる媒体で検証し続けている」ことを示す代表作3点です。
-      </p>
+			<div class="project-grid featured-works-grid" id="featuredWorksGrid">
+				{featuredWorksWithBlocks.map(({ work, blocks }) => <ProjectCard work={work} blocks={blocks} />)}
+			</div>
 
-      <div class="project-grid featured-works-grid" id="featuredWorksGrid">
-        {featuredWorksWithBlocks.map(({ work, blocks }) => (
-          <ProjectCard work={work} blocks={blocks} />
-        ))}
-      </div>
+			<div class="view-all-container">
+				<a href="all-projects.html" class="view-all-btn">
+					<span>VIEW ALL PROJECTS</span>
+					<span class="btn-arrow">→</span>
+				</a>
+			</div>
+		</div>
+	</section>
 
-      <div class="view-all-container">
-        <a href="all-projects.html" class="view-all-btn">
-          <span>VIEW ALL PROJECTS</span>
-          <span class="btn-arrow">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
+	<section class="section" id="skill">
+		<div class="container">
+			<h2 class="section-title">SKILLS</h2>
 
-  <section class="section" id="skill">
-    <div class="container">
-      <h2 class="section-title">SKILLS</h2>
+			<div class="skills-grid">
+				<div class="skill-item">
+					<Image src={unitySvg} alt="Unity" class="skill-icon-only" />
+					<div class="skill-content">
+						<div class="skill-name">Unity Engine</div>
+						<p class="skill-description">ゲームエンジン</p>
+					</div>
+				</div>
+				<div class="skill-item">
+					<Image src={githubSvg} alt="github" class="skill-icon-only" />
+					<div class="skill-content">
+						<div class="skill-name">Github</div>
+						<p class="skill-description">バージョン管理</p>
+					</div>
+				</div>
+				<div class="skill-item">
+					<Image src={javascriptSvg} alt="javascript" class="skill-icon-only" />
+					<div class="skill-content">
+						<div class="skill-name">JavaScript</div>
+						<p class="skill-description">プログラミング言語</p>
+					</div>
+				</div>
+				<div class="skill-item">
+					<Image src={csharpSvg} alt="csharp" class="skill-icon" />
+					<div class="skill-content">
+						<div class="skill-name">C#</div>
+						<p class="skill-description">プログラミング言語</p>
+					</div>
+				</div>
+			</div>
 
-      <div class="skills-grid">
-        <div class="skill-item">
-          <img src="/images/skills/unity.svg" alt="Unity" class="skill-icon-only">
-          <div class="skill-content">
-            <div class="skill-name">Unity Engine</div>
-            <p class="skill-description">ゲームエンジン</p>
-          </div>
-        </div>
-        <div class="skill-item">
-          <img src="/images/skills/github.svg" alt="github" class="skill-icon-only">
-          <div class="skill-content">
-            <div class="skill-name">Github</div>
-            <p class="skill-description">バージョン管理</p>
-          </div>
-        </div>
-        <div class="skill-item">
-          <img src="/images/skills/javascript.svg" alt="javascript" class="skill-icon-only">
-          <div class="skill-content">
-            <div class="skill-name">JavaScript</div>
-            <p class="skill-description">プログラミング言語</p>
-          </div>
-        </div>
-        <div class="skill-item">
-          <img src="/images/skills/csharp.svg" alt="csharp" class="skill-icon">
-          <div class="skill-content">
-            <div class="skill-name">C#</div>
-            <p class="skill-description">プログラミング言語</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="other-skills">
-        <h3 class="other-skills-title">OTHER</h3>
-        <div class="skills-icons">
-          <img src="/images/skills/VScode.svg" alt="VScode" class="skill-icon-only">
-          <img src="/images/skills/sourcetree.svg" alt="sourcetree" class="skill-icon-only">
-          <img src="/images/skills/blockbench.svg" alt="blockbench" class="skill-icon-only">
-          <img src="/images/skills/clipStudioPaint.svg" alt="clipStudioPaint" class="skill-icon-only">
-          <img src="/images/skills/aseprite.svg" alt="aseprite" class="skill-icon-only">
-          <img src="/images/skills/curseforge.svg" alt="curseforge" class="skill-icon-only">
-          <img src="/images/skills/html5.svg" alt="html" class="skill-icon-only">
-          <img src="/images/skills/css.svg" alt="css" class="skill-icon-only">
-          <img src="/images/skills/python.svg" alt="python" class="skill-icon-only">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="modal" id="modal-qa" onclick="closeQAModal()">
-    <div class="modal-content qa-modal-content" onclick="event.stopPropagation()">
-      <div class="modal-header">
-        <button class="modal-close" onclick="closeQAModal()">×</button>
-        <h2 class="modal-title">Q&A</h2>
-        <p class="modal-subtitle">More About Me</p>
-      </div>
-      <div class="modal-body" id="qaModalBody">
-      </div>
-    </div>
-  </div>
-
+			<div class="other-skills">
+				<h3 class="other-skills-title">OTHER</h3>
+				<div class="skills-icons">
+					<Image src={vscodeSvg} alt="VScode" class="skill-icon-only" />
+					<Image src={sourcetreeSvg} alt="sourcetree" class="skill-icon-only" />
+					<Image src={blockbenchSvg} alt="blockbench" class="skill-icon-only" />
+					<Image src={clipStudioPaintSvg} alt="clipStudioPaint" class="skill-icon-only" />
+					<Image src={asepriteSvg} alt="aseprite" class="skill-icon-only" />
+					<Image src={curseforgeSvg} alt="curseforge" class="skill-icon-only" />
+					<Image src={html5Svg} alt="html" class="skill-icon-only" />
+					<Image src={cssSvg} alt="css" class="skill-icon-only" />
+					<Image src={pythonSvg} alt="python" class="skill-icon-only" />
+				</div>
+			</div>
+		</div>
+	</section>
 </Layout>

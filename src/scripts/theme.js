@@ -1,12 +1,3 @@
-const LATITUDE = 35.6895;
-const LONGITUDE = 139.6917;
-
-function getAutoTheme() {
-	const now = new Date();
-	const sun = getSunHours(now, LATITUDE, LONGITUDE);
-	return now.getHours() >= sun.sunriseHour && now.getHours() < sun.sunsetHour ? "day" : "night";
-}
-
 document.addEventListener("DOMContentLoaded", () => {
 	const toggleButton = document.getElementById("theme-toggle");
 	if (!toggleButton) return;
@@ -16,10 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		toggleButton.classList.toggle("night", mode === "night");
 	}
 
-	applyTheme(localStorage.getItem("theme") || getAutoTheme());
+	applyTheme(localStorage.getItem("theme") || "night");
 
 	toggleButton.addEventListener("click", () => {
-		const current = localStorage.getItem("theme") || getAutoTheme();
+		const current = localStorage.getItem("theme") || "night";
 		const next = current === "night" ? "day" : "night";
 		applyTheme(next);
 		localStorage.setItem("theme", next);

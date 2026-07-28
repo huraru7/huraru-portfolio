@@ -6,6 +6,52 @@
     overflow: visible;
 }
 
+/* ========== もっと知るボタン ========== */
+.about-more-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 3rem;
+    background: var(--accent-gradient);
+    color: white;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    text-decoration: none;
+}
+
+.about-more-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--shadow-hover);
+}
+
+.about-more-btn .btn-arrow {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.about-more-btn:hover .btn-arrow {
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .about-more-btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+}
+
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -37,11 +83,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    margin-top: 4rem;
     padding: 1.5rem 0;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .stat-item {

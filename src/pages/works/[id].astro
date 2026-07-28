@@ -3,6 +3,10 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import BlockRenderer from '../../components/BlockRenderer.astro';
 import { parseWorkBlocks } from '../../lib/parseWorkBody';
+import '../../styles/main.css';
+import '../../styles/skill.css';
+import '../../styles/works.css';
+import '../../styles/media.css';
 
 export async function getStaticPaths() {
   const works = await getCollection('works');
@@ -18,12 +22,9 @@ const blocks = parseWorkBlocks(work.body ?? '');
 
 <Layout title={`${work.data.title} | huraru's Portfolio`} description={work.data.summary}>
   <Fragment slot="head">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/skill.css">
-    <link rel="stylesheet" href="/css/works.css">
-    <link rel="stylesheet" href="/css/media.css">
-
-    <script src="/js/Theme.js" defer></script>
+    <script>
+      import '../../scripts/theme.js';
+    </script>
   </Fragment>
 
   <section class="section" id="work-detail">

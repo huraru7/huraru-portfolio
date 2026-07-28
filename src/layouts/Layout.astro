@@ -21,15 +21,9 @@ const { title, description, keywords, ogImage, ogUrl, preloadImage, isHome = fal
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="/js/Sunrise_Sunset.js" is:inline></script>
   <script is:inline>
     (function () {
-      function getAutoTheme() {
-        var now = new Date();
-        var sun = getSunHours(now, 35.6895, 139.6917);
-        return now.getHours() >= sun.sunriseHour && now.getHours() < sun.sunsetHour ? "day" : "night";
-      }
-      var mode = localStorage.getItem("theme") || getAutoTheme();
+      var mode = localStorage.getItem("theme") || "night";
       if (mode === "night") document.documentElement.classList.add("night-theme");
     })();
   </script>

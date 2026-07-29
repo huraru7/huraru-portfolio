@@ -41,6 +41,9 @@
   --transition-speed: 0.25s;
   --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
 
+  /* サイドナビ幅(閉じた状態) */
+  --side-nav-width: 72px;
+
   /* ダークモード切り替え専用のトランジション設定 */
   --theme-transition-speed: 0.8s;
 }
@@ -101,6 +104,7 @@ body {
   position: relative;
   color: var(--text-primary);
   overflow-x: hidden;
+  padding-left: var(--side-nav-width);
   transition: color var(--transition-speed) var(--transition-easing);
 }
 
@@ -251,122 +255,134 @@ body::after {
   transition: background var(--transition-speed) var(--transition-easing);
 }
 
-/* ========== ヘッダー ========== */
-header {
-  position: sticky;
+/* ========== サイドナビ ========== */
+.side-nav {
+  position: fixed;
   top: 0;
-  padding: 0.98rem 5%;
+  left: 0;
+  height: 100vh;
+  width: var(--side-nav-width);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 1.25rem 0;
   background: var(--bg-header);
   backdrop-filter: blur(10px);
-  border-bottom: 2px solid var(--border-accent);
-  box-shadow: 0 2px 30px var(--shadow-color);
+  border-right: 2px solid var(--border-accent);
+  box-shadow: 2px 0 30px var(--shadow-color);
   z-index: 100;
-  transition: background var(--transition-speed) var(--transition-easing),
-              border-color var(--transition-speed) var(--transition-easing),
-              box-shadow var(--transition-speed) var(--transition-easing);
+  overflow: hidden;
+  transition: width var(--transition-speed) var(--transition-easing),
+              background var(--transition-speed) var(--transition-easing),
+              border-color var(--transition-speed) var(--transition-easing);
 }
 
-nav {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 2.5rem;
-  max-width: 1400px;
-  margin: 0 auto;
-  position: relative;
+.side-nav:hover,
+.side-nav:focus-within {
+  width: 176px;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--accent-primary);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  transition: color var(--transition-speed) var(--transition-easing);
-  z-index: 102;
+.side-nav-logo {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--accent-primary);
+  margin: 0 0 0 14px;
+  transition: border-color var(--transition-speed) var(--transition-easing);
 }
 
-a.logo {
-  text-decoration: none;
-  color: var(--accent-primary);
+.side-nav-logo:hover {
+  border-color: var(--accent-secondary);
 }
 
-a.logo:hover {
-  color: var(--accent-secondary);
+.side-nav-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.side-nav-menu {
+  width: 100%;
 }
 
-.nav-links {
-  display: flex;
-  gap: 2.5rem;
+.side-nav-menu ul {
   list-style: none;
-  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
 }
 
-.nav-links a {
+.side-nav-menu a,
+.side-nav-actions a,
+.side-nav-actions button {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  padding: 0 1.25rem;
   text-decoration: none;
+  background: none;
+  border: none;
   color: var(--text-secondary);
   font-weight: 500;
   text-transform: uppercase;
   font-size: 0.85rem;
   letter-spacing: 1px;
-  transition: color 0.3s;
-  position: relative;
-}
-
-.nav-links a:hover { 
-  color: var(--accent-primary); 
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent-primary);
-  transition: width 0.3s, background var(--transition-speed) var(--transition-easing);
-}
-
-.nav-links a:hover::after { width: 100%; }
-
-/* ========== ハンバーガーメニュー ========== */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  background: none;
-  border: none;
   cursor: pointer;
-  padding: 0.5rem;
-  z-index: 102;
+  transition: color var(--transition-speed) var(--transition-easing);
 }
 
-.hamburger-line {
-  display: block;
+.side-nav-menu a:hover,
+.side-nav-actions a:hover,
+.side-nav-actions button:hover {
+  color: var(--accent-primary);
+}
+
+.side-nav-icon {
+  position: relative;
+  flex-shrink: 0;
   width: 24px;
-  height: 2px;
-  background: var(--text-primary);
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  color: inherit;
 }
 
-.hamburger.active .hamburger-line:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+.side-nav-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: filter var(--transition-speed) var(--transition-easing);
 }
 
-.hamburger.active .hamburger-line:nth-child(2) {
+:root.night-theme .side-nav-icon img {
+  filter: invert(1);
+}
+
+.side-nav-label {
   opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: opacity var(--transition-speed) var(--transition-easing),
+              max-width var(--transition-speed) var(--transition-easing);
 }
 
-.hamburger.active .hamburger-line:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+.side-nav:hover .side-nav-label,
+.side-nav:focus-within .side-nav-label {
+  opacity: 1;
+  max-width: 120px;
+}
+
+.side-nav-actions {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 /* ========== 共通カードスタイル ========== */
@@ -730,53 +746,54 @@ footer {
   padding: 2rem 5%;
   text-align: center;
   position: relative;
-  z-index: 10;
+  z-index: 150;
+  margin-left: calc(-1 * var(--side-nav-width));
+  width: calc(100% + var(--side-nav-width));
   transition: background var(--transition-speed) var(--transition-easing),
               border-color var(--transition-speed) var(--transition-easing);
 }
 
-.theme-toggle {
-  width: 40px;
-  height: 40px;
+.theme-toggle-visual {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
   border-radius: 50%;
   border: 2px solid #a29bfe;
   background: radial-gradient(circle, rgba(162,155,254,0.3), rgba(0,0,0,0.7));
-  cursor: pointer;
   display: grid;
   place-items: center;
   box-shadow:
     0 0 10px rgba(162,155,254,0.6),
     inset 0 0 8px rgba(255,255,255,0.2);
   transition: transform 0.3s, box-shadow 0.3s;
-  flex-shrink: 0;
   position: relative;
 }
 
-.theme-toggle:hover {
+.theme-toggle:hover .theme-toggle-visual {
   transform: scale(1.15) rotate(15deg);
   box-shadow: var(--toggle-hover);
 }
 
-.theme-toggle .icon {
+.theme-toggle-visual .icon {
   position: absolute;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   transition: opacity 0.4s, transform 0.4s;
 }
 
-.theme-toggle .sun {
+.theme-toggle-visual .sun {
   opacity: 1;
 }
 
-.theme-toggle .moon {
+.theme-toggle-visual .moon {
   opacity: 0;
 }
 
-.theme-toggle.night .sun {
+.theme-toggle.night .theme-toggle-visual .sun {
   opacity: 0;
   transform: rotate(-90deg) scale(0.5);
 }
 
-.theme-toggle.night .moon {
+.theme-toggle.night .theme-toggle-visual .moon {
   opacity: 1;
   transform: rotate(0deg) scale(1);
 }

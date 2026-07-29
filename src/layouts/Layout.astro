@@ -80,20 +80,21 @@ const { title, description, keywords, ogImage, ogUrl, preloadImage, isHome = fal
   <Footer />
 
   <script is:inline>
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
+    (function () {
+      const footer = document.querySelector('footer');
+      const actions = document.querySelector('.side-nav-actions');
+      if (!footer || !actions) return;
 
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navLinks.classList.toggle('open');
-    });
+      function updateActionsOffset() {
+        const footerTop = footer.getBoundingClientRect().top;
+        const overlap = Math.max(window.innerHeight - footerTop, 0);
+        actions.style.transform = overlap > 0 ? `translateY(-${overlap}px)` : '';
+      }
 
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('open');
-      });
-    });
+      window.addEventListener('scroll', updateActionsOffset, { passive: true });
+      window.addEventListener('resize', updateActionsOffset);
+      updateActionsOffset();
+    })();
   </script>
 </body>
 

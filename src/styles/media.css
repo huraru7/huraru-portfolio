@@ -1,7 +1,6 @@
 @media (max-width: 968px) {
   .hero-title { font-size: 3rem; }
   .section-title { font-size: 2rem; }
-  .nav-links { gap: 1rem; }
 
   .hero-content,
   .about-content {
@@ -20,46 +19,10 @@
 }
 
 @media (max-width: 768px) {
-  nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 0;
+  :root {
+    --side-nav-width: 56px;
   }
 
-  .hamburger {
-    display: flex;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    gap: 0;
-    padding-top: 1.5rem;
-    margin-left: 0;
-    order: 3;
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .nav-links li a {
-    display: block;
-    padding: 0.8rem 0;
-    border-bottom: 1px solid var(--border-color);
-  }
-
-  .logo,
-  a.logo {
-    font-size: 1.2rem;
-  }
-
-  .nav-actions {
-    order: 2;
-  }
-  
   .hero {
     padding: 3rem 5%;
     min-height: auto;
@@ -145,5 +108,17 @@
   .modal-header,
   .modal-body {
     padding: 1rem;
+  }
+}
+
+/* タッチデバイスはホバーができないため、サイドナビを常時ラベル表示のコンパクト展開状態にする */
+@media (hover: none) {
+  :root {
+    --side-nav-width: 160px;
+  }
+
+  .side-nav-label {
+    opacity: 1;
+    max-width: 120px;
   }
 }

@@ -38,8 +38,17 @@
 
 
   /* トランジション設定 */
-  --transition-speed: 0.8s;
+  --transition-speed: 0.25s;
   --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ダークモード切り替え専用のトランジション設定 */
+  --theme-transition-speed: 0.8s;
+}
+
+/* テーマ切り替え中のみ、色関連プロパティのdurationを専用速度に上書きする */
+html.theme-switching,
+html.theme-switching * {
+  transition-duration: var(--theme-transition-speed) !important;
 }
 
 :root.night-theme {

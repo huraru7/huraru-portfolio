@@ -15,6 +15,13 @@ const { isHome = false } = Astro.props;
 const home = isHome ? "" : "/index.html";
 ---
 
+<button type="button" class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="sideNav">
+	<span class="nav-toggle-bar"></span>
+	<span class="nav-toggle-bar"></span>
+	<span class="nav-toggle-bar"></span>
+</button>
+<div class="nav-overlay" id="navOverlay"></div>
+
 <aside class="side-nav" id="sideNav">
 	<a href={isHome ? "#top" : "/index.html"} class="side-nav-logo" aria-label="TOPへ戻る">
 		<Image src={huraru1} alt="huraru" />

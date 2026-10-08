@@ -84,8 +84,13 @@ const { title, description, keywords, ogImage, ogUrl, preloadImage, isHome = fal
       const footer = document.querySelector('footer');
       const actions = document.querySelector('.side-nav-actions');
       if (!footer || !actions) return;
+      const mobileQuery = window.matchMedia('(max-width: 768px)');
 
       function updateActionsOffset() {
+        if (mobileQuery.matches) {
+          actions.style.transform = '';
+          return;
+        }
         const footerTop = footer.getBoundingClientRect().top;
         const overlap = Math.max(window.innerHeight - footerTop, 0);
         actions.style.transform = overlap > 0 ? `translateY(-${overlap}px)` : '';
@@ -95,6 +100,10 @@ const { title, description, keywords, ogImage, ogUrl, preloadImage, isHome = fal
       window.addEventListener('resize', updateActionsOffset);
       updateActionsOffset();
     })();
+  </script>
+
+  <script>
+    import "../scripts/navToggle.js";
   </script>
 </body>
 
